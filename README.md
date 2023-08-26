@@ -1,1 +1,1 @@
-# IEEE_Embedded-Workshop
+# IEEE_Embedded_Workshop
