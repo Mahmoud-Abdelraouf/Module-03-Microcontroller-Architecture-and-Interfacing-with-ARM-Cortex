@@ -25,7 +25,7 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 ### Requirements
 
 1. Prior experience with any programming language.
-2. Basic knowledge of number systems.
+2. Basic knowledge of number systems and logic design.
 
 ## Sessions
 
