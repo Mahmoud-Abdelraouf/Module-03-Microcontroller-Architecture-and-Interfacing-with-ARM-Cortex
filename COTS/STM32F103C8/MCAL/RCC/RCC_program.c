@@ -20,40 +20,42 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
 
     #if RCC_SYSCLK == RCC_HSE
         
-        /**< Select which External CLK to will be a CLK system */
+        /**< Enable the external clock to be the source for the system clock. */
         #if RCC_CLK_BYPASS == RCC_RC_CLK_
-            SET_BIT(RCC_CR, RCC_CR_HSEBYP); /**< choose RC as a SYSCLK */
+            SET_BIT(RCC_CR, RCC_CR_HSEBYP); /**< Choose RC as a SYSCLK */
         #elif RCC_CLK_BYPASS == RCC_CRYSTAL_CLK_
-            CLR_BIT(RCC_CR, RCC_CR_HSEBYP); /**< choose CRYSTAL as a SYSCLK */
+            CLR_BIT(RCC_CR, RCC_CR_HSEBYP); /**< Choose CRYSTAL as a SYSCLK */
         #else 
             #error "Wrong Choice !!"
         #endif /**< RCC_CLK_BYPASS */
 
-        /**< Enable HSE*/
+        /**< Enable the High-Speed External clock. */
         SET_BIT(RCC_CR, RCC_CR_HSEON);
 
-        /**< Wait until the CLK be stable */
+        /**< Wait until the High-Speed External clock is stable. */
         while(!GET_BIT(RCC_CR, RCC_CR_HSERDY));
 
-        /**< Select HSE as a SYSCLK */
+        /**< Select High-Speed External clock as the system clock source. */
         RCC_CFGR = 0x00000001;
 
         Local_FunctionStatus = E_OK;
 
     #elif RCC_SYSCLK == RCC_HSI
-        /**< Enable HSI */
+        
+        /**< Enable the High-Speed Internal clock. */
         SET_BIT(RCC_CR, RCC_CR_HSION);
 
-        /**< Wait until the CLK be stable */
+        /**< Wait until the High-Speed Internal clock is stable. */
         while(!GET_BIT(RCC_CR, RCC_CR_HSIRDY));
 
-        /**< Select HSI as a SYSCLK  */
+        /**< Select High-Speed Internal clock as the system clock source. */
         RCC_CFGR = 0x00000000;
 
         Local_FunctionStatus = E_OK;
 
     #elif RCC_SYSCLK == RCC_PLL
 
+    // Placeholder for PLL configuration
 
     #else
         #error "Wrong Choice !!"
@@ -63,59 +65,65 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
     return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_Rcc_EnablePeripheral(u8 Copy_PeripheralId, u8 Copy_BusId)
+Std_ReturnType Mcal_Rcc_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
     switch(Copy_BusId)
     {
+        /**< Enable the peripheral on the AHB bus. */
         case RCC_AHB:
             SET_BIT(RCC_AHBENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
+        /**< Enable the peripheral on the APB1 bus. */
         case RCC_APB1:
             SET_BIT(RCC_APB1ENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
+        /**< Enable the peripheral on the APB2 bus. */
         case RCC_APB2:
             SET_BIT(RCC_APB2ENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
         default:
             Local_FunctionStatus = E_NOT_OK;
-        break;
+            break;
     }
 
     return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_PeripheralId, u8 Copy_BusId)
+Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
     switch(Copy_BusId)
     {
+        /**< Disable the peripheral on the AHB bus. */
         case RCC_AHB:
             CLR_BIT(RCC_AHBENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
+        /**< Disable the peripheral on the APB1 bus. */
         case RCC_APB1:
             CLR_BIT(RCC_APB1ENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
+        /**< Disable the peripheral on the APB2 bus. */
         case RCC_APB2:
             CLR_BIT(RCC_APB2ENR, Copy_PeripheralId);
             Local_FunctionStatus = E_OK;
-        break;
+            break;
 
         default:
             Local_FunctionStatus = E_NOT_OK;
-        break;
+            break;
     }
 
     return Local_FunctionStatus;

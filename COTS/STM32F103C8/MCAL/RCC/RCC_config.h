@@ -29,7 +29,7 @@
  *                  a higher frequency output. PLL provides flexibility in tuning the clock frequency,
  *                  making it suitable for applications with specific performance requirements.
  */
-#define RCC_SYSCLK            RCC_HSI
+#define RCC_SYSCLK            RCC_HSE
 
 
 /**
@@ -40,7 +40,7 @@
  */
 #if RCC_SYSCLK == RCC_HSE
 
-#define RCC_CLK_BYPASS        RCC_RC_CLK_
+#define RCC_CLK_BYPASS        RCC_CRYSTAL_CLK_
                                 
 #endif /**< RCC_SYSCLK */
 
