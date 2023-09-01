@@ -119,6 +119,14 @@ Each session will provide you with valuable insights into microcontroller archit
 
 To get started, make sure you have a basic understanding of C-language programming and are comfortable with number systems. Review the provided content and attend the sessions to enhance your skills in embedded systems and microcontroller architecture.
 
+### Workshop Playlist
+You can find the recorded sessions of the workshop on our YouTube playlist:
+[Workshop YouTube Playlist](https://youtube.com/playlist?list=PLyybLGjovkASRFFnpFt9X-gI0Pj6YKqJK&si=4Btsg5MCuFBeb-Ue)
+
+### Workshop Drive
+Access additional workshop materials, slides, and resources on our Google Drive:
+[Workshop Google Drive](https://drive.google.com/drive/folders/1nGR1J9SzmXIpPO03m8i160BUqqdw5mGg?usp=sharing)
+
 ## Project Proposal: PWM Drawer with Real-Time Display on Graphical LCD
 
 ### Project Overview:
