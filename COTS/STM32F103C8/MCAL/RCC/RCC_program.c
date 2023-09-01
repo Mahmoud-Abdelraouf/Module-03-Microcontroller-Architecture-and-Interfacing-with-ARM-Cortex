@@ -13,8 +13,8 @@
 #include "RCC_private.h"
 #include "RCC_config.h"
 
-
-Std_ReturnType Mcal_Rcc_InitSysClock(void)
+/*****************************< Function Implementations *****************************/
+Std_ReturnType MCAL_Rcc_InitSysClock(void)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
@@ -128,3 +128,5 @@ Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
 
     return Local_FunctionStatus;
 }
+
+/*****************************< End of Function Implementations *****************************/
