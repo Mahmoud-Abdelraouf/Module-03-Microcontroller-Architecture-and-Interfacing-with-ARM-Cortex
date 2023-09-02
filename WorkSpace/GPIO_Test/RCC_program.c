@@ -14,7 +14,7 @@
 #include "RCC_config.h"
 
 /*****************************< Function Implementations *****************************/
-Std_ReturnType MCAL_RCC_InitSysClock(void)
+Std_ReturnType Mcal_Rcc_InitSysClock(void)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
@@ -65,7 +65,7 @@ Std_ReturnType MCAL_RCC_InitSysClock(void)
     return Local_FunctionStatus;
 }
 
-Std_ReturnType MCAL_RCC_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
+Std_ReturnType Mcal_Rcc_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
@@ -97,7 +97,7 @@ Std_ReturnType MCAL_RCC_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
     return Local_FunctionStatus;
 }
 
-Std_ReturnType MCAL_RCC_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
+Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 

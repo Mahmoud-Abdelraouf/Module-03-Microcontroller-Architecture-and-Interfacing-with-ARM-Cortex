@@ -63,7 +63,8 @@
  */
 #define GPIO_INPUT_ANALOG_MOD                    0b0000 /**< GPIO Input Analog Mode */
 #define GPIO_INPUT_FLOATING_MOD                  0b0100 /**< GPIO Input Floating Mode */
-#define GPIO_INPUT_PUSH_PULL_MOD                 0b1000 /**< GPIO Input Push-Pull Mode */
+#define GPIO_INPUT_PULL_DOWN_MOD                 0b1000 /**< GPIO Input Pull down Mode */
+#define GPIO_INPUT_PULL_UP_MOD                   0b1000 /**< GPIO Input Pull up Mode */
 /** @} */
 
 /**
@@ -106,7 +107,7 @@
  * @param[in] Copy_PinMode The desired mode for the GPIO pin.
  * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType MCAL_GPIO_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMode);
+Std_ReturnType Mcal_Gpio_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMode);
 
 /**
  * @brief Sets the value of a GPIO pin.
@@ -118,7 +119,7 @@ Std_ReturnType MCAL_GPIO_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMo
  * @param[in] Copy_PinValue The desired value for the GPIO pin (GPIO_HIGH or GPIO_LOW).
  * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType MCAL_GPIO_SetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinValue);
+Std_ReturnType Mcal_Gpio_SetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinValue);
 
 /**
  * @brief Gets the value of a GPIO pin.
@@ -130,7 +131,7 @@ Std_ReturnType MCAL_GPIO_SetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinV
  * @param[out] Copy_PinReturnValue Pointer to the variable where the pin value will be stored (GPIO_HIGH or GPIO_LOW).
  * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType MCAL_GPIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_PinReturnValue);
+Std_ReturnType Mcal_Gpio_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_PinReturnValue);
 
 /** @} */ // End of GPIO_Functions group
 

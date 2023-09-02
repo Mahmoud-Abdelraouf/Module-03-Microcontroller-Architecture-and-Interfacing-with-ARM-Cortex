@@ -127,7 +127,7 @@
  * @retval E_OK     Clock initialization successful.
  * @retval E_NOT_OK Clock initialization failed.
  */
-Std_ReturnType MCAL_RCC_InitSysClock(void);
+Std_ReturnType Mcal_Rcc_InitSysClock(void);
 
 /**
  * @brief Enable a specific peripheral on a specific bus.
@@ -140,7 +140,7 @@ Std_ReturnType MCAL_RCC_InitSysClock(void);
  * @retval E_OK     Peripheral enabling successful.
  * @retval E_NOT_OK Peripheral enabling failed.
  */
-Std_ReturnType MCAL_RCC_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId);
+Std_ReturnType Mcal_Rcc_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId);
 
 /**
  * @brief Disable a specific peripheral.
@@ -153,7 +153,7 @@ Std_ReturnType MCAL_RCC_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId);
  * @retval E_OK     Peripheral disabling successful.
  * @retval E_NOT_OK Peripheral disabling failed.
  */
-Std_ReturnType MCAL_RCC_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId);
+Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId);
 
 /**
  * @}
