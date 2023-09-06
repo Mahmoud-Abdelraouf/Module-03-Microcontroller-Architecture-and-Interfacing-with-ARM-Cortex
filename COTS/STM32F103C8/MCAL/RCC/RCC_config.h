@@ -44,6 +44,11 @@
                                 
 #endif /**< RCC_SYSCLK */
 
+#if RCC_SYSCLK == RCC_PLL
+
+
+#endif /**< RCC_SYSCLK */
+
 /** @} */ // end of RCC_System_Clock_Config
 
 
