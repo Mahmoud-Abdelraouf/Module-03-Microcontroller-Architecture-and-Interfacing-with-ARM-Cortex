@@ -7,8 +7,21 @@
 #ifndef NVIC_INTERFACE_H_
 #define NVIC_INTERFACE_H_
 
-typedef u8          IRQn_Type;
-
+/**
+ * @brief Type definition for Cortex-M microcontroller interrupt numbers.
+ *
+ * This typedef defines the data type for representing interrupt numbers in Cortex-M
+ * microcontroller architectures. Each interrupt is identified by a unique number,
+ * which is used when configuring interrupt priorities and enabling/disabling interrupts.
+ *
+ * The specific range and mapping of interrupt numbers can vary depending on the
+ * microcontroller model and vendor.
+ *
+ * @note The actual implementation may vary depending on the microcontroller architecture.
+ *       This typedef is often defined by the microcontroller's CMSIS (Cortex Microcontroller
+ *       Software Interface Standard) header file.
+ */
+typedef u8 IRQn_Type;
 
 /**
  * @defgroup NVIC_Control NVIC Control Functions
@@ -88,39 +101,49 @@ Std_ReturnType MCAL_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendi
  *
  * This function sets the priority of the specified interrupt in the NVIC.
  *
- * @param[in] IRQn          The interrupt number (IRQn_Type) to set the priority for.
+ * @param[in] Copy_IRQn     The interrupt number (IRQn_Type) to set the priority for.
  * @param[in] Copy_Priority The priority level to set (0 to 255, with 0 being the highest).
  *
  * @return Std_ReturnType
  *   - E_OK     : Priority set successfully.
  *   - E_NOT_OK : An error occurred (invalid interrupt number or priority level).
  */
-Std_ReturnType MCAL_NVIC_SetPriority(IRQn_Type IRQn, u32 Copy_Priority);
+Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u32 Copy_Priority);
+
+/**
+ * @brief Set the priority of a specific interrupt in the NVIC.
+ *
+ * This function sets the priority of the specified interrupt in the NVIC.
+ *
+ * @param[in] Copy_IRQn         The interrupt number (IRQn_Type) to set the priority for.
+ * @param[in] Copy_GroupPriority The group priority level (0 to 7, with 0 being the highest).
+ * @param[in] Copy_SubPriority  The sub-priority level within the group (0 to 3).
+ *
+ * @return Std_ReturnType
+ *   - E_OK     : Priority set successfully.
+ *   - E_NOT_OK : An error occurred (invalid interrupt number or priority levels).
+ *
+ * @note The priority levels must be within the valid range for your system.
+ */
+Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority, u8 Copy_SubPriority);
 
 /**
  * @brief Get the priority of a specific interrupt in the NVIC.
  *
  * This function retrieves the priority of the specified interrupt in the NVIC.
  *
- * @param[in] IRQn The interrupt number (IRQn_Type) to get the priority for.
+ * @param[in]  IRQn            The interrupt number (IRQn_Type) to get the priority for.
+ * @param[out] Copy_Priority   A pointer to a variable that will store the retrieved priority.
  *
- * @return u32
- *   - The priority level of the interrupt (0 to 255, with 0 being the highest).
+ * @return Std_ReturnType
+ *   - E_OK     : Priority retrieved successfully, and the value is stored in Copy_Priority.
+ *   - E_NOT_OK : An error occurred (invalid interrupt number or Copy_Priority pointer is NULL).
  */
-Std_ReturnType MCAL_NVIC_GetPriority(IRQn_Type IRQn);
+Std_ReturnType MCAL_NVIC_xGetPriority(IRQn_Type IRQn, u8 *Copy_Priority);
 
 /**
  * @} (end of group NVIC_Control)
  */
-
-
- 
-
-
-
-
-
-
 
 
 #endif /**< NVIC_INTERFACE_H_ */

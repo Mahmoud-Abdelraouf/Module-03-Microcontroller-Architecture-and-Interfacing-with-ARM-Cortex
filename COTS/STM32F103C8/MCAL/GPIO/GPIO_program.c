@@ -180,6 +180,7 @@ Std_ReturnType MCAL_GPIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_Pin
 
     return Local_FunctionStatus;
 }
+/*****************************< End of Function Implementations *****************************/
 
 
 
