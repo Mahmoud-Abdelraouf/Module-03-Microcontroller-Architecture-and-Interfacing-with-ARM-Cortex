@@ -65,37 +65,19 @@
 #define NVIC_IPR_BASE_ADDRESS    (((volatile u8 *)0xE000E400)) /**< INTERRUPT PRIORITY REGISTERS BASE ADDRESS */
 
 /**
- * @brief SCB Registers.
- * @{
- */
-#define SCB_AIRCR       (*((volatile u32 *)0xE000ED0C)) /**< APPLICATION INTERRUPT AND RESET CONTROL REGISTER */
-#define SCB_SHPR1       (*((volatile u32 *)0xE000ED18)) /**< SYSTEM HANDLER PRIORITY REGISTER 1 */
-#define SCB_SHPR2       (*((volatile u32 *)0xE000ED1C)) /**< SYSTEM HANDLER PRIORITY REGISTER 2 */
-#define SCB_SHPR3       (*((volatile u32 *)0xE000ED20)) /**< SYSTEM HANDLER PRIORITY REGISTER 3 */
-/** @} */
-
-/**
  * @brief Priority Grouping Values
  * @{
  */
-
-/**< SCB Register Values */
-#define _16GROUP_0SUB   0x05FA0300U /**< 16 Priority Levels, No Sub-priority */
-#define _8GROUP_2SUB    0x05FA0400U /**< 8 Priority Levels, 2 Sub-priority Levels */
-#define _4GROUP_4SUB    0x05FA0500U /**< 4 Priority Levels, 4 Sub-priority Levels */
-#define _2GROUP_8SUB    0x05FA0600U /**< 2 Priority Levels, 8 Sub-priority Levels */
-#define _0GROUP_16SUB   0x05FA0700U /**< No Grouping, 16 Sub-priority Levels */
-
+#define NVIC_16GROUP_0SUB   0x05FA0300U /**< 16 Priority Levels, No Sub-priority */
+#define NVIC_8GROUP_2SUB    0x05FA0400U /**< 8 Priority Levels, 2 Sub-priority Levels */
+#define NVIC_4GROUP_4SUB    0x05FA0500U /**< 4 Priority Levels, 4 Sub-priority Levels */
+#define NVIC_2GROUP_8SUB    0x05FA0600U /**< 2 Priority Levels, 8 Sub-priority Levels */
+#define NVIC_0GROUP_16SUB   0x05FA0700U /**< No Grouping, 16 Sub-priority Levels */
 /** @} */
-
 
 
 /**
  * @} (end of group NVIC_Registers)
  */
-
-    
-
-
 
 #endif /**< NVIC_PRIVATE_H_ */
