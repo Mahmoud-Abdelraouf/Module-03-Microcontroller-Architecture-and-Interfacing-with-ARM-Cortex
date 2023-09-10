@@ -33,6 +33,12 @@
  *       which sets both group and sub-group priorities. If you are using the
  *       MCAL_NVIC_vSetPriority function which sets group and sub-group priorities
  *       separately, consider using the PRIORITY_GROUPING macro instead.
+ *
+ * @note The valid range for NVIC interrupt priorities is from 0 to (NVIC_MAX_PRIORITY).
+ *       The highest priority is 0, and the value specified by this macro represents
+ *       the maximum numerical priority value achievable.
+ *
+ * @note The number of possible interrupts in the NVIC is (NVIC_MAX_PRIORITY + 1).
  */
 #define NVIC_MAX_PRIORITY               15
 
@@ -63,7 +69,6 @@
  *     - Sub-Priority Range: 0 to 15
  */
 #define PRIORITY_GROUPING   NVIC_4GROUP_4SUB
-
 
 /**
  * @} User_Configuration

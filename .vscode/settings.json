@@ -2,5 +2,9 @@
     "cSpell.words": [
         "SHPR"
     ],
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+        "exti_config.h": "c",
+        "exti_private.h": "c"
+    }
 }
