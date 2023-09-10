@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "SHPR"
-    ]
+    ],
+    "C_Cpp.errorSquiggles": "enabled"
 }
