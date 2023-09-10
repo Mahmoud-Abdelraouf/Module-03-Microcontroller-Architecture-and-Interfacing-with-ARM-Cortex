@@ -229,7 +229,7 @@ Std_ReturnType MCAL_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendi
  *   - E_OK     : Priority set successfully.
  *   - E_NOT_OK : An error occurred (invalid interrupt number or priority level).
  */
-Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u32 Copy_Priority);
+Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority);
 
 /**
  * @brief Set the priority of a specific interrupt in the NVIC.
@@ -238,15 +238,23 @@ Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u32 Copy_Priority);
  *
  * @param[in] Copy_IRQn         The interrupt number (IRQn_Type) to set the priority for.
  * @param[in] Copy_GroupPriority The group priority level (0 to 7, with 0 being the highest).
- * @param[in] Copy_SubPriority  The sub-priority level within the group (0 to 3).
+ * @param[in] Copy_SubPriority  The sub-priority level within the group (0 to 1, 2, or 3, depending on the chosen PRIORITY_GROUPING).
  *
  * @return Std_ReturnType
  *   - E_OK     : Priority set successfully.
  *   - E_NOT_OK : An error occurred (invalid interrupt number or priority levels).
  *
- * @note The priority levels must be within the valid range for your system.
- * @note When using PRIORITY_GROUPING equal to _16GROUP_0SUB, the Copy_SubPriority should be NONE.
- * @note When using PRIORITY_GROUPING equal to _0GROUP_16SUB, the Copy_GroupPriority should be NONE.
+ * @details
+ * This function allows you to set the priority of a specific interrupt in the Nested Vectored Interrupt Controller (NVIC).
+ * The priority levels must be within the valid range for your system and should respect the selected PRIORITY_GROUPING.
+ *
+ * @note When using PRIORITY_GROUPING equal to NVIC_16GROUP_0SUB or NVIC_0GROUP_16SUB:
+ *   - Copy_SubPriority should be 0.
+ *   - Copy_GroupPriority should be in the range [0, 15] for NVIC_16GROUP_0SUB and NONE for NVIC_0GROUP_16SUB.
+ *
+ * @note When using other PRIORITY_GROUPING options (NVIC_8GROUP_2SUB, NVIC_4GROUP_4SUB, or NVIC_2GROUP_8SUB):
+ *   - Copy_SubPriority can be in the range [0, 3].
+ *   - Copy_GroupPriority can be in the range [0, 7].
  *
  * @see NVIC_config.h for details on PRIORITY_GROUPING.
  */

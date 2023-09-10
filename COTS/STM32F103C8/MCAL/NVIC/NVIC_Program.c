@@ -292,5 +292,4 @@ Std_ReturnType MCAL_NVIC_xGetPriority(IRQn_Type Copy_IRQn, u8 *Copy_Priority)
     /**< Return the function status here */
     return Local_FunctionStatus;
 }
-
 /*****************************< End of Function Implementations *****************************/
