@@ -7,7 +7,6 @@
 #ifndef SCB_INTERFACE_H_
 #define SCB_INTERFACE_H_
 
-
 /*****************************< Function to enable/disable global interrupts *****************************/
 /**
  * @brief Set the Priority Grouping in the System Control Block (SCB).
