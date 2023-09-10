@@ -62,7 +62,7 @@
 /**
  * @brief NVIC IPR Base Address
  */                                                 
-#define NVIC_IPR_BASE_ADDRESS    (((volatile u8 *)0xE000E400)) /**< INTERRUPT PRIORITY REGISTERS BASE ADDRESS */
+#define NVIC_IPR_BASE_ADDRESS    (((volatile u32 *)0xE000E400)) /**< INTERRUPT PRIORITY REGISTERS BASE ADDRESS */
 
 /**
  * @brief Priority Grouping Values

@@ -176,7 +176,7 @@ Std_ReturnType MCAL_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendi
     return Local_FunctionStatus;
 }
 
-Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u32 Copy_Priority)
+Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
@@ -188,10 +188,14 @@ Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u32 Copy_Priority)
     if (Copy_Priority <= NVIC_MAX_PRIORITY) /**< Ensure the priority value is within the valid range (0-255) */ 
     {
         /**< Calculate the register index (IPRx) and bit position within the register */ 
-        u8 RegisterIndex = Copy_IRQn / 4;     /**< Divide by 4 to get the register index */  
+        u32 RegisterIndex = Copy_IRQn / 4;      /**< Divide by 4 to get the register index */  
+        u32 BitPosition = (Copy_IRQn % 4) * 8; /**< Multiply by 8 to get the bit position */
+
+        /**< Clear the bits that control the priority for the given interrupt */ 
+        NVIC_IPR_BASE_ADDRESS[RegisterIndex] &= ~(0xFF << BitPosition);
 
         /**< Set the priority in the appropriate IPRx register */ 
-        NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (Copy_Priority << 4);
+        NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (Copy_Priority << BitPosition);
         
         /**< Set the group and sub-group priority for interrupt handling in SCB_AIRCR register */
         SCB_SetPriorityGrouping(NVIC_0GROUP_16SUB);
@@ -235,17 +239,27 @@ Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority
 
     u8 Local_Priority = (Copy_SubPriority | (Copy_GroupPriority << (PRIORITY_GROUPING - NVIC_16GROUP_0SUB) / 0x100));
 
-    if (Copy_IRQn < 0 || Copy_IRQn >= NUMBER_OF_INTERRUPTS)
+    if (Copy_IRQn > NUMBER_OF_INTERRUPTS)
     {
         /**< Check if IRQn is within valid range */
         return Local_FunctionStatus;
     }
 
     /**< Calculate the register index (IPRx) and bit position within the register */
-    u8 RegisterIndex = Copy_IRQn / 4; /* Divide by 4 to get the register index */
+    u32 RegisterIndex = Copy_IRQn / 4;     /**< Divide by 4 to get the register index */
+    u32 BitPosition = (Copy_IRQn % 4) * 8; /**< Multiply by 8 to get the bit position */ 
+   
+    /**< Read the current value of the IPR register */ 
+    u32 RegValue = NVIC_IPR_BASE_ADDRESS[RegisterIndex];
+   
+    /**< Clear the bits that control the priority for the given interrupt */ 
+    RegValue &= ~(0xFF << BitPosition);
 
-    /**< Set the priority in the appropriate IPRx register */
-    NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (Local_Priority << 4);
+    /**< Set the priority in the appropriate IPRx register */ 
+    RegValue |= (Local_Priority << BitPosition);
+    
+    /**< Write the modified value back to the IPR register */ 
+    NVIC_IPR_BASE_ADDRESS[RegisterIndex] = RegValue;
 
     /**< Configure the priority grouping for the Nested Vectored Interrupt Controller (NVIC) */
     SCB_SetPriorityGrouping(PRIORITY_GROUPING);
@@ -253,26 +267,30 @@ Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority
     return Local_FunctionStatus;
 }
 
-Std_ReturnType MCAL_NVIC_xGetPriority(IRQn_Type IRQn, u8 *Copy_Priority)
+Std_ReturnType MCAL_NVIC_xGetPriority(IRQn_Type Copy_IRQn, u8 *Copy_Priority)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
-    if (IRQn < 0 || IRQn > NUMBER_OF_INTERRUPTS)
+    if (Copy_IRQn > NUMBER_OF_INTERRUPTS) /**< Check if IRQn is within valid range */
     {
-        /**< Check if IRQn is within valid range */
         return Local_FunctionStatus;
     }
 
     /**< Calculate the register index (IPRx) and bit position within the register */
-    u8 RegisterIndex = IRQn / 4; /* Divide by 4 to get the register index */
-    u8 PriorityRegisterValue = NVIC_IPR_BASE_ADDRESS[RegisterIndex];
+    u8 RegisterIndex = Copy_IRQn / 4;     /**< Divide by 4 to get the register index */
+    u8 BitIndex = (Copy_IRQn % 4);        /**< Remainder of 4 to get the bit index */
+    u8 BitPosition = (Copy_IRQn % 4) * 8; /**< Multiply by 8 to get the bit position */
+
+    /**< Pointer arithmetic to access the IPRx register */
+    u8 *PriorityRegister = (u8 *)&NVIC_IPR_BASE_ADDRESS[RegisterIndex];
 
     /**< Extract the priority from the IPRx register */
-    *Copy_Priority = (PriorityRegisterValue >> 4) & 0xFF;
+    *Copy_Priority = (PriorityRegister[BitIndex] >> (BitPosition)) & 0xFF;
 
     Local_FunctionStatus = E_OK;
 
-    /**< You may want to return the extracted priority here */
+    /**< Return the function status here */
     return Local_FunctionStatus;
 }
+
 /*****************************< End of Function Implementations *****************************/
