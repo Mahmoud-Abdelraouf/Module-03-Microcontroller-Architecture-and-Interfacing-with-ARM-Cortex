@@ -22,50 +22,23 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\Programming\01-Embedded_Systems\Projects and Work\IEEE_Embedded_Workshop\WorkSpace\NVIC_Test\NVIC_Test.uvprojx
-Project File Date:  09/10/2023
+Project File Date:  09/12/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-main.c(10): warning: In file included from...
-./BIT_MATH.h(52): warning: no newline at end of file [-Wnewline-eof]
-#endif /* BIT_MATH_H_ */
-                        ^
-main.c(12): warning: In file included from...
-./RCC_interface.h(165): warning: no newline at end of file [-Wnewline-eof]
-#endif /**< RCC_INTERFACE_H_ */
-                               ^
-main.c(13): warning: In file included from...
-./GPIO_interface.h(33): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */ // End of GPIO_Values group
-          ^
-./GPIO_interface.h(139): warning: no newline at end of file [-Wnewline-eof]
-#endif /**< GPIO_INTERFACE_H_ */
-                                ^
-main.c(14): warning: In file included from...
-./NVIC_interface.h(120): warning: 'NVIC_Reserved_IRQn' macro redefined [-Wmacro-redefined]
-#define NVIC_Reserved_IRQn           44  /**< Reserved interrupt */
-        ^
-./NVIC_interface.h(119): note: previous definition is here
-#define NVIC_Reserved_IRQn           43  /**< Reserved interrupt */
-        ^
-./NVIC_interface.h(121): warning: 'NVIC_Reserved_IRQn' macro redefined [-Wmacro-redefined]
-#define NVIC_Reserved_IRQn           45  /**< Reserved interrupt */
-        ^
-./NVIC_interface.h(120): note: previous definition is here
-#define NVIC_Reserved_IRQn           44  /**< Reserved interrupt */
-        ^
-./NVIC_interface.h(122): warning: 'NVIC_Reserved_IRQn' macro redefined [-Wmacro-redefined]
-#define NVIC_Reserved_IRQn           46  /**< Reserved interrupt */
-        ^
-./NVIC_interface.h(121): note: previous definition is here
-#define NVIC_Reserved_IRQn           45  /**< Reserved interrupt */
-        ^
-7 warnings generated.
+main.c(62): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+main.c(68): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+2 warnings generated.
 compiling main.c...
+compiling NVIC_program.c...
 linking...
-Program Size: Code=1628 RO-data=252 RW-data=0 ZI-data=1632  
-".\Objects\NVIC_Test.axf" - 0 Error(s), 7 Warning(s).
+Program Size: Code=2468 RO-data=252 RW-data=0 ZI-data=1632  
+".\Objects\NVIC_Test.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -92,11 +65,11 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
-      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Source file:   Device/Source/system_stm32f10x.c
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Include file:  RTE_Driver/Config/RTE_Device.h
-Build Time Elapsed:  00:00:00
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

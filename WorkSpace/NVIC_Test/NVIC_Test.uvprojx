@@ -323,7 +323,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>4</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -478,6 +478,46 @@
               <FileName>STD_TYPES.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\STD_TYPES.h</FilePath>
+            </File>
+            <File>
+              <FileName>AFIO_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\AFIO_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>AFIO_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\AFIO_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>AFIO_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\AFIO_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>AFIO_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\AFIO_program.c</FilePath>
+            </File>
+            <File>
+              <FileName>EXTI_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EXTI_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>EXTI_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EXTI_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>EXTI_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EXTI_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>EXTI_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\EXTI_program.c</FilePath>
             </File>
           </Files>
         </Group>
