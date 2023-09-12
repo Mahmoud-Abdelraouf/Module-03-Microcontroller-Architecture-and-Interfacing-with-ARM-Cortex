@@ -187,6 +187,9 @@ Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
 
     if (Copy_Priority <= NVIC_MAX_PRIORITY) /**< Ensure the priority value is within the valid range (0-255) */ 
     {
+				/**< Set the group and sub-group priority for interrupt handling in SCB_AIRCR register */
+        SCB_SetPriorityGrouping(NVIC_0GROUP_16SUB);
+			
         /**< Calculate the register index (IPRx) and bit position within the register */ 
         u32 RegisterIndex = Copy_IRQn / 4;     /**< Divide by 4 to get the register index */  
         u32 BitPosition = (Copy_IRQn % 4) * 8; /**< Multiply by 8 to get the bit position */
@@ -197,9 +200,6 @@ Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
         /**< Set the priority in the appropriate IPRx register */ 
         NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (Copy_Priority << BitPosition);
         
-        /**< Set the group and sub-group priority for interrupt handling in SCB_AIRCR register */
-        SCB_SetPriorityGrouping(NVIC_0GROUP_16SUB);
-
         Local_FunctionStatus = E_OK;
     }
 
@@ -237,14 +237,18 @@ Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority
         return Local_FunctionStatus;
     }
 
-    u8 Local_Priority = (Copy_SubPriority | (Copy_GroupPriority << (PRIORITY_GROUPING - NVIC_16GROUP_0SUB) / 0x100));
 
     if (Copy_IRQn > NUMBER_OF_INTERRUPTS)
     {
         /**< Check if IRQn is within valid range */
         return Local_FunctionStatus;
     }
+	
+		u8 Local_Priority = (Copy_SubPriority | (Copy_GroupPriority << (PRIORITY_GROUPING - NVIC_16GROUP_0SUB) / 0x100));
 
+		/**< Configure the priority grouping for the Nested Vectored Interrupt Controller (NVIC) */
+    SCB_SetPriorityGrouping(PRIORITY_GROUPING);
+		
     /**< Calculate the register index (IPRx) and bit position within the register */
     u32 RegisterIndex = Copy_IRQn / 4;     /**< Divide by 4 to get the register index */
     u32 BitPosition = (Copy_IRQn % 4) * 8; /**< Multiply by 8 to get the bit position */ 
@@ -259,10 +263,7 @@ Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority
     RegValue |= (Local_Priority << BitPosition);
     
     /**< Write the modified value back to the IPR register */ 
-    NVIC_IPR_BASE_ADDRESS[RegisterIndex] = RegValue;
-
-    /**< Configure the priority grouping for the Nested Vectored Interrupt Controller (NVIC) */
-    SCB_SetPriorityGrouping(PRIORITY_GROUPING);
+    NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (RegValue << 4);
 
     return Local_FunctionStatus;
 }

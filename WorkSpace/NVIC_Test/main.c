@@ -34,9 +34,9 @@ int main(void)
 	MCAL_NVIC_EnableIRQ(6);
 	MCAL_NVIC_EnableIRQ(7);
 		
-	MCAL_NVIC_vSetPriority(7,0,0);
+	MCAL_NVIC_vSetPriority(7,0,3);
 	
-	MCAL_NVIC_vSetPriority(6,2,2);
+	MCAL_NVIC_vSetPriority(6,3,0);
 	
 	MCAL_NVIC_SetPendingIRQ(6);
 	
@@ -58,7 +58,6 @@ EXTI0_IRQHandler(void)
 	MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN1, GPIO_HIGH);
 	MCAL_NVIC_SetPendingIRQ(7);
 	MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN2, GPIO_HIGH);
-
 }
 
 EXTI1_IRQHandler(void)
