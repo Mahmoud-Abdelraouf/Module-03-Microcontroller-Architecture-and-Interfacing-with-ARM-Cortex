@@ -94,13 +94,13 @@ In this workshop, sessions will be conducted offline at the Faculty of Engineeri
 
 - **Date:** 14/9 (Thu)
 - **Topic:** RTOS
-- **Description:** Discover the world of Real-Time Operating Systems (RTOS) and their critical role in ensuring precise timing for real-time applications.
+- **Description:** Get introduced to operating systems basics. Build a real-time scheduler, learn about time-triggered and dynamic design aspects.
 
 #### Session 11
 
 - **Date:** 16/9 (Sat)
 - **Topic:** OS Scheduler
-- **Description:** Get introduced to operating systems basics. Build a real-time scheduler, learn about time-triggered and dynamic design aspects.
+- **Description:** 
 
 #### Session 12
 
