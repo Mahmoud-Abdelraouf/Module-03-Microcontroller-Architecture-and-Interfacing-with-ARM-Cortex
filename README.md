@@ -17,10 +17,11 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 | 07     | 5/9      | NVIC Driver                               | Faculty of Engineering, Ain Shams University |
 | 08     | 9/9      | EXTI                                      | Faculty of Engineering, Ain Shams University |
 | 09     | 12/9     | SysTick                                   | Faculty of Engineering, Ain Shams University |
-| 10     | 16/9     | OS Scheduler                              | Faculty of Engineering, Ain Shams University |
-| 11     | 19/9     | UART                                      | Faculty of Engineering, Ain Shams University |
-| 12     | 23/9     | SPI and TFT                               | Faculty of Engineering, Ain Shams University |
-| 13     | 26/9     | DMA                                       | Faculty of Engineering, Ain Shams University |
+| 10     | 14/9     | RTOS - Session 01                         | Faculty of Engineering, Ain Shams University |
+| 11     | 16/9     | OS Scheduler                              | Faculty of Engineering, Ain Shams University |
+| 12     | 19/9     | UART                                      | Faculty of Engineering, Ain Shams University |
+| 13     | 23/9     | SPI and TFT                               | Faculty of Engineering, Ain Shams University |
+| 14     | 26/9     | DMA                                       | Faculty of Engineering, Ain Shams University |
 
 ### Requirements
 
@@ -91,23 +92,29 @@ In this workshop, sessions will be conducted offline at the Faculty of Engineeri
 
 #### Session 10
 
+- **Date:** 14/9 (Thu)
+- **Topic:** RTOS
+- **Description:** Discover the world of Real-Time Operating Systems (RTOS) and their critical role in ensuring precise timing for real-time applications.
+
+#### Session 11
+
 - **Date:** 16/9 (Sat)
 - **Topic:** OS Scheduler
 - **Description:** Get introduced to operating systems basics. Build a real-time scheduler, learn about time-triggered and dynamic design aspects.
 
-#### Session 11
+#### Session 12
 
 - **Date:** 19/9 (Tue)
 - **Topic:** UART
 - **Description:** Explore serial communication characteristics and UART basics. Build a UART driver and practice interfacing with USB TTL modules.
 
-#### Session 12
+#### Session 13
 
 - **Date:** 23/9 (Sat)
 - **Topic:** SPI and TFT
 - **Description:** Learn about SPI basics, build an SPI driver, and understand pixel color modes. Explore different display types, including interfacing TFT displays and working with bit map images.
 
-#### Session 13
+#### Session 14
 
 - **Date:** 26/9 (Tue)
 - **Topic:** DMA
