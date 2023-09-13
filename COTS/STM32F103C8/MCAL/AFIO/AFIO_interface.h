@@ -7,14 +7,6 @@
 #ifndef AFIO_INTERFACE_H_
 #define AFIO_INTERFACE_H_
 
-
-
-#define AFIO_PORTA          0
-#define AFIO_PORTB          1
-#define AFIO_PORTC          2
-
-
-
 /**
  * @defgroup AFIO_Remap_Options AFIO Remap Options
  * @{
@@ -79,29 +71,6 @@ typedef enum
  */
 
 /**
- * @brief Enable a specific peripheral on a specific bus.
- *
- * This function enables a specific peripheral on a specific bus.
- *
- * @param[in] Copy_PeripheralId The ID of the peripheral to be enabled.
- * @param[in] Copy_BusId        The ID of the bus to which the peripheral belongs (RCC_AHB, RCC_APB1, or RCC_APB2).
- * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
- */
-Std_ReturnType MCAL_AFIO_EnablePeripheral(u32 Copy_PeripheralId, u32 Copy_BusId);
-
-/**
- * @brief Configure EXTI (External Interrupt) line for a GPIO port.
- *
- * This function configures the EXTI (External Interrupt) lines for a specified GPIO port. It maps
- * the EXTI line to the desired GPIO port using the AFIO peripheral.
- *
- * @param[in] Copy_Line The EXTI line number to configure (0 to 15).
- * @param[in] Copy_PortMap The GPIO port mapping for the EXTI line (0 to 15).
- * @return Std_ReturnType Returns E_OK if the EXTI configuration is successful, or E_NOT_OK if an error occurred.
- */
-Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap);
-
-/**
  * @brief Configure AF remap and debug I/O settings.
  *
  * This function configures the AF remap and debug I/O settings using the AFIO peripheral.
@@ -109,7 +78,7 @@ Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap);
  * @param[in] Copy_RemapConfig The configuration value for AF remap and debug I/O.
  * @return Std_ReturnType Returns E_OK if the configuration is successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType MCAL_AFIO_SetRemap(u32 Copy_RemapConfig);
+Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
 
 /**
  * @brief Configure debug port settings.
@@ -117,9 +86,23 @@ Std_ReturnType MCAL_AFIO_SetRemap(u32 Copy_RemapConfig);
  * This function configures the debug port settings using the AFIO peripheral.
  *
  * @param[in] Copy_DebugConfig The configuration value for debug port settings.
+ *                            - Use @ref DEBUG_PORT_FULL_SWJ for full SWJ (JTAG-DP + SW-DP) but without NJTRST.
+ *                            - Use @ref DEBUG_PORT_SW_ONLY for SW-DP Enabled (JTAG-DP Disabled).
+ *                            - Use @ref DEBUG_PORT_CUSTOM for a custom debug port configuration (user-defined).
+ *
  * @return Std_ReturnType Returns E_OK if the configuration is successful, or E_NOT_OK if an error occurred.
+ *
+ * @code
+ * // Example usage:
+ * Std_ReturnType result = MCAL_AFIO_SetDebugPort(DEBUG_PORT_FULL_SWJ);
+ * if (result == E_OK) {
+ *     /// Configuration successful
+ * } else {
+ *     /// Configuration failed
+ * }
+ * @endcode
  */
-Std_ReturnType MCAL_AFIO_SetDebugPort(u32 Copy_DebugConfig);
+Std_ReturnType MCAL_AFIO_SetDebugPort(u8 Copy_DebugConfig);
 
 /**
  * @brief Configure additional mapping settings (MAPR2).
@@ -130,6 +113,34 @@ Std_ReturnType MCAL_AFIO_SetDebugPort(u32 Copy_DebugConfig);
  * @return Std_ReturnType Returns E_OK if the configuration is successful, or E_NOT_OK if an error occurred.
  */
 Std_ReturnType MCAL_AFIO_SetMAPR2(u32 Copy_MAPR2Config);
+
+/**
+ * @brief Configures EXTI (External Interrupt) line mapping for a specific GPIO port.
+ *
+ * This function maps a specific GPIO pin to an EXTI line by configuring the EXTI
+ * control registers. EXTI lines are used to trigger external interrupts based on
+ * GPIO pin events.
+ *
+ * @param[in] Copy_Line The EXTI line number (0 to 15) to configure.
+ * @param[in] Copy_PortMap The GPIO port mapping configuration (0, 1, or 2) for the EXTI line.
+ *
+ * @note This function should be called to configure EXTI mapping for GPIO pins that will
+ *       trigger external interrupts.
+ *
+ * @return Std_ReturnType E_OK if the configuration is successful, E_NOT_OK otherwise.
+ *
+ * @code
+ * /// Example usage:
+ * /// Configure EXTI line 4 to use GPIO port B mapping.
+ * Std_ReturnType result = MCAL_AFIO_SetEXTIConfiguration(EXTI_LINE4, EXTI_PORTMAP_GPIOB);
+ * if (result == E_OK) {
+ *     /// Configuration successful
+ * } else {
+ *     /// Configuration failed
+ * }
+ * @endcode
+ */
+Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap);
 
 /** @} */ // End of AFIO_Functions group
 

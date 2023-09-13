@@ -80,9 +80,6 @@ void AFIO_MAPR_ADC2ETRGINJRemap(bool Copy_Enable)
     AFIO->MAPR = regValue;
 }
 
-
-
-
 Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;

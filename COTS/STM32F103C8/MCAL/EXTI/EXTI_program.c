@@ -9,11 +9,16 @@
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 /*****************************< MCAL *****************************/
+/**< GPIO */
+#include "GPIO_interface.h"
+/**< AFIO */
+#include "AFIO_interface.h"
+/**< EXTI */
 #include "EXTI_interface.h"
 #include "EXTI_private.h"
 #include "EXTI_config.h"
 /*****************************< Function Implementations *****************************/
-void EXTI_Init(void)
+void EXTI_vInit(void)
 {
     for (u8 Line = 0; Line < EXTI_LINES_COUNT; Line++)
     {
@@ -22,21 +27,28 @@ void EXTI_Init(void)
             EXTI->IMR |= (1 << Line);  /**< Enable the EXTI line */ 
             switch (EXTI_Configurations[Line].TriggerType)
             {
-            /**< Configure rising edge trigger */
-            case EXTI_RISING_EDGE:          
-                SET_BIT(EXTI->RTSR, Line);
-                CLR_BIT(EXTI->FTSR, Line); 
-                break;
-            /**< Configure falling edge trigger */ 
-            case EXTI_FALLING_EDGE:
-                CLR_BIT(EXTI->RTSR, Line);
-                SET_BIT(EXTI->FTSR, Line);
-                break;
-            /**< Configure both edges trigger */
-            case EXTI_BOTH_EDGES:
-                SET_BIT(EXTI->RTSR, Line);
-                SET_BIT(EXTI->FTSR, Line);
-                break;
+                /**< Configure rising edge trigger */
+                case EXTI_RISING_EDGE:          
+                    SET_BIT(EXTI->RTSR, Line);
+                    CLR_BIT(EXTI->FTSR, Line); 
+                    break;
+                /**< Configure falling edge trigger */ 
+                case EXTI_FALLING_EDGE:
+                    CLR_BIT(EXTI->RTSR, Line);
+                    SET_BIT(EXTI->FTSR, Line);
+                    break;
+                /**< Configure both edges trigger */
+                case EXTI_BOTH_EDGES:
+                    SET_BIT(EXTI->RTSR, Line);
+                    SET_BIT(EXTI->FTSR, Line);
+                    break;
+            }
+            
+            // Check if GPIO port configuration is available
+            if (EXTI_Configurations[Line].GPIO_PortMap != EXTI_GPIO_NONE)
+            {
+                /**< Enable EXTI line for the specified GPIO pin */ 
+                MCAL_AFIO_SetEXTIConfiguration(Line, EXTI_Configurations[Line].GPIO_PortMap);
             }
         }
         else
@@ -46,11 +58,60 @@ void EXTI_Init(void)
     }
 }
 
+Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port) 
+{
+    /**< Check if GPIO_Pin is within valid range */ 
+    if (GPIO_Pin > EXTI_LINE15 || GPIO_Port > GPIO_PORTC) 
+    {
+        return E_NOT_OK; /**< Invalid GPIO pin or port */ 
+    }
+
+    /**< Determine the EXTI line number based on GPIO_Pin */ 
+    u8 EXTI_Line = 0;
+    while (GPIO_Pin > 0) 
+    {
+        GPIO_Pin >>= 1;  
+        EXTI_Line++;
+    }
+
+    /**< Determine the GPIO port mapping configuration based on GPIO_Port */ 
+    u8 PortMap = 0;
+    if (GPIO_Port == GPIO_PORTA)
+    {
+        PortMap = EXTI_PORTMAP_GPIOA;
+    } 
+    else if (GPIO_Port == GPIO_PORTB) 
+    {
+        PortMap = EXTI_PORTMAP_GPIOB;
+    } 
+    else if (GPIO_Port == GPIO_PORTC) 
+    {
+        PortMap = EXTI_PORTMAP_GPIOC;
+    }
+    else 
+    {
+        return E_NOT_OK; /**< Unsupported GPIO port */ 
+    }
+
+    /**< Configure EXTI mapping using AFIO function */ 
+    Std_ReturnType Local_Result = MCAL_AFIO_SetEXTIConfiguration(EXTI_Line, PortMap);
+
+    /**< Check if the EXTI configuration was successful */ 
+    if (Local_Result == E_OK)
+    {
+        return E_OK; /**< EXTI initialization successful */ 
+    } 
+    else 
+    {
+        return E_NOT_OK; /**< EXTI configuration failed */ 
+    }
+}
+
 Std_ReturnType EXTI_EnableLine(u8 Copy_Line)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
-    if(Copy_Line < 16)
+    if(Copy_Line < EXTI_LINES_COUNT)
     {
         SET_BIT(EXTI->IMR, Copy_Line);
         Local_FunctionStatus = E_OK;

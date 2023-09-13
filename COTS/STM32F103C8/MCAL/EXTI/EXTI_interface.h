@@ -44,6 +44,17 @@
 #define EXTI_LINE15 15  /**< EXTI line number for GPIO pin 15. */
 /** @} */
 
+/**
+ * @name EXTI Port Mapping
+ * @{
+ */
+#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
+#define EXTI_PORTMAP_GPIOA  0 /**< Map EXTI line to GPIO Port A. */
+#define EXTI_PORTMAP_GPIOB  1 /**< Map EXTI line to GPIO Port B. */
+#define EXTI_PORTMAP_GPIOC  2 /**< Map EXTI line to GPIO Port C. */
+/** @} */
+
+
 /** @} */  // EXTI_Configurations
 
 /**
@@ -61,7 +72,34 @@
  * @note To configure EXTI settings, please refer to the configuration file
  *       (e.g., @ref EXTI_config.h) where you can customize EXTI behavior as needed.
  */
-void EXTI_Init(void);
+void EXTI_vInit(void);
+
+/**
+ * @brief Initialize EXTI for a specific GPIO pin.
+ *
+ * This function initializes EXTI for a specific GPIO pin by configuring the EXTI
+ * line mapping based on the selected GPIO port and pin number.
+ *
+ * @param[in] GPIO_Pin The GPIO pin number (0 to 15) to be used.
+ * @param[in] GPIO_Port The GPIO port (GPIO_PORTA, GPIO_PORTB, etc.) to be used.
+ *
+ * @note This function should be called to configure EXTI mapping for a specific GPIO pin
+ *       that will trigger external interrupts.
+ *
+ * @return EXTI_Status_TypeDef EXTI status (EXTI_STATUS_OK or EXTI_STATUS_ERROR).
+ *
+ * @code
+ * /// Example usage:
+ * Std_ReturnType result = EXTI_InitForGPIO(GPIO_PIN0, GPIO_PORTA); // Initialize EXTI for PA0
+ * if (result == E_OK) {
+ *     /// EXTI initialization successful.
+ * } else {
+ *     /// EXTI initialization error.
+ * }
+ * @endcode
+ */
+Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port);
+
 
 /**
  * @brief Enable an external interrupt line.
