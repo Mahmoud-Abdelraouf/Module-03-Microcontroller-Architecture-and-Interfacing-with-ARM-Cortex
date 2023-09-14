@@ -53,14 +53,14 @@ int main(void)
 
 
 
-EXTI0_IRQHandler(void)
+void EXTI0_IRQHandler(void)
 {
 	MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN1, GPIO_HIGH);
 	MCAL_NVIC_SetPendingIRQ(7);
 	MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN2, GPIO_HIGH);
 }
 
-EXTI1_IRQHandler(void)
+void EXTI1_IRQHandler(void)
 {
 		MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN3, GPIO_HIGH);
 }

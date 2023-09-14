@@ -11,20 +11,18 @@
 #define SCB_BASE_ADDRESS    0xE000ED00U
 
 /**< SCB Registers */
-#define SCB_CPUID           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x00))) /**< APPLICATION INTERRUPT AND RESET CONTROL REGISTER */
-#define SCB_ICSR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x04)))
-#define SCB_VTOR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x08)))
-#define SCB_AIRCR           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x0C)))
-#define SCB_SCR             (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x10)))
-#define SCB_CCR             (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x14)))
-#define SCB_SHPR1           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x18))) /**< SYSTEM HANDLER PRIORITY REGISTER 1 */
-#define SCB_SHPR2           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x1C))) /**< SYSTEM HANDLER PRIORITY REGISTER 2 */
-#define SCB_SHPR3           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x20))) /**< SYSTEM HANDLER PRIORITY REGISTER 3 */
-#define SCB_SHCSR           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x24))) /**< SYSTEM HANDLER PRIORITY REGISTER 3 */
-#define SCB_CFSR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x28))) /**< SYSTEM HANDLER PRIORITY REGISTER 3 */
-#define SCB_HFSR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x2C))) /**< SYSTEM HANDLER PRIORITY REGISTER 3 */
-#define SCB_MMAR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x34))) /**< SYSTEM HANDLER PRIORITY REGISTER 3 */
-#define SCB_BFAR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x38))) /**< SYSTEM HANDLER PRIORITY REGISTER 3 */
+#define SCB_CPUID           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x00))) /**< CPUID Base Register */
+#define SCB_ICSR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x04))) /**< Interrupt Control and State Register */
+#define SCB_AIRCR           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x0C))) /**< Application Interrupt and Reset Control Register */
+#define SCB_SCR             (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x10))) /**< System Control Register */
+#define SCB_CCR             (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x14))) /**< Configuration and Control Register */
+#define SCB_SHPR1           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x18))) /**< System Handler Priority Register 1 */
+#define SCB_SHPR2           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x1C))) /**< System Handler Priority Register 2 */
+#define SCB_SHPR3           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x20))) /**< System Handler Priority Register 3 */
+#define SCB_SHCSR           (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x24))) /**< System Handler Control and State Register */
+#define SCB_HFSR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x2C))) /**< HardFault Status Register */
+#define SCB_MMAR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x34))) /**< MemManage Fault Address Register */
+#define SCB_BFAR            (*((volatile u32 *)(SCB_BASE_ADDRESS + 0x38))) /**< BusFault Address Register */
 
 /**< Bit positions for SCB_SHCSR register */
 #define SCB_SHCSR_MEMFAULTENA_POS    16  /**< Bit position for Memory Management Fault Enable */
