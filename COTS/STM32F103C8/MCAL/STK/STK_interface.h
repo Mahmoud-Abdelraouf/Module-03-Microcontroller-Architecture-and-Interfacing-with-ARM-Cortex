@@ -10,11 +10,15 @@
 /**
  * @brief Initializes the SysTick timer with the specified reload value.
  *
- * This function initializes the SysTick timer with the specified reload value. The timer is configured to generate an interrupt
- * when it reaches zero, and then reloads the timer with the specified value. The interrupt can be used to implement a periodic
- * timebase for the application.
+ * This function initializes the SysTick timer with the specified reload value. The timer is configured to use the processor clock
+ * or a divided clock source based on the configuration settings. It also allows generating an interrupt when the timer reaches zero.
+ * This function sets the initial value of the timer and prepares it for counting down.
  *
- * @param[in] void.
+ * @param[in] Copy_Ticks The number of clock cycles to reload the SysTick timer with.
+ *
+ * @note The actual time duration for the timer to reach zero depends on the clock frequency and the value passed as `Copy_Ticks`.
+ * 
+ * @warning This function should be used carefully, as improper configuration may lead to unexpected behavior.
  *
  * @return None.
  */
@@ -24,7 +28,7 @@ void STK_Init(u32 Copy_Ticks);
  * @brief Starts the SysTick timer.
  *
  * This function starts the SysTick timer. Once the timer is started, it will count down from the reload value specified in the
- * `STK_voidInit` function until it reaches zero. When the timer reaches zero, it will generate an interrupt and reload with
+ * "STK_Init" function until it reaches zero. When the timer reaches zero, it will generate an interrupt and reload with
  * the initial value.
  *
  * @param None.
@@ -44,16 +48,15 @@ void STK_Start(void);
  */
 void STK_Stop(void);
 
-
 /**
  * @brief Resets the SysTick timer.
  *
  * This function disables the SysTick timer, clears the current value, sets the reload value to 0,
  * and clears the count flag.
  *
- * @param None
+ * @param None.
  *
- * @return None
+ * @return None.
  */
 void STK_Reset(void);
 
@@ -67,7 +70,7 @@ void STK_Reset(void);
  *
  * @return The current value of the SysTick timer.
  */
-Std_ReturnType STK_GetRemainingCounts(void);
+u32 STK_GetRemainingCounts(void);
 
 /**
  * @brief Get the number of elapsed ticks since the last SysTick timer reset.
@@ -83,7 +86,7 @@ Std_ReturnType STK_GetRemainingCounts(void);
  * 
  * @return The number of elapsed ticks as an unsigned 32-bit integer.
  */
-Std_ReturnType STK_GetElapsedCounts(void);
+u32 STK_GetElapsedCounts(void);
 
 /**
  * @brief Blocks the CPU for the specified number of microseconds.
@@ -94,51 +97,51 @@ Std_ReturnType STK_GetElapsedCounts(void);
  *
  * @param[in] Copy_u32Microseconds The number of microseconds to wait. This value should be less than or equal to 16777215 (0x00FFFFFF).
  *
- * @return None.
+ * @note The maximum delay achievable with this function, when the SysTick timer clock is 1 MHz, is approximately 16 seconds.
+ *
+ * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
 Std_ReturnType STK_SetBusyWait(u32 Copy_Microseconds);
-
 
 /**
  * @brief Blocks the CPU for the specified number of milliseconds.
  *
- * This function blocks the CPU for the specified number of microseconds using the SysTick timer. The function calculates the
- * number of ticks required to wait for the specified number of microseconds based on the current system clock frequency and
+ * This function blocks the CPU for the specified number of milliseconds using the SysTick timer. The function calculates the
+ * number of ticks required to wait for the specified number of milliseconds based on the current system clock frequency and
  * the reload value of the SysTick timer.
  *
- * @param[in] Copy_u32Milliseconds The number of milliseconds to wait. This value should be less than or equal to 16777215 (0x00FFFFFF).
+ * @param[in] Copy_Milliseconds The number of milliseconds to wait. This value should be less than or equal to 16777215 (0x00FFFFFF).
  *
- * @return None.
+ * @note The maximum delay achievable with this function, when the SysTick timer clock is 1 MHz, is approximately 16 seconds.
+ * 
+ * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
-void STK_SetDelay(f32 Copy_Milliseconds);
+Std_ReturnType STK_SetDelay_ms(f32 Copy_Milliseconds);
 
 
 /**
- * @brief Calls a function after the specified number of microseconds.
+ * @brief Set a single-shot interval with a specified callback function.
  *
- * This function sets a callback function to be called after the specified number of microseconds using the SysTick timer. The
- * function calculates the number of ticks required to wait for the specified number of microseconds based on the current system
- * clock frequency and the reload value of the SysTick timer. When the requested delay has elapsed, the callback function will be
- * called.
+ * This function configures the SysTick timer to generate a single-shot interval after the specified number of microseconds.
+ * When the interval elapses, the provided callback function will be called.
  *
- * @param[in] Copy_u32Microseconds The number of microseconds to wait. This value should be less than or equal to 16777215 (0x00FFFFFF).
- * @param[in] Copy_pfCallback The callback function to call when the requested delay has elapsed.
+ * @param[in] Copy_Microseconds The duration of the interval in microseconds.
+ * @param[in] Copy_Callback A pointer to the callback function to execute when the interval elapses.
  *
- * @return None.
+ * @return E_OK if the interval configuration was successful, E_NOT_OK if an error occurred.
  */
 Std_ReturnType STK_SetIntervalSingle(u32 Copy_Microseconds, void (*Copy_Callback)(void));
 
 /**
- * @brief Calls a function periodically with the specified period in microseconds.
+ * @brief Set a periodic interval with a specified callback function.
  *
- * This function sets a callback function to be called periodically with the specified period using the SysTick timer. The
- * function calculates the number of ticks required to wait for the specified period based on the current system clock frequency
- * and the reload value of the SysTick timer. When the requested period has elapsed, the callback function will be called.
+ * This function configures the SysTick timer to generate periodic intervals with the specified duration in microseconds.
+ * When each interval elapses, the provided callback function will be called.
  *
- * @param[in] Copy_u32Microseconds The period of the callback function in microseconds. This value should be less than or equal to 16777215 (0x00FFFFFF).
- * @param[in] Copy_pfCallback The callback function to call periodically.
+ * @param[in] Copy_Microseconds The duration of each interval in microseconds.
+ * @param[in] Copy_Callback A pointer to the callback function to execute for each interval.
  *
- * @return None.
+ * @return E_OK if the interval configuration was successful, E_NOT_OK if an error occurred.
  */
 Std_ReturnType STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callback)(void));
 

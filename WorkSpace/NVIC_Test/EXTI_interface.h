@@ -7,6 +7,10 @@
 #ifndef EXTI_INTERFACE_H_
 #define EXTI_INTERFACE_H_
 
+
+void EXTI_SetCallBack(void (*pf)(void));
+
+
 /**
  * @defgroup EXTI_Configurations EXTI Line Configurations
  * @brief Configuration options for EXTI lines.
