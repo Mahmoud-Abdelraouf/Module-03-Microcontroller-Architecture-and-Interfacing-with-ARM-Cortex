@@ -4,7 +4,6 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 ## Table of Contents
 
-- [IEEE Embedded Workshop: Microcontroller Architecture and Interfacing with ARM Cortex](#ieee-embedded-workshop-microcontroller-architecture-and-interfacing-with-arm-cortex)
   - [Workshop Overview](#workshop-overview)
     - [Workshop Content](#workshop-content)
     - [Requirements](#requirements)
@@ -39,24 +38,26 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 ## Workshop Overview
 
+Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interfacing with ARM Cortex. In this workshop, you will explore the fundamental concepts of microcontroller architecture and learn how to interface with ARM Cortex-based microcontrollers. The workshop aims to provide participants with a comprehensive understanding of embedded systems and hands-on experience with ARM Cortex-based microcontrollers.
+
 ### Workshop Content
 
 | Number | Date     | Title                                      | Venue                            |
 | ------ | -------- | ------------------------------------------ | -------------------------------- |
-| 01     | 17/8     | Quick Recap about C-language Basics       | Faculty of Engineering, Ain Shams University |
-| 02     | 19/8     | Discuss Important Advanced Topics in C    | Faculty of Engineering, Ain Shams University |
-| 03     | 22/8     | ARM Architecture Basics                   | Faculty of Engineering, Ain Shams University |
-| 04     | 26/8     | RCC Peripheral                            | Faculty of Engineering, Ain Shams University |
-| 05     | 29/8     | GPIO Peripheral                           | Faculty of Engineering, Ain Shams University |
-| 06     | 2/9      | ARM Interrupts                            | Faculty of Engineering, Ain Shams University |
-| 07     | 5/9      | NVIC Driver                               | Faculty of Engineering, Ain Shams University |
-| 08     | 9/9      | EXTI                                      | Faculty of Engineering, Ain Shams University |
-| 09     | 12/9     | SysTick                                   | Faculty of Engineering, Ain Shams University |
-| 10     | 14/9     | RTOS - Session 01                         | Faculty of Engineering, Ain Shams University |
-| 11     | 16/9     | OS Scheduler                              | Faculty of Engineering, Ain Shams University |
-| 12     | 19/9     | UART                                      | Faculty of Engineering, Ain Shams University |
-| 13     | 23/9     | SPI and TFT                               | Faculty of Engineering, Ain Shams University |
-| 14     | 26/9     | DMA                                       | Faculty of Engineering, Ain Shams University |
+| 01     | 17/8     | Quick Recap about C-language Basics        | Faculty of Engineering, Ain Shams University |
+| 02     | 19/8     | Discuss Important Advanced Topics in C     | Faculty of Engineering, Ain Shams University |
+| 03     | 22/8     | ARM Architecture Basics                    | Faculty of Engineering, Ain Shams University |
+| 04     | 26/8     | RCC Peripheral                             | Faculty of Engineering, Ain Shams University |
+| 05     | 29/8     | GPIO Peripheral                            | Faculty of Engineering, Ain Shams University |
+| 06     | 2/9      | ARM Interrupts                             | Faculty of Engineering, Ain Shams University |
+| 07     | 5/9      | NVIC Driver                                | Faculty of Engineering, Ain Shams University |
+| 08     | 9/9      | EXTI                                       | Faculty of Engineering, Ain Shams University |
+| 09     | 12/9     | SysTick                                    | Faculty of Engineering, Ain Shams University |
+| 10     | 14/9     | RTOS - Session 01                          | Faculty of Engineering, Ain Shams University |
+| 11     | 16/9     | OS Scheduler                               | Faculty of Engineering, Ain Shams University |
+| 12     | 19/9     | UART                                       | Faculty of Engineering, Ain Shams University |
+| 13     | 23/9     | SPI and TFT                                | Faculty of Engineering, Ain Shams University |
+| 14     | 26/9     | DMA                                        | Faculty of Engineering, Ain Shams University |
 
 ### Requirements
 
