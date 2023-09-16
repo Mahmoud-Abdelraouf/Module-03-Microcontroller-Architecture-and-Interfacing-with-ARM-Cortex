@@ -67,7 +67,6 @@ void STK_Reset(void)
     STK->CTRL &= ~STK_CTRL_COUNTFLAG_MASK;
 }
 
-
 u32 STK_GetRemainingCounts(void)
 {
     /* Get the current value of the SysTick timer */
@@ -149,6 +148,9 @@ Std_ReturnType STK_SetDelay_ms(f32 Copy_Milliseconds)
         /**< Disable SysTick timer */
         STK->CTRL &= ~STK_CTRL_ENABLE_MASK;
 
+        /**< Reset the timer value */ 
+        STK->VAL = 0;
+
         /**< Return success status */
         return E_OK;
     }
@@ -158,3 +160,21 @@ Std_ReturnType STK_SetDelay_ms(f32 Copy_Milliseconds)
         return E_NOT_OK;
     }
 }
+
+Std_ReturnType STK_SetIntervalSingle(u32 Copy_Microseconds, void (*Copy_Callback)(void))
+{
+
+}
+
+Std_ReturnType STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callback)(void))
+{
+
+}
+/*****************************< End of Function Implementations *****************************/
+
+/*****************************< IRQ Handler Implementations *****************************/
+void SysTick_Handler(void)
+{
+
+}
+/*****************************< End of IRQ Handler Implementations *****************************/
