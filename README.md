@@ -2,26 +2,62 @@
 
 Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interfacing with ARM Cortex. In this workshop, you will explore the fundamental concepts of microcontroller architecture and learn how to interface with ARM Cortex-based microcontrollers. The workshop will cover a variety of topics to provide you with a comprehensive understanding of embedded systems.
 
+## Table of Contents
+
+- [Workshop Overview](#workshop-overview)
+  - [Workshop Content](#workshop-content)
+  - [Requirements](#requirements)
+- [Sessions](#sessions)
+  - [Session Structure](#session-structure)
+    - [Session 01](#session-01)
+    - [Session 02](#session-02)
+    - [Session 03](#session-03)
+    - [Session 04](#session-04)
+    - [Session 05](#session-05)
+    - [Session 06](#session-06)
+    - [Session 07](#session-07)
+    - [Session 08](#session-08)
+    - [Session 09](#session-09)
+    - [Session 10](#session-10)
+    - [Session 11](#session-11)
+    - [Session 12](#session-12)
+    - [Session 13](#session-13)
+    - [Session 14](#session-14)
+  - [Getting Started](#getting-started)
+  - [Workshop Playlist](#workshop-playlist)
+  - [Workshop Drive](#workshop-drive)
+- [Project Proposal: PWM Drawer with Real-Time Display on Graphical LCD](#project-proposal-pwm-drawer-with-real-time-display-on-graphical-lcd)
+  - [Project Overview](#project-overview)
+  - [Features](#features)
+  - [Hardware Requirements](#hardware-requirements)
+  - [Software Components](#software-components)
+  - [Milestones](#milestones)
+  - [Conclusion](#conclusion)
+- [About IEEE](#about-ieee)
+- [Contact](#contact)
+
 ## Workshop Overview
+
+Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interfacing with ARM Cortex. In this workshop, you will explore the fundamental concepts of microcontroller architecture and learn how to interface with ARM Cortex-based microcontrollers. The workshop aims to provide participants with a comprehensive understanding of embedded systems and hands-on experience with ARM Cortex-based microcontrollers.
 
 ### Workshop Content
 
 | Number | Date     | Title                                      | Venue                            |
 | ------ | -------- | ------------------------------------------ | -------------------------------- |
-| 01     | 17/8     | Quick Recap about C-language Basics       | Faculty of Engineering, Ain Shams University |
-| 02     | 19/8     | Discuss Important Advanced Topics in C    | Faculty of Engineering, Ain Shams University |
-| 03     | 22/8     | ARM Architecture Basics                   | Faculty of Engineering, Ain Shams University |
-| 04     | 26/8     | RCC Peripheral                            | Faculty of Engineering, Ain Shams University |
-| 05     | 29/8     | GPIO Peripheral                           | Faculty of Engineering, Ain Shams University |
-| 06     | 2/9      | ARM Interrupts                            | Faculty of Engineering, Ain Shams University |
-| 07     | 5/9      | NVIC Driver                               | Faculty of Engineering, Ain Shams University |
-| 08     | 9/9      | EXTI                                      | Faculty of Engineering, Ain Shams University |
-| 09     | 12/9     | SysTick                                   | Faculty of Engineering, Ain Shams University |
-| 10     | 14/9     | RTOS - Session 01                         | Faculty of Engineering, Ain Shams University |
-| 11     | 16/9     | OS Scheduler                              | Faculty of Engineering, Ain Shams University |
-| 12     | 19/9     | UART                                      | Faculty of Engineering, Ain Shams University |
-| 13     | 23/9     | SPI and TFT                               | Faculty of Engineering, Ain Shams University |
-| 14     | 26/9     | DMA                                       | Faculty of Engineering, Ain Shams University |
+| 01     | 17/8     | Quick Recap about C-language Basics        | Faculty of Engineering, Ain Shams University |
+| 02     | 19/8     | Discuss Important Advanced Topics in C     | Faculty of Engineering, Ain Shams University |
+| 03     | 22/8     | ARM Architecture Basics                    | Faculty of Engineering, Ain Shams University |
+| 04     | 26/8     | RCC Peripheral                             | Faculty of Engineering, Ain Shams University |
+| 05     | 29/8     | GPIO Peripheral                            | Faculty of Engineering, Ain Shams University |
+| 06     | 2/9      | ARM Interrupts                             | Faculty of Engineering, Ain Shams University |
+| 07     | 5/9      | NVIC Driver                                | Faculty of Engineering, Ain Shams University |
+| 08     | 9/9      | EXTI                                       | Faculty of Engineering, Ain Shams University |
+| 09     | 12/9     | SysTick                                    | Faculty of Engineering, Ain Shams University |
+| 10     | 14/9     | RTOS - Session 01                          | Faculty of Engineering, Ain Shams University |
+| 11     | 16/9     | OS Scheduler                               | Faculty of Engineering, Ain Shams University |
+| 12     | 19/9     | UART                                       | Faculty of Engineering, Ain Shams University |
+| 13     | 23/9     | SPI and TFT                                | Faculty of Engineering, Ain Shams University |
+| 14     | 26/9     | DMA                                        | Faculty of Engineering, Ain Shams University |
 
 ### Requirements
 
