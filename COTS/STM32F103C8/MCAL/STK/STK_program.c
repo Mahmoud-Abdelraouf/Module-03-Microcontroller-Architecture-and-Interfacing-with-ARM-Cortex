@@ -12,7 +12,12 @@
 #include "STK_interface.h"
 #include "STK_private.h"
 #include "STK_config.h"
-/*****************************< Function Implementations *****************************/
+
+/**
+ * @defgroup Public_Functions Public Functions
+ * @{
+ */
+
 void STK_Init(u32 Copy_Ticks)
 {
     /**< Disable SysTick timer */
@@ -170,11 +175,21 @@ Std_ReturnType STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callba
 {
 
 }
-/*****************************< End of Function Implementations *****************************/
 
-/*****************************< IRQ Handler Implementations *****************************/
+/**
+ * @} End of Public_Functions
+ */
+
+/**
+ * @defgroup IRQ_Handlers IRQ Handlers
+ * @{
+ */
+
 void SysTick_Handler(void)
 {
-
+    
 }
-/*****************************< End of IRQ Handler Implementations *****************************/
+
+/**
+ * @} End of IRQ_Handlers
+ */
