@@ -180,6 +180,29 @@ Std_ReturnType MCAL_GPIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_Pin
 
     return Local_FunctionStatus;
 }
+
+Std_ReturnType MCAL_GPIO_TogPin(u8 Copy_PortId, u8 Copy_PinId) 
+{
+    u8 Local_PinValue;
+    
+    /**< Check if the provided pin is valid */ 
+    if (MCAL_GPIO_GetPinValue(Copy_PortId, Copy_PinId, &Local_PinValue) == E_NOT_OK) 
+    {
+        return E_NOT_OK; /**< Error: Invalid pin */ 
+    }
+    
+    // Toggle the pin value
+    if (Local_PinValue == GPIO_HIGH) 
+    {
+        /**< Pin is high, set it to low */ 
+        return MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, GPIO_LOW);
+    } 
+    else 
+    {
+        /**< Pin is low, set it to high */ 
+        return MCAL_GPIO_SetPinValue(Copy_PortId, Copy_PinId, GPIO_HIGH);
+    }
+}
 /*****************************< End of Function Implementations *****************************/
 
 

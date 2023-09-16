@@ -133,6 +133,19 @@ Std_ReturnType MCAL_GPIO_SetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinV
  */
 Std_ReturnType MCAL_GPIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_PinReturnValue);
 
+/**
+ * @brief Toggles the value of a GPIO pin.
+ *
+ * This function toggles the value of a specified GPIO pin. If the pin is currently
+ * high, it will be set to low, and if it is currently low, it will be set to high.
+ *
+ * @param[in] Copy_PortId The ID of the GPIO port (e.g., GPIO_PORTA, GPIO_PORTB, etc.).
+ * @param[in] Copy_PinId The ID of the GPIO pin (e.g., GPIO_PIN0, GPIO_PIN1, etc.).
+ *
+ * @return Std_ReturnType Returns E_OK if the operation was successful, or E_NOT_OK if an error occurred.
+ */
+Std_ReturnType MCAL_GPIO_TogglePin(u8 Copy_PortId, u8 Copy_PinId);
+
 /** @} */ // End of GPIO_Functions group
 
 

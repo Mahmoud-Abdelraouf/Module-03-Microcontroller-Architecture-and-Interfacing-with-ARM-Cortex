@@ -14,7 +14,7 @@
 #include "STK_config.h"
 
 /**
- * @defgroup Public_Functions Public Functions
+ * @defgroup Public_Functions STK Driver
  * @{
  */
 
@@ -177,7 +177,7 @@ Std_ReturnType STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callba
 }
 
 /**
- * @} End of Public_Functions
+ * @} // End of Public_Functions
  */
 
 /**
@@ -187,9 +187,9 @@ Std_ReturnType STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callba
 
 void SysTick_Handler(void)
 {
-    
+
 }
 
 /**
- * @} End of IRQ_Handlers
+ * @} // End of IRQ_Handlers
  */
