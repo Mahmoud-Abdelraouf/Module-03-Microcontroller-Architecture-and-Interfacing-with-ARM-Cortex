@@ -66,14 +66,6 @@ Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port)
         return E_NOT_OK; /**< Invalid GPIO pin or port */ 
     }
 
-    /**< Determine the EXTI line number based on GPIO_Pin */ 
-    u8 EXTI_Line = 0;
-    while (GPIO_Pin > 0) 
-    {
-        GPIO_Pin >>= 1;  
-        EXTI_Line++;
-    }
-
     /**< Determine the GPIO port mapping configuration based on GPIO_Port */ 
     u8 PortMap = 0;
     if (GPIO_Port == GPIO_PORTA)
@@ -94,7 +86,7 @@ Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port)
     }
 
     /**< Configure EXTI mapping using AFIO function */ 
-    Std_ReturnType Local_Result = MCAL_AFIO_SetEXTIConfiguration(EXTI_Line, PortMap);
+    Std_ReturnType Local_Result = MCAL_AFIO_SetEXTIConfiguration(GPIO_Pin, PortMap);
 
     /**< Check if the EXTI configuration was successful */ 
     if (Local_Result == E_OK)
