@@ -129,7 +129,7 @@ In this workshop, sessions will be conducted offline at the Faculty of Engineeri
 #### Session 10
 
 - **Date:** 14/9 (Thu)
-- **Topic:** RTOS
+- **Topic:** Introduction to RTOS
 - **Description:** Get introduced to operating systems basics. Build a real-time scheduler, learn about time-triggered and dynamic design aspects.
 
 #### Session 11
