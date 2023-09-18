@@ -22,7 +22,7 @@
  *
  * @return None.
  */
-void STK_Init(u32 Copy_Ticks);
+void MCAL_STK_Init(u32 Copy_Ticks);
 
 /**
  * @brief Starts the SysTick timer.
@@ -35,7 +35,7 @@ void STK_Init(u32 Copy_Ticks);
  *
  * @return None.
  */
-void STK_Start(void);
+void MCAL_STK_Start(void);
 
 /**
  * @brief Stops the SysTick timer.
@@ -46,7 +46,7 @@ void STK_Start(void);
  *
  * @return None.
  */
-void STK_Stop(void);
+void MCAL_STK_Stop(void);
 
 /**
  * @brief Resets the SysTick timer.
@@ -58,7 +58,7 @@ void STK_Stop(void);
  *
  * @return None.
  */
-void STK_Reset(void);
+void MCAL_STK_Reset(void);
 
 /**
  * @brief Gets the current value of the SysTick timer.
@@ -70,7 +70,7 @@ void STK_Reset(void);
  *
  * @return The current value of the SysTick timer.
  */
-u32 STK_GetRemainingCounts(void);
+u32 MCAL_STK_GetRemainingCounts(void);
 
 /**
  * @brief Get the number of elapsed ticks since the last SysTick timer reset.
@@ -86,7 +86,7 @@ u32 STK_GetRemainingCounts(void);
  * 
  * @return The number of elapsed ticks as an unsigned 32-bit integer.
  */
-u32 STK_GetElapsedCounts(void);
+u32 MCAL_STK_GetElapsedCounts(void);
 
 /**
  * @brief Blocks the CPU for the specified number of microseconds.
@@ -101,7 +101,7 @@ u32 STK_GetElapsedCounts(void);
  *
  * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
-Std_ReturnType STK_SetBusyWait(u32 Copy_Microseconds);
+Std_ReturnType MCAL_STK_SetBusyWait(u32 Copy_Microseconds);
 
 /**
  * @brief Blocks the CPU for the specified number of milliseconds.
@@ -116,7 +116,7 @@ Std_ReturnType STK_SetBusyWait(u32 Copy_Microseconds);
  * 
  * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
-Std_ReturnType STK_SetDelay_ms(f32 Copy_Milliseconds);
+Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds);
 
 
 /**
@@ -130,7 +130,7 @@ Std_ReturnType STK_SetDelay_ms(f32 Copy_Milliseconds);
  *
  * @return E_OK if the interval configuration was successful, E_NOT_OK if an error occurred.
  */
-Std_ReturnType STK_SetIntervalSingle(u32 Copy_Microseconds, void (*Copy_Callback)(void));
+Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Copy_Microseconds, void (*Copy_Callback)(void));
 
 /**
  * @brief Set a periodic interval with a specified callback function.
@@ -143,7 +143,7 @@ Std_ReturnType STK_SetIntervalSingle(u32 Copy_Microseconds, void (*Copy_Callback
  *
  * @return E_OK if the interval configuration was successful, E_NOT_OK if an error occurred.
  */
-Std_ReturnType STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callback)(void));
+Std_ReturnType MCAL_STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callback)(void));
 
 
 
