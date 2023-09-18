@@ -48,7 +48,7 @@ Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig)
     return E_OK;  /**<  Configuration successful */
 }
 
-Std_ReturnType MCAL_AFIO_SetDebugPort(u32 Copy_DebugConfig)
+Std_ReturnType MCAL_AFIO_SetDebugPort(u8 Copy_DebugConfig)
 {
     /**< Check if the DebugConfig value is within a valid range */ 
     if (Copy_DebugConfig > AFIO_MAPR_SWJ_CFG_Msk)

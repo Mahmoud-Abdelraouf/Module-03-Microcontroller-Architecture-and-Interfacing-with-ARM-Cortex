@@ -5,6 +5,9 @@
     "C_Cpp.errorSquiggles": "enabled",
     "files.associations": {
         "exti_config.h": "c",
-        "exti_private.h": "c"
+        "exti_private.h": "c",
+        "led_interface.h": "c",
+        "gpio_interface.h": "c",
+        "stk_interface.h": "c"
     }
 }

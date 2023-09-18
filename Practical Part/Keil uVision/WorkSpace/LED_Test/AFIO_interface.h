@@ -102,7 +102,7 @@ Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
  * }
  * @endcode
  */
-Std_ReturnType MCAL_AFIO_SetDebugPort(u32 Copy_DebugConfig);
+Std_ReturnType MCAL_AFIO_SetDebugPort(u8 Copy_DebugConfig);
 
 /**
  * @brief Configure additional mapping settings (MAPR2).

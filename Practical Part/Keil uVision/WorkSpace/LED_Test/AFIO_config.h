@@ -1,11 +1,11 @@
 /****************************************************************/
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
-/******* Date      : 16 Sep 2023                *****************/
+/******* Date      : 12 Sep 2023                *****************/
 /******* Version   : 0.1                        *****************/
-/******* File Name : LED_config.h               *****************/
+/******* File Name : NVIC_config.h              *****************/
 /****************************************************************/
-#ifndef LED_CONFIG_H_
-#define LED_CONFIG_H_
+#ifndef AFIO_CONFIG_H_
+#define AFIO_CONFIG_H_
 
 
 
@@ -13,5 +13,4 @@
 
 
 
-
-#endif /**< LED_CONFIG_H_ */
+#endif /**< AFIO_CONFIG_H_ */

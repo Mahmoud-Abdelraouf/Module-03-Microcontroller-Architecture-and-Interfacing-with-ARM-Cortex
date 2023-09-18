@@ -7,6 +7,10 @@
 #ifndef LED_INTERFACE_H_
 #define LED_INTERFACE_H_
 
+typedef u8 LED_Port_t;
+typedef u8 LED_Pin_t;
+
+typedef f32 LED_Delay_ms_t;
 
 /**
  * @brief Initializes the LED peripheral.
@@ -17,7 +21,7 @@
  *
  * @return None.
  */
-void HAL_LED_Init(u8 LedId);
+Std_ReturnType HAL_LED_Init(LED_Port_t Copy_LedPortId, LED_Pin_t Copy_LedPinId);
 
 /**
  * @brief Turns on the specified LED.
@@ -28,7 +32,7 @@ void HAL_LED_Init(u8 LedId);
  *
  * @return None.
  */
-void HAL_LED_On(u8 LedId);
+Std_ReturnType HAL_LED_On(LED_Port_t Copy_LedPortId, LED_Pin_t Copy_LedPinId);
 
 /**
  * @brief Turns off the specified LED.
@@ -39,7 +43,7 @@ void HAL_LED_On(u8 LedId);
  *
  * @return None.
  */
-void HAL_LED_Off(u8 LedId);
+Std_ReturnType HAL_LED_Off(LED_Port_t Copy_LedPortId, LED_Pin_t Copy_LedPinId);
 
 /**
  * @brief Toggles the specified LED.
@@ -50,7 +54,7 @@ void HAL_LED_Off(u8 LedId);
  *
  * @return None.
  */
-void HAL_LED_Tog(u8 LedId);
+Std_ReturnType HAL_LED_Toggle(LED_Port_t Copy_LedPortId, LED_Pin_t Copy_LedPinId);
 
 /**
  * @brief Blinks the specified LED once.
@@ -61,7 +65,7 @@ void HAL_LED_Tog(u8 LedId);
  *
  * @return None.
  */
-void HAL_LED_BlinkOnce(u8 LedId);
+Std_ReturnType HAL_LED_BlinkOnce(LED_Port_t Copy_LedPortId, LED_Pin_t Copy_LedPinId, LED_Delay_ms_t Copy_BlinkTime);
 
 /**
  * @brief Blinks the specified LED twice.
@@ -72,7 +76,7 @@ void HAL_LED_BlinkOnce(u8 LedId);
  *
  * @return None.
  */
-void HAL_LED_BlinkTwice(u8 LedId);
+Std_ReturnType HAL_LED_BlinkTwice(LED_Port_t Copy_LedPortId, LED_Pin_t Copy_LedPinId, LED_Delay_ms_t Copy_BlinkTime);
 
 
 #endif /**< LED_INTERFACE_H_ */

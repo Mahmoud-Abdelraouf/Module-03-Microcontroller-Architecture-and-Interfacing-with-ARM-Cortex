@@ -1,17 +1,15 @@
 /****************************************************************/
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
-/******* Date      : 16 Sep 2023                *****************/
+/******* Date      : 29 Aug 2023                *****************/
 /******* Version   : 0.1                        *****************/
-/******* File Name : LED_private.h              *****************/
+/******* File Name : GPIO_config.h              *****************/
 /****************************************************************/
-#ifndef LED_PRIVATE_H_
-#define LED_PRIVATE_H_
+#ifndef GPIO_CONFIG_H_
+#define GPIO_CONFIG_H_
 
 
 
 
 
 
-
-
-#endif /**< LED_PRIVATE_H_ */
+#endif /**< GPIO_CONFIG_H_ */
