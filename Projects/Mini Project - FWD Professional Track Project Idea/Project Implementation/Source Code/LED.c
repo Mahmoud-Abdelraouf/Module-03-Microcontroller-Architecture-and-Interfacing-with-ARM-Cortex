@@ -13,7 +13,7 @@
 #include "STK_interface.h"
 /*****************************< HAL *****************************/
 #include "LED.h"
-/*****************************< Function Implementations *****************************/
+
 /**
  * @defgroup Public_Functions LED Driver
  * @{

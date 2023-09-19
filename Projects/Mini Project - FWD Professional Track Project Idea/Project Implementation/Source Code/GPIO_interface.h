@@ -61,10 +61,10 @@
  * @brief Definitions for different GPIO input modes.
  * @{
  */
-#define GPIO_INPUT_ANALOG                       0b0000 /**< GPIO Input Analog Mode */
-#define GPIO_INPUT_FLOATING                     0b0100 /**< GPIO Input Floating Mode */
-#define GPIO_INPUT_PULL_DOWN                    0b1000 /**< GPIO Input Pull down Mode */
-#define GPIO_INPUT_PULL_UP                      0b1000 /**< GPIO Input Pull up Mode */
+#define GPIO_INPUT_ANALOG_MOD                    0b0000 /**< GPIO Input Analog Mode */
+#define GPIO_INPUT_FLOATING_MOD                  0b0100 /**< GPIO Input Floating Mode */
+#define GPIO_INPUT_PULL_DOWN_MOD                 0b1000 /**< GPIO Input Pull down Mode */
+#define GPIO_INPUT_PULL_UP_MOD                   0b1000 /**< GPIO Input Pull up Mode */
 /** @} */
 
 /**
