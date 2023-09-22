@@ -46,6 +46,24 @@ void MCAL_STK_xInit(u32 Copy_Ticks);
 void MCAL_STK_vInit(void);
 
 /**
+/**
+ * @brief Set the SysTick Timer Reload Value
+ *
+ * This function sets the reload value of the SysTick timer, which determines the period
+ * at which the timer generates interrupts or counts down.
+ *
+ * @param[in] Copy_ReloadValue The reload value to set (must be within the valid range).
+ *
+ * @note The actual time duration between interrupts or timer overflows depends on the
+ *       system clock frequency and the specified reload value.
+ *
+ * @return
+ *     - E_OK if the reload value was set successfully.
+ *     - E_NOT_OK if the reload value is out of range (see STK_RELOAD_MAX for the valid range).
+ */
+Std_ReturnType MCAL_STK_SetReloadValue(u32 Copy_ReloadValue);
+
+/**
  * @brief Starts the SysTick timer.
  *
  * This function starts the SysTick timer. Once the timer is started, it will count down from the reload value specified in the

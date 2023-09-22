@@ -7,7 +7,23 @@
 #ifndef STK_PRIVATE_H_
 #define STK_PRIVATE_H_
 
-/*********************< Register Definitions **********************/
+/**
+ * @brief Maximum Reload Value for SysTick Timer
+ *
+ * This macro defines the maximum valid reload value that can be used for configuring
+ * the SysTick timer's period. The SysTick timer is a down-counter that generates interrupts
+ * or overflows at regular intervals based on its reload value.
+ *
+ * @note The actual time duration between interrupts or overflows depends on the system clock
+ *       frequency and the value set using this macro.
+ *
+ * @warning Setting a reload value greater than this maximum may result in undefined behavior.
+ *
+ * @see MCAL_STK_SetReloadValue
+ */
+#define STK_RELOAD_MAX  0x00FFFFFF
+
+/*****************************< Register Definitions *****************************/
 #define STK_BASE_ADDRESS                 0xE000E010U
 
 typedef struct STK_RegDef_t{
@@ -19,7 +35,7 @@ typedef struct STK_RegDef_t{
 
 #define STK                     ((STK_RegDef_t *)STK_BASE_ADDRESS)
 
-/*********************< The following are defines for the bit fields in the STK_CTRL register. **********************/
+/*****************************< The following are defines for the bit fields in the STK_CTRL register. *****************************/
 #define STK_CTRL_ENABLE_MASK             0x00000001      /**< Bit 0 : Counter Enable */
 #define STK_CTRL_TICKINT_MASK            0x00000002      /**< Bit 1 : Interrupt Enable */
 #define STK_CTRL_CLKSOURCE_MASK          0x00000004      /**< Bit 2 : Clock Source */

@@ -70,6 +70,24 @@ void MCAL_STK_vInit(void)
     #endif  
 }
 
+Std_ReturnType MCAL_STK_SetReloadValue(u32 Copy_ReloadValue)
+{
+    /**< Check if the reload value is within the valid range */ 
+    if (Copy_ReloadValue <= STK_RELOAD_MAX) 
+    {
+        /**< Assign the reload value to the STK_LOAD register */ 
+        STK->LOAD = Copy_ReloadValue;
+
+        /**< Return E_OK to indicate success */ 
+        return E_OK;
+    } 
+    else 
+    {
+        /**< Return E_NOT_OK to indicate failure */ 
+        return E_NOT_OK;
+    }
+}
+
 void MCAL_STK_Start(void)
 {
     /**< Enable SysTick timer */
@@ -135,7 +153,7 @@ Std_ReturnType MCAL_STK_SetBusyWait(u32 Copy_Microseconds)
     u32 TicksRequired = (Copy_Microseconds * (STK_AHB_CLK / 1000000));
 
     /**< Check if the ticks required is within the valid range */ 
-    if (TicksRequired <= 0x00FFFFFF) 
+    if (TicksRequired <= STK_RELOAD_MAX) 
     {
         /**< Set the reload value of the SysTick timer */ 
         STK->LOAD = TicksRequired;
@@ -164,7 +182,7 @@ Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds)
     u32 Local_u32Ticks = (u32)((Copy_Milliseconds * STK_AHB_CLK) / 1000.0);
 
     /**< Check if TicksRequired is within the valid range */
-    if (Local_u32Ticks <= 0x00FFFFFF)
+    if (Local_u32Ticks <= STK_RELOAD_MAX)
     {
         /**< Configure SysTick timer with the calculated number of ticks */
         STK->LOAD = Local_u32Ticks;
