@@ -8,6 +8,7 @@
 /*****************************< LIB *****************************/
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
+#include <stdint.h>
 /*****************************< MCAL *****************************/
 #include "STK_interface.h"
 #include "STK_private.h"
@@ -18,7 +19,7 @@
  * @{
  */
 
-void MCAL_STK_Init(u32 Copy_Ticks)
+void MCAL_STK_xInit(u32 Copy_Ticks)
 {
     /**< Disable SysTick timer */
     STK->CTRL &= ~STK_CTRL_ENABLE_MASK;
@@ -43,6 +44,30 @@ void MCAL_STK_Init(u32 Copy_Ticks)
 
     /**< Load the initial value into the SysTick timer */
     STK->LOAD = Copy_Ticks;  
+}
+
+void MCAL_STK_vInit(void)
+{
+    /**< Disable SysTick timer */
+    STK->CTRL &= ~STK_CTRL_ENABLE_MASK;
+
+    /**< Configure SysTick timer to use the processor clock */
+    #if STK_CTRL_CLKSOURCE == STK_CTRL_CLKSOURCE_1
+        STK -> CTRL |= STK_CTRL_CLKSOURCE_MASK;             /**< Set bit 2 to use the processor clock */
+    #elif STK_CTRL_CLKSOURCE == STK_CTRL_CLKSOURCE_8
+        STK->CTRL &= ~STK_CTRL_CLKSOURCE_MASK;              /**< Clear bit 2 to use the processor clock/8 */
+    #else 
+        #error "Invalid STK_CTRL_CLKSOURCE value. Please choose STK_CTRL_CLKSOURCE_1 or STK_CTRL_CLKSOURCE_8."
+    #endif
+
+    /**< Generate interrupt when it reaches zero */
+    #if STK_CTRL_TICKINT == STK_CTRL_TICKINT_ENABLE
+        STK->CTRL |= STK_CTRL_TICKINT_MASK;      /**< Set bit 1 to enable interrupt when the counter reaches zero */
+    #elif STK_CTRL_TICKINT == STK_CTRL_TICKINT_DISABLE
+        STK->CTRL &= ~STK_CTRL_TICKINT_MASK;     /**< Clear bit 1 to enable interrupt when the counter reaches zero */
+    #else
+        #error "Invalid STK_CTRL_TICKINT value. Please choose STK_CTRL_TICKINT_ENABLE or STK_CTRL_TICKINT_DISABLE."
+    #endif  
 }
 
 void MCAL_STK_Start(void)

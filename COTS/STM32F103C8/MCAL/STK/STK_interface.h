@@ -22,7 +22,28 @@
  *
  * @return None.
  */
-void MCAL_STK_Init(u32 Copy_Ticks);
+void MCAL_STK_xInit(u32 Copy_Ticks);
+
+/**
+ * @brief Initialize the SysTick Timer
+ *
+ * This function initializes the SysTick timer with the specified configuration settings.
+ * It can be used to configure the timer's clock source and enable/disable interrupts when
+ * the timer reaches zero.
+ *
+ * @note The SysTick timer is typically used for timekeeping or creating delays in software.
+ *
+ * @warning This function should be called before using the SysTick timer for any timing-related tasks.
+ *
+ * @param None.
+ *
+ * @return None.
+ *
+ * @sa MCAL_STK_Start
+ * @sa MCAL_STK_Stop
+ * @sa MCAL_STK_SetReloadValue
+ */
+void MCAL_STK_vInit(void);
 
 /**
  * @brief Starts the SysTick timer.
