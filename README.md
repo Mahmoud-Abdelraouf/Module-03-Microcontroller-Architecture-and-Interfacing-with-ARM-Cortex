@@ -31,20 +31,21 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 - [Workshop Drive](#workshop-drive)
 
 ## Mini Project: Simulated Traffic Management System
+[Mini Project Proposal: Simulated Traffic Management System](#mini-project-proposal-simulated-traffic-management-system)
+   - [Mini Project Overview](#mini-project-overview)
+   - [Objectives](#objectives)
+   - [Hardware and Software Requirements](#hardware-and-software-requirements)
+   - [System Design](#system-design)
+   - [Development Environment](#development-environment)
+   - [Implementation](#implementation)
+   - [Testing](#testing)
+   - [System Flow](#system-flow)
+   - [User Stories and Testing](#user-stories-and-testing)
+   - [Deliverables](#deliverables)
+   - [Mini Project Timeline](#mini-project-timeline)
+   - [Mini Project Budget](#mini-project-budget)
+   - [Mini Project Conclusion](#mini-project-conclusion)
 
-- [Project Overview](#project-overview)
-- [Objectives](#objectives)
-- [Hardware and Software Requirements](#hardware-and-software-requirements)
-- [System Design](#system-design)
-- [Development Environment](#development-environment)
-- [Implementation](#implementation)
-- [Testing](#testing)
-- [System Flow](#system-flow)
-- [User Stories and Testing](#user-stories-and-testing)
-- [Deliverables](#deliverables)
-- [Timeline](#mini-project-timeline)
-- [Budget](#mini-project-budget)
-- [Conclusion](#mini-project-conclusion)
 
 ## Final Project: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS
 
@@ -287,18 +288,18 @@ We propose the development of a Simulated Traffic Management System that efficie
    - System constraints (if any).
 2. Video presentation discussing the project.
 
-**Timeline:**
+**Mini Project Timeline:**
 
 - Day 1-2: System design and Proteus environment setup.
 - Day 3-4: Software design and architecture.
 - Day 5-6: Development within the Proteus simulation.
 - Day 7: Testing and documentation.
 
-**Budget:**
+**Mini Project Budget:**
 
 The estimated budget for this project includes any licensing costs associated with Proteus simulation software.
 
-**Conclusion:**
+**Mini Project Conclusion:**
 
 This mini project aims to create an efficient Simulated Traffic Management System that handles both vehicle traffic and pedestrian crosswalk requests within the Proteus simulation environment. By implementing this system with FreeRTOS, we ensure real-time operation and responsiveness. The final product will contribute to safer and more organized traffic management, even in a virtual setting.
 
