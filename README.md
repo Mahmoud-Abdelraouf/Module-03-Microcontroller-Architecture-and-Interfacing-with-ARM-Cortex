@@ -33,7 +33,7 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 ## Mini Project: Simulated Traffic Management System
 
 - [Project Overview](#mini-project-overview)
-- [Objectives](#Mini-Project-Primary-Objectives)
+- [Objectives](#mini-project-Primary-Objectives)
 - [Hardware and Software Requirements](#hardware-and-software-requirements)
 - [System Design](#system-design)
 - [Development Environment](#development-environment)
@@ -42,9 +42,9 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 - [System Flow](#system-flow)
 - [User Stories and Testing](#user-stories-and-testing)
 - [Deliverables](#deliverables)
-- [Timeline](#timeline)
-- [Budget](#budget)
-- [Conclusion](#conclusion)
+- [Timeline](#mini-project-timeline)
+- [Budget](#mini-project-budget)
+- [Conclusion](#mini-project-conclusion)
 
 ## Final Project: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS
 
@@ -53,9 +53,9 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 - [Components and Materials](#components-and-materials)
 - [Project Implementation](#project-implementation)
 - [Expected Outcomes](#expected-outcomes)
-- [Timeline](#timeline-1)
-- [Budget](#budget-1)
-- [Conclusion](#conclusion-1)
+- [Timeline](#final-project-timeline)
+- [Budget](#final-project-budget)
+- [Conclusion](#final-project-conclusion)
 
 ## About IEEE
 
@@ -306,7 +306,7 @@ This mini project aims to create an efficient Simulated Traffic Management Syste
 
 **Final Project Proposal: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS**
 
-**Finaal Project Overview:**
+**Final Project Overview:**
 
 We propose the development of an autonomous car capable of detecting obstacles and tracking lines using ultrasonic sensors and infrared sensors and managing tasks efficiently with FreeRTOS. The car will use a combination of components, including ultrasonic sensors, L293D motor driver, LCD display, infrared sensors, and servo motor, to create a functional and efficient obstacle-avoidance and line-tracking system.
 
@@ -331,9 +331,7 @@ We propose the development of an autonomous car capable of detecting obstacles a
 - Caster wheel: To provide stability to the car's chassis.
 - Chassis: The framework to hold all components securely.
 - Infrared sensors: For line tracking.
--
-
- Microcontroller compatible with FreeRTOS.
+- Microcontroller compatible with FreeRTOS.
 
 **Project Implementation:**
 
@@ -348,7 +346,7 @@ We propose the development of an autonomous car capable of detecting obstacles a
 - Testing and Calibration: Test the car's obstacle detection, avoidance, and line tracking capabilities. Calibrate the system for optimal performance.
 - Fine-tuning: Adjust parameters and algorithms to enhance the car's responsiveness and accuracy.
 
-**Expected Outcomes:**
+**Final Project Expected Outcomes:**
 
 Upon successful completion of the project, we anticipate achieving the following outcomes:
 
@@ -358,7 +356,7 @@ Upon successful completion of the project, we anticipate achieving the following
 4. Effective line tracking capabilities using infrared sensors.
 5. Efficient multitasking and real-time operation with FreeRTOS.
 
-**Timeline:**
+**Final Project Timeline:**
 
 - Day 1-2: Hardware assembly and initial component integration.
 - Day 3-4: Sensor integration, motor control, LCD connection, and software development.
@@ -366,11 +364,11 @@ Upon successful completion of the project, we anticipate achieving the following
 - Day 7: FreeRTOS integration, testing, debugging, and calibration.
 - Day 8: Final adjustments, documentation, and project presentation.
 
-**Budget:**
+**Final Project Budget:**
 
 The estimated budget for this project includes the cost of components such as the ultrasonic sensor, servo motor, L293D motor driver, LCD display, motors, caster wheel, chassis, infrared sensors, and a microcontroller compatible with FreeRTOS. The total budget is expected to be [insert estimated budget].
 
-**Conclusion:**
+**Final Project Conclusion:**
 
 This final project aims to create an autonomous obstacle-avoidance and line-tracking car with the added capability of efficient multitasking and real-time operation using FreeRTOS. The final product will demonstrate advanced functionalities, making it suitable for various applications, including robotics and automation.
 
