@@ -2,38 +2,67 @@
 
 Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interfacing with ARM Cortex. In this workshop, you will explore the fundamental concepts of microcontroller architecture and learn how to interface with ARM Cortex-based microcontrollers. The workshop will cover a variety of topics to provide you with a comprehensive understanding of embedded systems.
 
-## Table of Contents
+# Workshop and Project Overview
 
-- [Workshop Overview](#workshop-overview)
-  - [Workshop Content](#workshop-content)
-  - [Requirements](#requirements)
-- [Sessions](#sessions)
-  - [Session Structure](#session-structure)
-    - [Session 01](#session-01)
-    - [Session 02](#session-02)
-    - [Session 03](#session-03)
-    - [Session 04](#session-04)
-    - [Session 05](#session-05)
-    - [Session 06](#session-06)
-    - [Session 07](#session-07)
-    - [Session 08](#session-08)
-    - [Session 09](#session-09)
-    - [Session 10](#session-10)
-    - [Session 11](#session-11)
-    - [Session 12](#session-12)
-    - [Session 13](#session-13)
-    - [Session 14](#session-14)
-  - [Getting Started](#getting-started)
-  - [Workshop Playlist](#workshop-playlist)
-  - [Workshop Drive](#workshop-drive)
-- [Project Proposal: PWM Drawer with Real-Time Display on Graphical LCD](#project-proposal-pwm-drawer-with-real-time-display-on-graphical-lcd)
-  - [Project Overview](#project-overview)
-  - [Features](#features)
-  - [Hardware Requirements](#hardware-requirements)
-  - [Software Components](#software-components)
-  - [Milestones](#milestones)
-  - [Conclusion](#conclusion)
+## Workshop Overview
+
+- [Workshop Content](#workshop-content)
+- [Requirements](#requirements)
+
+## Sessions
+
+- [Session Structure](#session-structure)
+  - [Session 01](#session-01)
+  - [Session 02](#session-02)
+  - [Session 03](#session-03)
+  - [Session 04](#session-04)
+  - [Session 05](#session-05)
+  - [Session 06](#session-06)
+  - [Session 07](#session-07)
+  - [Session 08](#session-08)
+  - [Session 09](#session-09)
+  - [Session 10](#session-10)
+  - [Session 11](#session-11)
+  - [Session 12](#session-12)
+  - [Session 13](#session-13)
+  - [Session 14](#session-14)
+- [Getting Started](#getting-started)
+- [Workshop Playlist](#workshop-playlist)
+- [Workshop Drive](#workshop-drive)
+
+## Mini Project: Simulated Traffic Management System
+
+- [Project Overview](#project-overview)
+- [Objectives](#primary-objectives)
+- [Hardware and Software Requirements](#hardware-and-software-requirements)
+- [System Design](#system-design)
+- [Development Environment](#development-environment)
+- [Implementation](#implementation)
+- [Testing](#testing)
+- [System Flow](#system-flow)
+- [User Stories and Testing](#user-stories-and-testing)
+- [Deliverables](#deliverables)
+- [Timeline](#timeline)
+- [Budget](#budget)
+- [Conclusion](#conclusion)
+
+## Final Project: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS
+
+- [Project Overview](#project-overview-1)
+- [Objectives](#primary-objectives-1)
+- [Components and Materials](#components-and-materials)
+- [Project Implementation](#project-implementation)
+- [Expected Outcomes](#expected-outcomes)
+- [Timeline](#timeline-1)
+- [Budget](#budget-1)
+- [Conclusion](#conclusion-1)
+
+## About IEEE
+
 - [About IEEE](#about-ieee)
+
+## Contact
+
 - [Contact](#contact)
 
 ## Workshop Overview
