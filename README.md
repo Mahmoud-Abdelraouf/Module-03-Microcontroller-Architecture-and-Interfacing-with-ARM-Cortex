@@ -32,8 +32,8 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 ## Mini Project: Simulated Traffic Management System
 
-- [Project Overview](#mini-project-overview)
-- [Objectives](#mini-Project-primary-objectives)
+- [Project Overview](#mini-project-overview:)
+- [Objectives](#mini-Project-primary-objectives:)
 - [Hardware and Software Requirements](#hardware-and-software-requirements)
 - [System Design](#system-design)
 - [Development Environment](#development-environment)
