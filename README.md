@@ -32,8 +32,8 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 ## Mini Project: Simulated Traffic Management System
 
-- [Project Overview](#Mini-project-overview)
-- [Objectives](#Mini-Project-primary-objectives)
+- [Project Overview](#mini-project-overview)
+- [Objectives](#mini-Project-primary-objectives)
 - [Hardware and Software Requirements](#hardware-and-software-requirements)
 - [System Design](#system-design)
 - [Development Environment](#development-environment)
@@ -48,8 +48,8 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 ## Final Project: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS
 
-- [Project Overview](#Final-project-overview-1)
-- [Objectives](#Final-Project-primary-objectives-1)
+- [Project Overview](#final-project-overview-1)
+- [Objectives](#final-Project-primary-objectives-1)
 - [Components and Materials](#components-and-materials)
 - [Project Implementation](#project-implementation)
 - [Expected Outcomes](#expected-outcomes)
