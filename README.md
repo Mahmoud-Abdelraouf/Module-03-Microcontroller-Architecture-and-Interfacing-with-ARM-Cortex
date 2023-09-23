@@ -1,70 +1,61 @@
+# Table of Contents
+
+1. [IEEE Embedded Workshop: Microcontroller Architecture and Interfacing with ARM Cortex](#ieee-embedded-workshop-microcontroller-architecture-and-interfacing-with-arm-cortex)
+   1.1. [Workshop Overview](#workshop-overview)
+   1.2. [Workshop Content](#workshop-content)
+   1.3. [Requirements](#requirements)
+   1.4. [Sessions](#sessions)
+      1.4.1. [Session Structure](#session-structure)
+         1.4.1.1. [Session 01](#session-01)
+         1.4.1.2. [Session 02](#session-02)
+         1.4.1.3. [Session 03](#session-03)
+         1.4.1.4. [Session 04](#session-04)
+         1.4.1.5. [Session 05](#session-05)
+         1.4.1.6. [Session 06](#session-06)
+         1.4.1.7. [Session 07](#session-07)
+         1.4.1.8. [Session 08](#session-08)
+         1.4.1.9. [Session 09](#session-09)
+         1.4.1.10. [Session 10](#session-10)
+         1.4.1.11. [Session 11](#session-11)
+         1.4.1.12. [Session 12](#session-12)
+         1.4.1.13. [Session 13](#session-13)
+         1.4.1.14. [Session 14](#session-14)
+   1.5. [Getting Started](#getting-started)
+   1.6. [Workshop Playlist](#workshop-playlist)
+   1.7. [Workshop Drive](#workshop-drive)
+
+2. [Mini Project Proposal: Simulated Traffic Management System](#mini-project-proposal-simulated-traffic-management-system)
+   2.1. [Mini Project Overview](#mini-project-overview)
+   2.2. [Mini Project Objectives](#mini-project-objectives)
+   2.3. [Hardware and Software Requirements](#hardware-and-software-requirements)
+   2.4. [System Design](#system-design)
+   2.5. [Development Environment](#development-environment)
+   2.6. [Implementation](#implementation)
+   2.7. [Testing](#testing)
+   2.8. [System Flow](#system-flow)
+   2.9. [User Stories and Testing](#user-stories-and-testing)
+   2.10. [Deliverables](#deliverables)
+   2.11. [Mini Project Timeline](#mini-project-timeline)
+   2.12. [Mini Project Budget](#mini-project-budget)
+   2.13. [Mini Project Conclusion](#mini-project-conclusion)
+
+3. [Final Project Proposal: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS](#final-project-proposal-autonomous-obstacle-avoidance-and-line-tracking-car-with-freertos)
+   3.1. [Final Project Overview](#final-project-overview)
+   3.2. [Final Project Objectives](#final-project-objectives)
+   3.3. [Components and Materials](#components-and-materials)
+   3.4. [Project Implementation](#project-implementation)
+   3.5. [Final Project Expected Outcomes](#final-project-expected-outcomes)
+   3.6. [Final Project Timeline](#final-project-timeline)
+   3.7. [Final Project Budget](#final-project-budget)
+   3.8. [Final Project Conclusion](#final-project-conclusion-1)
+
+4. [About IEEE](#about-ieee)
+5. [Contact](#contact)
+
+
 # IEEE Embedded Workshop: Microcontroller Architecture and Interfacing with ARM Cortex
 
 Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interfacing with ARM Cortex. In this workshop, you will explore the fundamental concepts of microcontroller architecture and learn how to interface with ARM Cortex-based microcontrollers. The workshop will cover a variety of topics to provide you with a comprehensive understanding of embedded systems.
-
-# Workshop and Project Overview
-
-## Workshop Overview
-
-- [Workshop Content](#workshop-content)
-- [Requirements](#requirements)
-
-## Sessions
-
-- [Session Structure](#session-structure)
-  - [Session 01](#session-01)
-  - [Session 02](#session-02)
-  - [Session 03](#session-03)
-  - [Session 04](#session-04)
-  - [Session 05](#session-05)
-  - [Session 06](#session-06)
-  - [Session 07](#session-07)
-  - [Session 08](#session-08)
-  - [Session 09](#session-09)
-  - [Session 10](#session-10)
-  - [Session 11](#session-11)
-  - [Session 12](#session-12)
-  - [Session 13](#session-13)
-  - [Session 14](#session-14)
-- [Getting Started](#getting-started)
-- [Workshop Playlist](#workshop-playlist)
-- [Workshop Drive](#workshop-drive)
-
-## Mini Project: Simulated Traffic Management System
-[Mini Project Proposal: Simulated Traffic Management System](#mini-project-proposal-simulated-traffic-management-system)
-   - [Mini Project Overview](#mini-project-overview)
-   - [Objectives](#objectives)
-   - [Hardware and Software Requirements](#hardware-and-software-requirements)
-   - [System Design](#system-design)
-   - [Development Environment](#development-environment)
-   - [Implementation](#implementation)
-   - [Testing](#testing)
-   - [System Flow](#system-flow)
-   - [User Stories and Testing](#user-stories-and-testing)
-   - [Deliverables](#deliverables)
-   - [Mini Project Timeline](#mini-project-timeline)
-   - [Mini Project Budget](#mini-project-budget)
-   - [Mini Project Conclusion](#mini-project-conclusion)
-
-
-## Final Project: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS
-
-- [Project Overview](#final-project-overview-1)
-- [Objectives](#final-Project-primary-objectives-1)
-- [Components and Materials](#components-and-materials)
-- [Project Implementation](#project-implementation)
-- [Expected Outcomes](#expected-outcomes)
-- [Timeline](#final-project-timeline)
-- [Budget](#final-project-budget)
-- [Conclusion](#final-project-conclusion)
-
-## About IEEE
-
-- [About IEEE](#about-ieee)
-
-## Contact
-
-- [Contact](#contact)
 
 ## Workshop Overview
 
@@ -206,7 +197,7 @@ Access additional workshop materials, slides, and resources on our Google Drive:
 
 We propose the development of a Simulated Traffic Management System that efficiently controls traffic lights based on pedestrian crosswalk requests. This system will utilize an STM32F103C8 microcontroller and various components, simulated within the Proteus environment, to manage traffic lights for both vehicles and pedestrians. Additionally, we will implement this system using FreeRTOS to ensure real-time operation and efficient multitasking.
 
-**Objectives:**
+**Mini Project Objectives:**
 
 **Mini Project Primary Objectives:**
 
@@ -311,7 +302,7 @@ This mini project aims to create an efficient Simulated Traffic Management Syste
 
 We propose the development of an autonomous car capable of detecting obstacles and tracking lines using ultrasonic sensors and infrared sensors and managing tasks efficiently with FreeRTOS. The car will use a combination of components, including ultrasonic sensors, L293D motor driver, LCD display, infrared sensors, and servo motor, to create a functional and efficient obstacle-avoidance and line-tracking system.
 
-**Objectives:**
+**Final Project Objectives:**
 
 **Final Project Primary Objectives:**
 
