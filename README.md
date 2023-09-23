@@ -52,6 +52,8 @@
 - [About IEEE](#about-ieee)
 - [Contact](#contact)
 
+---
+
 # IEEE Embedded Workshop: Microcontroller Architecture and Interfacing with ARM Cortex
 
 Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interfacing with ARM Cortex. In this workshop, you will explore the fundamental concepts of microcontroller architecture and learn how to interface with ARM Cortex-based microcontrollers. The workshop will cover a variety of topics to provide you with a comprehensive understanding of embedded systems.
