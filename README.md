@@ -32,8 +32,8 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 ## Mini Project: Simulated Traffic Management System
 
-- [Project Overview](#project-overview)
-- [Objectives](#primary-objectives)
+- [Project Overview](#Mini-project-overview)
+- [Objectives](#Mini-Project-primary-objectives)
 - [Hardware and Software Requirements](#hardware-and-software-requirements)
 - [System Design](#system-design)
 - [Development Environment](#development-environment)
@@ -48,8 +48,8 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 ## Final Project: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS
 
-- [Project Overview](#project-overview-1)
-- [Objectives](#primary-objectives-1)
+- [Project Overview](#Final-project-overview-1)
+- [Objectives](#Final-Project-primary-objectives-1)
 - [Components and Materials](#components-and-materials)
 - [Project Implementation](#project-implementation)
 - [Expected Outcomes](#expected-outcomes)
@@ -201,13 +201,13 @@ Access additional workshop materials, slides, and resources on our Google Drive:
 
 **Mini Project Proposal: Simulated Traffic Management System**
 
-**Project Overview:**
+**Mini Project Overview:**
 
 We propose the development of a Simulated Traffic Management System that efficiently controls traffic lights based on pedestrian crosswalk requests. This system will utilize an STM32F103C8 microcontroller and various components, simulated within the Proteus environment, to manage traffic lights for both vehicles and pedestrians. Additionally, we will implement this system using FreeRTOS to ensure real-time operation and efficient multitasking.
 
 **Objectives:**
 
-**Primary Objectives:**
+**Mini Project Primary Objectives:**
 
 1. Control traffic lights for cars and pedestrians within the Proteus simulation environment.
 2. Efficiently respond to pedestrian crosswalk requests.
@@ -306,13 +306,13 @@ This mini project aims to create an efficient Simulated Traffic Management Syste
 
 **Final Project Proposal: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS**
 
-**Project Overview:**
+**Finaal Project Overview:**
 
 We propose the development of an autonomous car capable of detecting obstacles and tracking lines using ultrasonic sensors and infrared sensors and managing tasks efficiently with FreeRTOS. The car will use a combination of components, including ultrasonic sensors, L293D motor driver, LCD display, infrared sensors, and servo motor, to create a functional and efficient obstacle-avoidance and line-tracking system.
 
 **Objectives:**
 
-**Primary Objectives:**
+**Final Project Primary Objectives:**
 
 1. Detect obstacles using ultrasonic sensors.
 2. Analyze sensor data and make real-time decisions to change direction.
