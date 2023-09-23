@@ -170,50 +170,180 @@ You can find the recorded sessions of the workshop on our YouTube playlist:
 Access additional workshop materials, slides, and resources on our Google Drive:
 [Workshop Google Drive](https://drive.google.com/drive/folders/1nGR1J9SzmXIpPO03m8i160BUqqdw5mGg?usp=sharing)
 
-## Project Proposal: PWM Drawer with Real-Time Display on Graphical LCD
+**Mini Project Proposal: Simulated Traffic Management System**
 
-### Project Overview:
+**Project Overview:**
 
-The PWM Drawer project aims to develop a real-time PWM signal measurement and visualization tool. The system will capture PWM signals using hardware input capture, calculate the PWM frequency and duty cycle, and display the waveform in real-time on a graphical LCD. This project will provide valuable insights into PWM signals' characteristics and allow users to observe and analyze PWM waveforms quickly and accurately.
+We propose the development of a Simulated Traffic Management System that efficiently controls traffic lights based on pedestrian crosswalk requests. This system will utilize an STM32F103C8 microcontroller and various components, simulated within the Proteus environment, to manage traffic lights for both vehicles and pedestrians. Additionally, we will implement this system using FreeRTOS to ensure real-time operation and efficient multitasking.
 
-### Features:
+**Objectives:**
 
-1. Hardware Input Capture: Utilize the hardware input capture capability of the ATmega32 (AVR) microcontroller to accurately measure the PWM signal pulse width and calculate the frequency.
-2. Graphical LCD Interface: Interface with a graphical LCD (e.g., ST7735, SSD1306) using a suitable graphical LCD library (e.g., u8g2) to draw real-time PWM waveforms.
-3. Real-Time Display: Continuously update the graphical LCD with the latest PWM measurements, providing real-time visualization of the PWM waveform.
-4. Frequency and Duty Cycle Calculation: Implement algorithms to calculate the PWM frequency and duty cycle based on the captured pulse width.
-5. User Interface: Develop a user interface to control the PWM measurements and display settings. Use buttons or a touchscreen to start/stop measurements, switch between PWM channels, and adjust display parameters.
-6. Data Logging (Optional): Add an optional feature to log captured PWM data to external storage (e.g., SD card) for further analysis or export to a computer.
+**Primary Objectives:**
 
-### Hardware Requirements:
+1. Control traffic lights for cars and pedestrians within the Proteus simulation environment.
+2. Efficiently respond to pedestrian crosswalk requests.
+3. Implement error handling and reporting.
+4. Utilize FreeRTOS for real-time operation and multitasking.
 
-1. ATmega32 (AVR) Development Board.
-2. Graphical LCD Module (e.g., ST7735, SSD1306) with appropriate interface (SPI/I2C).
-3. Potentiometer (optional) to simulate variable PWM input.
-4. User Input Components (e.g., buttons, touchscreen) for the user interface.
-5. External Storage (e.g., SD card) if data logging is implemented.
+**Hardware and Software Requirements:**
 
-### Software Components:
+**Hardware Requirements (Simulated within Proteus):**
 
-1. STM32 HAL Library: Use the STM32 HAL library to configure the microcontroller's GPIO, TIM, and other peripherals.
-2. Graphical LCD Library: Utilize a graphical LCD library (e.g., u8g2) to draw PWM waveforms and text on the graphical LCD.
-3. Input Capture and PWM Measurement: Implement interrupt-driven code to capture PWM signals using hardware input capture and calculate frequency and duty cycle.
-4. User Interface: Create a user interface to control PWM measurements and display settings.
-5. Data Logging (Optional): If data logging is required, implement code to write captured data to external storage.
+- STM32F103C8 microcontroller simulation.
+- Virtual push button for pedestrian requests.
+- Virtual LEDs for traffic lights - Red, Yellow, and Green for cars and pedestrians.
 
-### Milestones:
+**Software Requirements:**
 
-1. Hardware and Software Setup: Configure the ATmega32 (AVR) development board and establish communication with the graphical LCD module.
-2. PWM Measurement: Implement hardware input capture to measure PWM signals and calculate frequency and duty cycle.
-3. Real-Time Display: Create a real-time display loop to continuously update the graphical LCD with PWM waveforms.
-4. User Interface: Develop a user interface to control PWM measurements and display settings.
-5. Data Logging (Optional): Implement data logging functionality if required.
-6. Testing and Debugging: Test the system thoroughly, identify and fix any bugs, and optimize performance.
-7. Documentation and Presentation: Document the project thoroughly, including hardware connections, code explanations, and user instructions. Prepare a presentation to demonstrate the project's functionality.
+- In normal mode (simulation):
+  - Traffic lights for cars will cycle every five seconds: Green, Yellow, Red, Yellow, Green.
+  - The Yellow LED will blink for five seconds before transitioning to Green or Red.
+- In pedestrian mode (simulation):
+  - Transition to pedestrian mode when the virtual pedestrian button is pressed.
+  - Pedestrians can cross the street when the pedestrian's Green LED is on.
+  - Pedestrians must wait when cars have the right of way.
+  - Specific sequences for pedestrian crosswalk requests.
 
-### Conclusion:
+**System Design:**
 
-The PWM Drawer with Real-Time Display project aims to provide a valuable tool for measuring and visualizing PWM waveforms. By using hardware input capture and graphical LCD interface, the system will offer accurate and real-time representation of PWM signals. The user-friendly interface and optional data logging make it suitable for various applications, including debugging PWM-controlled systems, testing motor control, and analyzing power circuits.
+- Define system layers.
+- Define system drivers.
+- Place each driver into the appropriate layer following SOLID principles.
+- Define APIs for each driver with documentation.
+- Define new data types for drivers.
+- Define error handling and reporting mechanisms.
+
+**Development Environment:**
+
+- Configure Proteus simulation environment.
+- Implement layered architecture in the Proteus project structure.
+- Prepare all files for development with header file guards.
+- Write typedefs and function prototypes.
+- Include lower layer drivers in upper layer/calling drivers' header files.
+
+**Implementation:**
+
+- Write skeleton code for each function with comments.
+- Convert comments into appropriate code.
+- Ensure functions return error states.
+
+**Testing:**
+
+- Develop test modules for each driver.
+- Implement and validate driver output within the Proteus simulation.
+
+**System Flow:**
+
+- Define the system flow based on requirements.
+- Implement the system flow in the “APP_start” function.
+
+**User Stories and Testing:**
+
+1. **User Story 1:** As a pedestrian, when I make a short press on the crosswalk button while the cars' green light is on and the pedestrian red light is on, I will wait for the yellow lights to blink for five seconds, then the cars' red light is on, and the pedestrian green light is on for five seconds, so that I can cross the street.
+
+2. **User Story 2:** As a pedestrian, when I make a short press on the crosswalk button while the cars' yellow light is blinking and the pedestrian red light is on, I will wait for all yellow lights to blink for five seconds, then the cars' red light is on, and the pedestrian green light is on for five seconds, so that I can cross the street.
+
+3. **User Story 3:** As a pedestrian, when I make a short press on the crosswalk button while the cars' red light is on and the pedestrian green light is on, I expect nothing to be done.
+
+4. **User Story 4:** As a pedestrian, when I make a long press on the crosswalk button, I expect nothing to be done.
+
+5. **User Story 5:** As a pedestrian, when I make a double press on the crosswalk button, I expect that the first press will do the action, and nothing will be done after the second press.
+
+**Deliverables:**
+
+1. PDF document containing:
+   - System description.
+   - System design.
+   - System flow chart or state machine.
+   - System constraints (if any).
+2. Video presentation discussing the project.
+
+**Timeline:**
+
+- Day 1-2: System design and Proteus environment setup.
+- Day 3-4: Software design and architecture.
+- Day 5-6: Development within the Proteus simulation.
+- Day 7: Testing and documentation.
+
+**Budget:**
+
+The estimated budget for this project includes any licensing costs associated with Proteus simulation software.
+
+**Conclusion:**
+
+This mini project aims to create an efficient Simulated Traffic Management System that handles both vehicle traffic and pedestrian crosswalk requests within the Proteus simulation environment. By implementing this system with FreeRTOS, we ensure real-time operation and responsiveness. The final product will contribute to safer and more organized traffic management, even in a virtual setting.
+
+---
+
+**Final Project Proposal: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS**
+
+**Project Overview:**
+
+We propose the development of an autonomous car capable of detecting obstacles and tracking lines using ultrasonic sensors and infrared sensors and managing tasks efficiently with FreeRTOS. The car will use a combination of components, including ultrasonic sensors, L293D motor driver, LCD display, infrared sensors, and servo motor, to create a functional and efficient obstacle-avoidance and line-tracking system.
+
+**Objectives:**
+
+**Primary Objectives:**
+
+1. Detect obstacles using ultrasonic sensors.
+2. Analyze sensor data and make real-time decisions to change direction.
+3. Implement motor control using the L293D motor driver.
+4. Display the car's current direction on an LCD screen.
+5. Utilize a servo motor for ultrasonic scanning within a 180° range.
+6. Implement line tracking using infrared sensors.
+7. Manage tasks efficiently with FreeRTOS for multitasking and real-time operation.
+
+**Components and Materials:**
+
+- Ultrasonic HC-SR04 sensor: To detect obstacles in the car's path.
+- Servo motor: For scanning the environment using the ultrasonic sensor.
+- L293D motor driver: To control the speed and direction of the car's motors.
+- Motors: To drive the car's wheels.
+- Caster wheel: To provide stability to the car's chassis.
+- Chassis: The framework to hold all components securely.
+- Infrared sensors: For line tracking.
+-
+
+ Microcontroller compatible with FreeRTOS.
+
+**Project Implementation:**
+
+- Hardware Assembly: Assemble the chassis, attach the motors, and mount the caster wheel.
+- Ultrasonic Sensor Integration: Connect the ultrasonic sensor to the servo motor axis for scanning.
+- Motor Control: Integrate the L293D motor driver to control the car's movement.
+- LCD Integration: Connect the LCD display to show the car's current direction.
+- Software Development: Develop software to read ultrasonic sensor data, analyze it, control the motors, and implement line tracking.
+- Scanning Algorithm: Design an algorithm for the servo motor to scan the environment using the ultrasonic sensor.
+- Line Tracking Algorithm: Implement a line tracking algorithm using infrared sensors.
+- FreeRTOS Integration: Configure and integrate FreeRTOS for efficient multitasking and real-time control.
+- Testing and Calibration: Test the car's obstacle detection, avoidance, and line tracking capabilities. Calibrate the system for optimal performance.
+- Fine-tuning: Adjust parameters and algorithms to enhance the car's responsiveness and accuracy.
+
+**Expected Outcomes:**
+
+Upon successful completion of the project, we anticipate achieving the following outcomes:
+
+1. A functional autonomous car capable of detecting obstacles, changing direction to avoid them, and tracking lines.
+2. Real-time display of the car's direction on the LCD screen.
+3. Smooth and accurate scanning of the environment using the servo motor and ultrasonic sensor.
+4. Effective line tracking capabilities using infrared sensors.
+5. Efficient multitasking and real-time operation with FreeRTOS.
+
+**Timeline:**
+
+- Day 1-2: Hardware assembly and initial component integration.
+- Day 3-4: Sensor integration, motor control, LCD connection, and software development.
+- Day 5-6: Scanning and line tracking algorithm implementation.
+- Day 7: FreeRTOS integration, testing, debugging, and calibration.
+- Day 8: Final adjustments, documentation, and project presentation.
+
+**Budget:**
+
+The estimated budget for this project includes the cost of components such as the ultrasonic sensor, servo motor, L293D motor driver, LCD display, motors, caster wheel, chassis, infrared sensors, and a microcontroller compatible with FreeRTOS. The total budget is expected to be [insert estimated budget].
+
+**Conclusion:**
+
+This final project aims to create an autonomous obstacle-avoidance and line-tracking car with the added capability of efficient multitasking and real-time operation using FreeRTOS. The final product will demonstrate advanced functionalities, making it suitable for various applications, including robotics and automation.
 
 ## About IEEE
 
