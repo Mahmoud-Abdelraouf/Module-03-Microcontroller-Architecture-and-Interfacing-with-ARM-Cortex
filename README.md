@@ -190,6 +190,8 @@ You can find the recorded sessions of the workshop on our YouTube playlist:
 Access additional workshop materials, slides, and resources on our Google Drive:
 [Workshop Google Drive](https://drive.google.com/drive/folders/1nGR1J9SzmXIpPO03m8i160BUqqdw5mGg?usp=sharing)
 
+---
+
 # Mini Project Proposal: Simulated Traffic Management System
 
 ## Mini Project Overview
