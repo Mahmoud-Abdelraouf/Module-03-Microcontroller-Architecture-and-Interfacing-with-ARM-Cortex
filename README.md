@@ -23,7 +23,6 @@
    - [Getting Started](#getting-started)
    - [Workshop Playlist](#workshop-playlist)
    - [Workshop Drive](#workshop-drive)
-
 - [Mini Project Proposal: Simulated Traffic Management System](#mini-project-proposal-simulated-traffic-management-system)
    - [Mini Project Overview](#mini-project-overview)
    - [Mini Project Objectives](#mini-project-objectives)
@@ -38,7 +37,6 @@
    - [Mini Project Timeline](#mini-project-timeline)
    - [Mini Project Budget](#mini-project-budget)
    - [Mini Project Conclusion](#mini-project-conclusion)
-
 - [Final Project Proposal: Autonomous Obstacle-Avoidance and Line Tracking Car with FreeRTOS](#final-project-proposal-autonomous-obstacle-avoidance-and-line-tracking-car-with-freertos)
    - [Final Project Overview](#final-project-overview)
    - [Final Project Objectives](#final-project-objectives)
@@ -47,7 +45,7 @@
    - [Final Project Expected Outcomes](#final-project-expected-outcomes)
    - [Final Project Timeline](#final-project-timeline)
    - [Final Project Budget](#final-project-budget)
-   - [Final Project Conclusion](#final-project-conclusion-1)
+   - [Final Project Conclusion](#final-project-conclusion)
 
 - [About IEEE](#about-ieee)
 - [Contact](#contact)
