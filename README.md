@@ -367,6 +367,8 @@ The estimated budget for this project includes the cost of components such as th
 
 This final project aims to create an autonomous obstacle-avoidance and line-tracking car with the added capability of efficient multitasking and real-time operation using FreeRTOS. The final product will demonstrate advanced functionalities, making it suitable for various applications, including robotics and automation.
 
+---
+
 ## About IEEE
 
 The Institute of Electrical and Electronics Engineers (IEEE) is the world's largest technical professional organization dedicated to advancing technology for the benefit of humanity. IEEE and its members inspire a global community to innovate for a better tomorrow through its highly-cited publications, conferences, technology standards, and professional and educational activities.
