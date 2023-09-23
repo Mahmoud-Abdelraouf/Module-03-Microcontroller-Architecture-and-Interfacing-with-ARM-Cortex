@@ -13,7 +13,7 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 - [Session Structure](#session-structure)
   - [Session 01](#session-01)
-  - [Session 02](#session-02)
+  - [Session 01](#session-02)
   - [Session 03](#session-03)
   - [Session 04](#session-04)
   - [Session 05](#session-05)
@@ -32,8 +32,8 @@ Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interf
 
 ## Mini Project: Simulated Traffic Management System
 
-- [Project Overview](#mini-project-overview:)
-- [Objectives](#mini-Project-primary-objectives:)
+- [Project Overview](#mini-project-overview)
+- [Objectives](#mini-Project-primary-objectives)
 - [Hardware and Software Requirements](#hardware-and-software-requirements)
 - [System Design](#system-design)
 - [Development Environment](#development-environment)
