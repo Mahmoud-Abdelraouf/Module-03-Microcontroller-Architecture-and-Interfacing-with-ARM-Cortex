@@ -18,7 +18,7 @@
 #include "EXTI_private.h"
 #include "EXTI_config.h"
 /*****************************< Function Implementations *****************************/
-void EXTI_vInit(void)
+void MCAL_EXTI_vInit(void)
 {
     for (u8 Line = 0; Line < EXTI_LINES_COUNT; Line++)
     {
@@ -44,7 +44,7 @@ void EXTI_vInit(void)
                     break;
             }
             
-            // Check if GPIO port configuration is available
+            /**< Check if GPIO port configuration is available */ 
             if (EXTI_Configurations[Line].GPIO_PortMap != EXTI_GPIO_NONE)
             {
                 /**< Enable EXTI line for the specified GPIO pin */ 
@@ -58,7 +58,7 @@ void EXTI_vInit(void)
     }
 }
 
-Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port) 
+Std_ReturnType MCAL_EXTI_InitEXTIForGPIO(u8 GPIO_Pin, u8 GPIO_Port) 
 {
     /**< Check if GPIO_Pin is within valid range */ 
     if (GPIO_Pin > EXTI_LINE15 || GPIO_Port > GPIO_PORTC) 
@@ -99,7 +99,7 @@ Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port)
     }
 }
 
-Std_ReturnType EXTI_EnableLine(u8 Copy_Line)
+Std_ReturnType MCAL_EXTI_EnableLine(u8 Copy_Line)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
@@ -117,7 +117,7 @@ Std_ReturnType EXTI_EnableLine(u8 Copy_Line)
 
 }
 
-Std_ReturnType EXTI_DisableLine(u8 Copy_Line)
+Std_ReturnType MCAL_EXTI_DisableLine(u8 Copy_Line)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
@@ -134,7 +134,7 @@ Std_ReturnType EXTI_DisableLine(u8 Copy_Line)
     return Local_FunctionStatus;
 }
 
-Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode)
+Std_ReturnType MCAL_EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 

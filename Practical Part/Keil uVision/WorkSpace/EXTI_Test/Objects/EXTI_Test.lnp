@@ -1,0 +1,13 @@
+--cpu Cortex-M3
+".\objects\afio_program.o"
+".\objects\exti_program.o"
+".\objects\gpio_program.o"
+".\objects\nvic_program.o"
+".\objects\rcc_program.o"
+".\objects\main.o"
+".\objects\scb_program.o"
+".\objects\startup_stm32f10x_md.o"
+".\objects\system_stm32f10x.o"
+--ro-base 0x08000000 --entry 0x08000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\EXTI_Test.map" -o .\Objects\EXTI_Test.axf

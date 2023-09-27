@@ -46,7 +46,6 @@ void MCAL_STK_xInit(u32 Copy_Ticks);
 void MCAL_STK_vInit(void);
 
 /**
-/**
  * @brief Set the SysTick Timer Reload Value
  *
  * This function sets the reload value of the SysTick timer, which determines the period
@@ -183,8 +182,6 @@ Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Copy_Microseconds, void (*Copy_Cal
  * @return E_OK if the interval configuration was successful, E_NOT_OK if an error occurred.
  */
 Std_ReturnType MCAL_STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callback)(void));
-
-
 
 
 #endif /**< STK_INTERFACE_H_ */

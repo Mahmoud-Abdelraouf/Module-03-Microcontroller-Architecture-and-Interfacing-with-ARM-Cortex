@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.38.0.0
 Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Mahmoud Abdelraouf, no, LIC=----
+License Information: Mahmoud Abdelraouf, Ain Shams, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.38.0.0
@@ -21,47 +21,17 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.1.0.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-D:\Programming\01-Embedded_Systems\Projects and Work\IEEE_Embedded_Workshop\WorkSpace\GPIO_Test\GPIO_Test.uvprojx
-Project File Date:  09/01/2023
+D:\Embedded Systems & Computer Programming\Embedded_Systems\Bare Matel\Projects and Work\IEEE_Embedded_Workshop\Practical Part\Keil uVision\WorkSpace\GPIO_Test\GPIO_Test.uvprojx
+Project File Date:  09/25/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-main.c(6): warning: In file included from...
-./RCC_interface.h(165): warning: no newline at end of file [-Wnewline-eof]
-#endif /**< RCC_INTERFACE_H_ */
-                               ^
-main.c(8): warning: In file included from...
-./GPIO_interface.h(33): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */ // End of GPIO_Values group
-          ^
-main.c(20): warning: binary integer literals are a GNU extension [-Wgnu-binary-literal]
-        Mcal_Gpio_SetPinMode(GPIO_PORTA, GPIO_PIN0, GPIO_OUTPUT_PUSH_PULL_2MHZ);
-                                                    ^
-./GPIO_interface.h(80): note: expanded from macro 'GPIO_OUTPUT_PUSH_PULL_2MHZ'
-#define GPIO_OUTPUT_PUSH_PULL_2MHZ               0b0010 /**< GPIO Output Push-Pull Mode, 2MHz */
-                                                 ^
-main.c(23): warning: binary integer literals are a GNU extension [-Wgnu-binary-literal]
-        Mcal_Gpio_SetPinMode(GPIO_PORTA, GPIO_PIN1, GPIO_INPUT_PULL_DOWN_MOD);
-                                                    ^
-./GPIO_interface.h(66): note: expanded from macro 'GPIO_INPUT_PULL_DOWN_MOD'
-#define GPIO_INPUT_PULL_DOWN_MOD                 0b1000 /**< GPIO Input Pull down Mode */
-                                                 ^
-main.c(27): warning: binary integer literals are a GNU extension [-Wgnu-binary-literal]
-        Mcal_Gpio_SetPinMode(GPIO_PORTA, GPIO_PIN10, GPIO_INPUT_PULL_UP_MOD);
-                                                     ^
-./GPIO_interface.h(67): note: expanded from macro 'GPIO_INPUT_PULL_UP_MOD'
-#define GPIO_INPUT_PULL_UP_MOD                   0b1000 /**< GPIO Input Pull up Mode */
-                                                 ^
-main.c(30): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-        u8 Local_ReturnValue_1;
-           ^
-6 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=2076 RO-data=252 RW-data=0 ZI-data=1632  
+Program Size: Code=2088 RO-data=252 RW-data=0 ZI-data=1632  
 FromELF: creating hex file...
-".\Objects\GPIO_Test.axf" - 0 Error(s), 6 Warning(s).
+".\Objects\GPIO_Test.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -88,10 +58,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/system_stm32f10x.c
-      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
 Build Time Elapsed:  00:00:00
 </pre>
 </body>
