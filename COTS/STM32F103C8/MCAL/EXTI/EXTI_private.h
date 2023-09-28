@@ -46,6 +46,7 @@ typedef struct
 /**< EXTI Configuration Structure */
 typedef struct 
 {
+    EXTI_CallbackFunc_t SetCallback; /**< Callback function for EXTI line */
     u8 GPIO_PortMap: 3;         /**< GPIO port to be used (EXTI_GPIO_PORTA, EXTI_GPIO_PORTB, etc.) */
     u8 TriggerType: 2;          /**< Trigger type (EXTI_TRIGGER_RISING, EXTI_TRIGGER_FALLING, EXTI_TRIGGER_BOTH, etc.) */
     u8 LineEnabled: 1;          /**< EXTI line enabled or disabled (1 or 0) */

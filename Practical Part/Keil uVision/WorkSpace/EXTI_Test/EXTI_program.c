@@ -17,6 +17,8 @@
 #include "EXTI_interface.h"
 #include "EXTI_private.h"
 #include "EXTI_config.h"
+/*****************************< Global Variable Section *****************************/
+static void (*CallbackPf)(void);
 /*****************************< Function Implementations *****************************/
 void EXTI_vInit(void)
 {
@@ -171,6 +173,31 @@ Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode)
     }
     
     return Local_FunctionStatus;
+}
+
+
+Std_ReturnType MCAL_EXTI_SetCallback(void (*pf)(void))
+{
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
+
+    if(NULL == pf)
+    {
+        return Local_FunctionStatus;
+    }
+
+    CallbackPf = pf;
+
+    Local_FunctionStatus = E_OK;
+
+    return Local_FunctionStatus;
+}
+
+void EXTI0_IRQHandler(void)
+{
+    if (CallbackPf != NULL)
+    {
+        CallbackPf();
+    }
 }
 /*****************************< End of Function Implementations *****************************/
 

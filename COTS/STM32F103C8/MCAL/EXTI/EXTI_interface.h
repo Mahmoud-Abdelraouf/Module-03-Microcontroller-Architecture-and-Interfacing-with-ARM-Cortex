@@ -14,6 +14,28 @@
  */
 
 /**
+ * @brief Type Definition for EXTI Callback Function
+ *
+ * This typedef defines the type of callback functions that can be associated
+ * with EXTI (External Interrupt) events. EXTI callback functions are user-defined
+ * functions that are executed when an EXTI event, such as a pin interrupt, occurs.
+ * 
+ * EXTI callback functions take no arguments and return no values, as they are
+ * typically used to perform actions in response to an EXTI event.
+ *
+ * Example of defining an EXTI callback function:
+ * ```c
+ * void MyEXTICallback(void) {
+ *     /// Your code to handle the EXTI event goes here
+ * }
+ * ```
+ *
+ * You can then associate `MyEXTICallback` or any similar function with an EXTI line
+ * configuration to execute it when the corresponding EXTI event occurs.
+ */
+typedef void (*EXTI_CallbackFunc_t)(void);
+
+/**
  * @name EXTI Trigger Edge Selection
  * @{
  */
@@ -132,8 +154,33 @@ Std_ReturnType MCAL_EXTI_DisableLine(u8 Copy_Line);
  */
 Std_ReturnType MCAL_EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode);
 
-/** @} */ // End of EXTI_Control
+/**
+  * @brief  Set Callback Function for an EXTI Line
+  * @param  Copy_Line: The EXTI line number (0 to 15)
+  * @param  CallbackFunc: Pointer to the callback function to be set
+  * @retval Std_ReturnType: Indicates whether the operation was successful or not
+  *         - E_OK: Operation successful
+  *         - E_NOT_OK: Invalid input (e.g., NULL callback function)
+  *
+  * @note   This function allows you to set a callback function to be called
+  *         when the specified EXTI line triggers an interrupt. The callback
+  *         function will be executed in the EXTI interrupt handler.
+  *
+  * Example:
+  * @code
+  * /// Define a callback function
+  * void MyEXTICallback(void)
+  * {
+  *     /// Your code here
+  * }
+  * 
+  * /// Set the callback function for EXTI Line 0
+  * MCAL_EXTI_SetCallback(EXTI_LINE0, MyEXTICallback);
+  * @endcode
+  */
+Std_ReturnType MCAL_EXTI_SetCallback(u8 Copy_Line , EXTI_CallbackFunc_t CallbackFunc);
 
+/** @} */ // End of EXTI_Control
 
 
 #endif /**< EXTI_INTERFACE_H_ */

@@ -132,6 +132,9 @@ Std_ReturnType EXTI_DisableLine(u8 Copy_Line);
  */
 Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode);
 
+Std_ReturnType MCAL_EXTI_SetCallback(void (*pf)(void));
+
+
 /** @} */ // End of EXTI_Control
 
 

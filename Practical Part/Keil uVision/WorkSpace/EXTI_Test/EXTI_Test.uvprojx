@@ -519,6 +519,26 @@
               <FileType>1</FileType>
               <FilePath>.\SCB_program.c</FilePath>
             </File>
+            <File>
+              <FileName>STK_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\STK_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>STK_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\STK_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>STK_private.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\STK_private.h</FilePath>
+            </File>
+            <File>
+              <FileName>STK_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\STK_program.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

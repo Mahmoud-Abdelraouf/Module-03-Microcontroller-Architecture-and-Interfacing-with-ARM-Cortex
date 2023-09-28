@@ -13,11 +13,16 @@
 #include "GPIO_interface.h"
 #include "AFIO_interface.h"
 #include "NVIC_interface.h"
+#include "STK_interface.h"
 #include "EXTI_interface.h"
 /**< HAL */
 
 
 /**< APP */
+void APP_TogLED(void);
+void APP_OpenDoor(void);
+
+
 
 int main(void)
 {
@@ -46,12 +51,15 @@ int main(void)
 	/**< Enable EXTI0 */
 	EXTI_EnableLine(EXTI_LINE0);
 	
+	/**< Set callback Fucntion */
+	MCAL_EXTI_SetCallback(APP_TogLED);
+	
 	
 	
 	for(;;);
 }
 
-void EXTI0_IRQHandler(void)
+void APP_TogLED(void)
 {
 	static u8 Temp = 0;
 	if(Temp == 0)
@@ -65,4 +73,27 @@ void EXTI0_IRQHandler(void)
 		Temp = 0;
 	}
 }
+
+
+void APP_OpenDoor(void)
+{
+	
+/**
+	................
+	................
+	................
+	................
+	................
+	................
+	      Code
+	................
+	................
+	................
+	................
+	................
+	................
+	*/
+	
+}
+
 

@@ -29,121 +29,142 @@
  * - EXTI_PORTMAP_GPIOA: Map EXTI line to GPIO Port A.
  * - EXTI_PORTMAP_GPIOB: Map EXTI line to GPIO Port B.
  * - EXTI_PORTMAP_GPIOC: Map EXTI line to GPIO Port C.
+ * 
+ * SetCallback:
+ * - NULL: No callback function will be called when the EXTI line triggers.
+ * - [Callback Function Name]: Specify the name of the callback function to be called
+ *   when the EXTI line triggers. If NULL is selected, no function will be called.
  */
 EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
 
     /**< Configuration for EXTI Line 0 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
 
     /* Configuration for EXTI Line 1 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_FALLING_EDGE,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_FALLING_EDGE,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
 
     /* Configuration for EXTI Line 2 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 3 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 4 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 5 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 6 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 7 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 8 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 9 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 10 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 11 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 12 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 13 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 14 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
     },
     
     /* Configuration for EXTI Line 15 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
-    },
-    
+        .SetCallback  = NULL,
+        .GPIO_PortMap = EXTI_GPIO_NONE,
+        .TriggerType  = EXTI_BOTH_EDGES,
+        .LineEnabled  = EXTI_LINE_DISABLED
+    }
+
 };
 
 #endif /**< EXTI_CONFIG_H_ */
