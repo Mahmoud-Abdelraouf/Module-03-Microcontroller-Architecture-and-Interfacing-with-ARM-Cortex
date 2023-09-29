@@ -162,30 +162,51 @@ Std_ReturnType MCAL_STK_SetBusyWait(u32 Copy_Microseconds);
 Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds);
 
 /**
- * @brief Set a single-shot interval with a specified callback function.
+ * @brief Configures the SysTick timer for a single-shot interval and associates a callback function.
  *
- * This function configures the SysTick timer to generate a single-shot interval after the specified number of microseconds.
- * When the interval elapses, the provided callback function will be called.
+ * This function sets up the SysTick timer to generate a single interrupt after the specified
+ * interval in microseconds. It saves the provided callback function pointer and calculates
+ * the number of ticks required for the given interval. The timer is configured for a single-shot
+ * operation and starts counting down. When the timer reaches zero, the saved callback function
+ * is called. Returns E_OK if the configuration was successful; otherwise, returns E_NOT_OK.
  *
- * @param[in] Copy_Microseconds The duration of the interval in microseconds.
- * @param[in] Copy_Callback A pointer to the callback function to execute when the interval elapses.
+ * @param[in] Copy_Microseconds The interval in microseconds after which the timer should expire.
+ * @param[in] CallbackFunc      A pointer to the callback function to be executed when the timer expires.
  *
- * @return E_OK if the interval configuration was successful, E_NOT_OK if an error occurred.
+ * @return
+ *     - E_OK     if the configuration was successful.
+ *     - E_NOT_OK if an error occurred (e.g., if the callback function pointer is NULL).
+ * 
+ * @see STK_SINGLE_INTERVAL
+ * @see MCAL_STK_SetIntervalSingle
  */
-Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Copy_Microseconds, void (*Copy_Callback)(void));
+Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Copy_Microseconds, STK_CallbackFunc_t CallbackFunc);
 
 /**
- * @brief Set a periodic interval with a specified callback function.
+ * @brief Configures the SysTick timer for a periodic interval and associates a callback function.
  *
- * This function configures the SysTick timer to generate periodic intervals with the specified duration in microseconds.
- * When each interval elapses, the provided callback function will be called.
+ * This function sets up the SysTick timer to operate in a periodic interval mode. It calculates
+ * the number of ticks required to wait for the specified duration in microseconds and configures
+ * the SysTick timer's reload value accordingly. When the timer reaches zero, it generates interrupts
+ * at regular intervals defined by the specified microseconds. The associated callback function
+ * is executed upon each interrupt.
  *
- * @param[in] Copy_Microseconds The duration of each interval in microseconds.
- * @param[in] Copy_Callback A pointer to the callback function to execute for each interval.
+ * @param[in] Copy_Microseconds The interval duration in microseconds for SysTick timer interrupts.
+ * @param[in] CallbackFunc A pointer to the function to be executed upon each SysTick interrupt.
  *
- * @return E_OK if the interval configuration was successful, E_NOT_OK if an error occurred.
+ * @note The maximum delay achievable with this function, when the SysTick timer clock is 1 MHz, is approximately 16 seconds.
+ * @note Ensure that the callback function has a void return type and takes no parameters (void (*CallbackFunc)(void)).
+ * @note This function enables the SysTick timer and its interrupt.
+ *
+ * @return
+ *     - E_OK if the SysTick timer was configured successfully.
+ *     - E_NOT_OK if an invalid callback function pointer is provided.
+ *
+ * @see STK_SINGLE_INTERVAL
+ * @see MCAL_STK_SetIntervalSingle
  */
-Std_ReturnType MCAL_STK_SetIntervalPeriodic(u32 Copy_Microseconds, void (*Copy_Callback)(void));
+Std_ReturnType MCAL_STK_SetIntervalPeriodic(u32 Copy_Microseconds, STK_CallbackFunc_t CallbackFunc);
+
 
 
 #endif /**< STK_INTERFACE_H_ */

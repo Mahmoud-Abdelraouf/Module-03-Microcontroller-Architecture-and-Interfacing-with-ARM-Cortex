@@ -69,10 +69,29 @@ typedef struct STK_RegDef_t {
 #define STK_CTRL_TICKINT_ENABLE          1
 #define STK_CTRL_TICKINT_DISABLE         0
 
-
+/**
+ * @brief Specifies the operation mode of the SysTick timer interval.
+ *
+ * The SysTick timer can operate in two modes: single-shot interval and periodic interval.
+ * - "STK_SINGLE_INTERVAL": Indicates that the SysTick timer operates in single-shot mode.
+ *   In this mode, the timer generates an interrupt only once after the specified interval
+ *   and then stops until reconfigured.
+ *
+ * - "STK_PERIOD_INTERVAL": Indicates that the SysTick timer operates in periodic mode.
+ *   In this mode, the timer generates interrupts at regular intervals specified by the
+ *   reload value, and it continues operating until explicitly disabled.
+ *
+ * These macros are used to configure the behavior of the SysTick timer interval, providing
+ * control over whether the timer generates interrupts once (single-shot) or repeatedly
+ * (periodic) at the specified interval.
+ *
+ * @note Choose the appropriate mode based on your application's timing requirements.
+ *
+ * @see MCAL_STK_SetIntervalSingle
+ * @see MCAL_STK_SetIntervalPeriodic
+ */
 #define STK_SINGLE_INTERVAL              0
 #define STK_PERIOD_INTERVAL              1
-
 
 /**
  * @brief Sets the system clock frequency for the SysTick peripheral.
