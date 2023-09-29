@@ -26,6 +26,7 @@ void APP_OpenDoor(void);
 
 int main(void)
 {
+	int x = 5;
 	/**< Init SYSCLK */
 	MCAL_RCC_InitSysClock();
 	
@@ -56,7 +57,11 @@ int main(void)
 	
 	
 	
-	for(;;);
+	while(1)
+	{
+			
+	}
+	
 }
 
 void APP_TogLED(void)
@@ -94,6 +99,14 @@ void APP_OpenDoor(void)
 	................
 	*/
 	
+}
+
+EXTI0_IRQHandler(&x);
+
+void EXTI0_IRQHandler(void *pv)
+{
+	*((u8 *)pv) = 50;
+
 }
 
 

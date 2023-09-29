@@ -7,6 +7,11 @@
 #ifndef STK_INTERFACE_H_
 #define STK_INTERFACE_H_
 
+
+
+
+typedef void (*STK_CallbackFunc_t)(void);
+
 /**
  * @brief Initializes the SysTick timer with the specified reload value.
  *
@@ -155,7 +160,6 @@ Std_ReturnType MCAL_STK_SetBusyWait(u32 Copy_Microseconds);
  * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
 Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds);
-
 
 /**
  * @brief Set a single-shot interval with a specified callback function.

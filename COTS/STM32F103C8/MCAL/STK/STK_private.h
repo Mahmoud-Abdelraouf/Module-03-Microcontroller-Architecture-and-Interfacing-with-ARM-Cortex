@@ -26,14 +26,14 @@
 /*****************************< Register Definitions *****************************/
 #define STK_BASE_ADDRESS                 0xE000E010U
 
-typedef struct STK_RegDef_t{
+typedef struct STK_RegDef_t { 
   volatile u32 CTRL;
   volatile u32 LOAD;
   volatile u32 VAL;
   volatile u32 CALIB;
 } STK_RegDef_t;
 
-#define STK                     ((STK_RegDef_t *)STK_BASE_ADDRESS)
+#define STK           ((STK_RegDef_t *)STK_BASE_ADDRESS)
 
 /*****************************< The following are defines for the bit fields in the STK_CTRL register. *****************************/
 #define STK_CTRL_ENABLE_MASK             0x00000001      /**< Bit 0 : Counter Enable */
@@ -41,20 +41,19 @@ typedef struct STK_RegDef_t{
 #define STK_CTRL_CLKSOURCE_MASK          0x00000004      /**< Bit 2 : Clock Source */
 #define STK_CTRL_COUNTFLAG_MASK          0x00010000      /**< Bit 16: Count Flag */
 
-
 /**
  * @brief Specifies the clock source for the SysTick timer.
  *
  * This option determines whether the SysTick timer uses the processor clock or
  * an external clock source.
  *
- * @param STK_CTRL_CLKSOURCE_1 Clock source is the processor clock.
- * @param STK_CTRL_CLKSOURCE_8 Clock source is the processor clock divided by 8.
+ * @param STK_CTRL_CLKSOURCE_DIV_1 Clock source is the processor clock.
+ * @param STK_CTRL_CLKSOURCE_DIV_8 Clock source is the processor clock divided by 8.
  *
  * @retval None
  */
-#define STK_CTRL_CLKSOURCE_1             1
-#define STK_CTRL_CLKSOURCE_8             0
+#define STK_CTRL_CLKSOURCE_DIV_1             1
+#define STK_CTRL_CLKSOURCE_DIV_8             0
 
 /**
  * @brief Specifies whether the SysTick timer exception request is enabled.
@@ -87,9 +86,9 @@ typedef struct STK_RegDef_t{
  *
  * @retval None
  */
-#if STK_CTRL_CLKSOURCE == STK_CTRL_CLKSOURCE_1
+#if STK_CTRL_CLKSOURCE == STK_CTRL_CLKSOURCE_DIV_1
     #define STK_AHB_CLK       8000000   /**< Processor clock (AHB clock) divided by 1 */
-#elif STK_CTRL_CLKSOURCE == STK_CTRL_CLKSOURCE_8
+#elif STK_CTRL_CLKSOURCE == STK_CTRL_CLKSOURCE_DIV_8
     #define STK_AHB_CLK       1000000   /**< Processor clock (AHB clock) divided by 8 */
 #else
     #error "You chose a wrong clock source for the SysTick"

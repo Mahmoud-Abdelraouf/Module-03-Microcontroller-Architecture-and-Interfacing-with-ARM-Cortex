@@ -21,12 +21,12 @@
  * This option is only applicable if the SysTick timer is configured to use an
  * external clock source (STK_CLKSOURCE = STK_CLKSOURCE_EXT).
  *
- * @param STK_CTRL_CLKSOURCE_1 Clock source is the clock of STK.
- * @param STK_CTRL_CLKSOURCE_8 Clock source/8 is the clock of STK.
+ * @param STK_CTRL_CLKSOURCE_DIV_1 Clock source is the clock of STK.
+ * @param STK_CTRL_CLKSOURCE_DIV_8 Clock source/8 is the clock of STK.
  *
  * @retval None
  */
-#define STK_CTRL_CLKSOURCE     STK_CTRL_CLKSOURCE_8
+#define STK_CTRL_CLKSOURCE     STK_CTRL_CLKSOURCE_DIV_8
 
 /**
  * @brief Specifies whether the SysTick timer exception request is enabled.
@@ -39,7 +39,7 @@
  *
  * @retval None
  */
-#define STK_CTRL_TICKINT       STK_CTRL_TICKINT_ENABLE
+#define STK_CTRL_TICKINT       STK_CTRL_TICKINT_DISABLE
 
 
 #endif /**< STK_CONFIG_H_ */
