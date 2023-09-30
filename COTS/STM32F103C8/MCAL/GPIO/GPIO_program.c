@@ -15,7 +15,6 @@
 /*****************************< Function Implementations *****************************/
 Std_ReturnType MCAL_GPIO_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMode)
 {
-{
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
     switch (Copy_PortId)
