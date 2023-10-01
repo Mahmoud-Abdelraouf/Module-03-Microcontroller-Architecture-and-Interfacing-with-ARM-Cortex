@@ -12,7 +12,6 @@
 #include "RCC_interface.h"
 #include "RCC_private.h"
 #include "RCC_config.h"
-
 /*****************************< Function Implementations *****************************/
 Std_ReturnType MCAL_RCC_InitSysClock(void)
 {

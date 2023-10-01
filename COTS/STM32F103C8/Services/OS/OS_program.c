@@ -10,53 +10,82 @@
 #include "BIT_MATH.h"
 /*****************************< MCAL *****************************/
 #include "STK_interface.h"
-/*****************************< Services *****************************/
+/*****************************< SERVICES *****************************/
 #include "OS_interface.h"
-#include "OS_private.h"
 #include "OS_config.h"
-/*****************************< Global Variable Section *****************************/
-static TCB_t OS_Task[NUMBER_OF_TASKS];
-/*****************************< Function Implementations *****************************/
-Std_ReturnType OS_CreateTask(u8 Copy_Priority, u16 Copy_Periodicity,u8 Copy_FirstDelay, void (*Copy_pf)(void))
+#include "OS_private.h"
+/****************************************< FUNCTIONS IMPLEMENTATION ****************************************/
+/**
+ * @addtogroup PublicFunctions
+ * @{
+ */
+
+Std_ReturnType OS_CreateTask(u8 Copy_TaskPriority, u16 Copy_TaskPeriodicity,u8 Copy_FirstDelay, TaskFunction_t TaskFunction)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
-    if(Copy_Priority < NUMBER_OF_TASKS && Copy_pf != NULL)
+    /**< Check if the task function pointer is valid */
+    if(TaskFunction != NULL)
     {
-        OS_Task[Copy_Priority].Periodicity = Copy_Periodicity;
-        OS_Task[Copy_Priority].FirstDelay = Copy_FirstDelay;
-        OS_Task[Copy_Priority].pf = Copy_pf;
-
+        /**< Set task parameters in the task scheduler */
+        OS_Tasks[Copy_TaskPriority].Periodicity = Copy_TaskPeriodicity;
+        OS_Tasks[Copy_TaskPriority].OS_pfSetTask = TaskFunction;
+        OS_Tasks[Copy_TaskPriority].FirstDelay = Copy_FirstDelay;
+        
+        /**< Configured successfully */
         Local_FunctionStatus = E_OK;
     }
     else
     {
+        /**< Invalid pointer to function  */
         Local_FunctionStatus = E_NOT_OK;
     }
 
-    return Local_FunctionStatus;  
+    return Local_FunctionStatus;
 }
 
-void OS_StartScheduler(void)
+void OS_StartScheduler(void) 
 {
-    /**< Init STK */
+    /**< Initialize the system tick timer */
     MCAL_STK_vInit();
-    /**< Run  Scheduler each 1 msec */
-    MCAL_STK_SetIntervalPeriodic(TICK_MICROSECONDS, OS_Scheduler);
+
+    /**< Set up the system tick timer for periodic scheduling with the specified tick time and scheduler function */
+    MCAL_STK_SetIntervalPeriodic(OS_TICK_TIME, OS_SetScheduler);
 }
 
-static u8 TickCount = 0;
+/**
+ * @} (End of PublicFunctions)
+ */
 
-static void OS_Scheduler(void)
+/**
+ * @addtogroup PrivateFunctions
+ * @{
+ */
+
+static void OS_SetScheduler(void) 
 {
-    for(u8 Count = 0; Count < NUMBER_OF_TASKS; Count++)
+    /**< Iterate through the task list */
+    for (u8 Count = 0; Count < OS_NUMBER_TASKS; Count++) 
     {
-        if((TickCount % OS_Task[Count].Periodicity) == 0)
+        /**< Check if the task has a valid function pointer */
+        if (OS_Tasks[Count].OS_pfSetTask != NULL) 
         {
-            OS_Task[Count].pf();
+            /**< Check if the task's first delay has expired */
+            if (OS_Tasks[Count].FirstDelay == 0) 
+            {
+                /**< If yes, execute the task and reset the first delay */
+                OS_Tasks[Count].FirstDelay = ((OS_Tasks[Count].Periodicity) - 1);
+                OS_Tasks[Count].OS_pfSetTask();
+            } else 
+            {
+                /**< If not, decrement the first delay */
+                OS_Tasks[Count].FirstDelay--;
+            }
         }
-    }   
-
-    TickCount++;
-    TickCount*=TICK_MICROSECONDS;
+    }
 }
+
+/**
+ * @} (End of PrivateFunctions)
+ */
+/****************************************< End of FUNCTIONS IMPLEMENTATION ****************************************/

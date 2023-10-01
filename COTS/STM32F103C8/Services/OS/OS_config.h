@@ -10,7 +10,7 @@
 
 
 
-#define NUMBER_OF_TASKS         3
-#define TICK_MICROSECONDS       1000
+#define OS_NUMBER_TASKS    3
+#define OS_TICK_TIME       1000
 
 #endif /**< OS_CONFIG_H_ */
