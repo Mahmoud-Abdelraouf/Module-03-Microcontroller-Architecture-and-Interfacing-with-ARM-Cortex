@@ -22,9 +22,9 @@
  * PARITY_ODD: Odd parity is used.
  */
 typedef enum {
-  USART_PARITY_NONE,  /**< No parity bit is used */
-  USART_PARITY_EVEN,  /**< Even parity is used */
-  USART_PARITY_ODD    /**< Odd parity is used */
+  UART_PARITY_NONE,  /**< No parity bit is used */
+  UART_PARITY_EVEN,  /**< Even parity is used */
+  UART_PARITY_ODD    /**< Odd parity is used */
 } USART_Parity_t;
 
 /**
@@ -35,10 +35,10 @@ typedef enum {
  * STOP_BITS_2: 2 stop bits are used.
  */
 typedef enum {
-  USART_STOP_BITS_1,     /**< 1 stop bit is used */
-  USART_STOP_BITS_0_5,   /**< 0.5 stop bit is used */
-  USART_STOP_BITS_2,     /**< 2 stop bits are used */
-  USART_STOP_BITS_1_5    /**< 1.5 stop bits are used */
+  UART_STOP_BITS_1,     /**< 1 stop bit is used */
+  UART_STOP_BITS_0_5,   /**< 0.5 stop bit is used */
+  UART_STOP_BITS_2,     /**< 2 stop bits are used */
+  UART_STOP_BITS_1_5    /**< 1.5 stop bits are used */
 } USART_StopBits_t;
 
 /**
@@ -63,10 +63,10 @@ typedef enum {
  * BAUD_RATE_38400: Baud rate of 38400.
  */
 typedef enum {
-  USART_BAUD_RATE_9600   = 9600,     /**< Baud rate of 9600 */
-  USART_BAUD_RATE_115200 = 115200,   /**< Baud rate of 115200 */
-  USART_BAUD_RATE_57600  = 57600,    /**< Baud rate of 57600 */
-  USART_BAUD_RATE_38400  = 38400    /**< Baud rate of 38400 */
+  UART_BAUD_RATE_9600   = 9600,     /**< Baud rate of 9600 */
+  UART_BAUD_RATE_115200 = 115200,   /**< Baud rate of 115200 */
+  UART_BAUD_RATE_57600  = 57600,    /**< Baud rate of 57600 */
+  UART_BAUD_RATE_38400  = 38400    /**< Baud rate of 38400 */
 } USART_BaudRate_t;
 
 /**
@@ -98,19 +98,21 @@ typedef enum {
  * Data transmission occurs only when the CTS signal is asserted.
  */
 typedef enum {
-    USART_HW_FLOW_CONTROL_NONE,   /**< No hardware flow control */
-    USART_HW_FLOW_CONTROL_RTS,    /**< Request to Send (RTS) hardware flow control */
-    USART_HW_FLOW_CONTROL_CTS,    /**< Clear to Send (CTS) hardware flow control */
-    USART_HW_FLOW_CONTROL_RTS_CTS /**< RTS and CTS hardware flow control */
+    UART_HW_FLOW_CONTROL_NONE,   /**< No hardware flow control */
+    UART_HW_FLOW_CONTROL_RTS,    /**< Request to Send (RTS) hardware flow control */
+    UART_HW_FLOW_CONTROL_CTS,    /**< Clear to Send (CTS) hardware flow control */
+    UART_HW_FLOW_CONTROL_RTS_CTS /**< RTS and CTS hardware flow control */
 } USART_HW_FlowControl_t;
 
 typedef struct {
   u32 BaudRate;
+  u8 HwFlowControl:2;
   u8 ParityMode: 2;
   u8 StopBits: 2;
   u8 WordLength: 1;
-  u8 : 3; /**< Padding to align to 8 bits */ 
+  u8 : 1; /**< Padding to align to 8 bits */ 
 } USART_Config_t;
+
 
 /**
  * @}
@@ -134,7 +136,7 @@ typedef struct {
  *     - E_OK: UART initialization successful.
  *     - E_NOT_OK: UART initialization failed or invalid configuration.
  */
-Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig);
+Std_ReturnType UART_Init(USART_Config_t *USARTConfig);
 
 /**
  * @brief Transmits data via the UART interface.
@@ -149,7 +151,7 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig);
  *     - E_OK: Data transmission successful.
  *     - E_NOT_OK: Data transmission failed or invalid parameters.
  */
-Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize);
+Std_ReturnType UART_Transmit(u8 *Data, u16 DataSize);
 
 /**
  * @brief Receives data via the UART interface.
@@ -164,7 +166,7 @@ Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize);
  *     - E_OK: Data reception successful.
  *     - E_NOT_OK: Data reception failed or invalid parameters.
  */
-Std_ReturnType MCAL_USART_Receive(u8 *Data, u16 DataSize);
+Std_ReturnType UART_Receive(u8 *Data, u16 DataSize);
 
 /**
  * @}
