@@ -1,7 +1,7 @@
 /****************************************************************/
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
 /******* Date      : 32 Sep 2023                *****************/
-/******* Version   : 0.1                        *****************/
+/******* Version   : 0.2                        *****************/
 /******* File Name : UART_interface.h           *****************/
 /****************************************************************/
 
@@ -13,15 +13,15 @@
 #include "UART_private.h"
 #include "UART_config.h"
 /*****************************< Function Implementations *****************************/
-Std_ReturnType UART_Init(USART_Config_t *Copy_USARTConfig)
+Std_ReturnType UART_Init(USART_Config_t *USARTConfig)
 {
-    /**< Configure UART word length (data bits) */
-  if (Copy_USARTConfig->WordLength == UART_WORD_LENGTH_8BIT)
+  /**< Configure UART word length (data bits) */
+  if (USARTConfig->WordLength == UART_WORD_LENGTH_8BIT)
   {
     /**< Configure 8-bit word length */
     USART2->CR1 &= ~USART_CR1_M;  /**< Clear the M bit for 8-bit word length */ 
   }
-  else if (Copy_USARTConfig->WordLength == UART_WORD_LENGTH_9BIT)
+  else if (USARTConfig->WordLength == UART_WORD_LENGTH_9BIT)
   {
     /**< Configure 9-bit word length */
     USART2->CR1 |= USART_CR1_M;  /**< Set the M bit for 8-bit word length */ 
@@ -29,21 +29,21 @@ Std_ReturnType UART_Init(USART_Config_t *Copy_USARTConfig)
 
   /**< Configure UART stop bits */
   USART2->CR2 &= ~USART_CR2_STOP;     /**< Clear the STOP bits */ 
-  USART2->CR2 |= Copy_USARTConfig->StopBits;    /**< Set the specified stop bits */
+  USART2->CR2 |= USARTConfig->StopBits;    /**< Set the specified stop bits */
 
   /**< Configure UART parity mode */
-  if (Copy_USARTConfig->ParityMode == UART_PARITY_NONE)
+  if (USARTConfig->ParityMode == UART_PARITY_NONE)
   {
     /**< Configure no parity */
     USART2->CR1 &= ~(USART_CR1_PCE | USART_CR1_PS); /**< Clear the PCE and PS bits for no parity */
   }
-  else if (Copy_USARTConfig->ParityMode == UART_PARITY_EVEN)
+  else if (USARTConfig->ParityMode == UART_PARITY_EVEN)
   {
     /**< Configure even parity */
     USART2->CR1 |= USART_CR1_PCE;   /**< Set the PCE bit for even parity */ 
     USART2->CR1 &= ~USART_CR1_PS;   /**< Clear the PS bit for even parity */
   }
-  else if (Copy_USARTConfig->ParityMode == UART_PARITY_ODD)
+  else if (USARTConfig->ParityMode == UART_PARITY_ODD)
   {
     /**< Configure odd parity */
     USART2->CR1 |= USART_CR1_PCE;   /**< Set the PCE bit for odd parity */ 
@@ -52,7 +52,7 @@ Std_ReturnType UART_Init(USART_Config_t *Copy_USARTConfig)
 
   /*********************< Configure UART baud rate *********************/
   /**< Calculate the value of the USARTDIV register based on the desired baud rate */
-  f32 Local_f32USARTDIV = (f32)USART_CLK_SRC / (16 * Copy_USARTConfig->BaudRate);
+  f32 Local_f32USARTDIV = (f32)USART_CLK_SRC / (16 * USARTConfig->BaudRate);
 
   /**< Calculate the integer (mantissa) and fractional parts of USARTDIV */
   u16 Local_u16DIV_Mantissa = (u16)Local_f32USARTDIV;
@@ -78,4 +78,51 @@ Std_ReturnType UART_Init(USART_Config_t *Copy_USARTConfig)
 
   /**< Enable UART */
   USART2->CR1 |= USART_CR1_UE;  /**< Set the UE bit to enable UART */ 
+}
+
+Std_ReturnType UART_Transmit(u8 *Data, u16 DataSize) 
+{
+  if (Data == NULL || DataSize == 0) 
+  {
+    return E_INVALID_PARAMETER; /**< Define your error code for invalid parameters */ 
+  }
+
+  for (u16 i = 0; i < DataSize; ++i) 
+  {
+    /**< Wait for the Transmit Data Register to be empty */ 
+    while (!(USART2->SR & USART_SR_TXE)) 
+    {
+      /**< Wait until the TXE flag is set, indicating that the data register is empty and ready to transmit */ 
+    }
+    /**< Load the data into the Data Register */ 
+    USART2->DR = Data[i];
+    /**< Wait for the Transmission Complete */ 
+    while (!(USART2->SR & USART_SR_TC)) 
+    {
+      /**<  Wait until the TC flag is set, indicating that the transmission is complete */
+    }
+  }
+
+  return E_OK; /**< Define your success code */ 
+}
+
+Std_ReturnType UART_Receive(u8 *Data, u16 DataSize)
+{
+  if (Data == NULL || DataSize == 0) 
+  {
+    return E_INVALID_PARAMETER; /**< Define your error code for invalid parameters */ 
+  }
+
+  for (u16 i = 0; i < DataSize; ++i) 
+  {
+    /**< Wait until data is received */ 
+    while (!(USART2->SR & USART_SR_RXNE)) 
+    {
+      /**< Wait until the RXNE flag is set, indicating that data is ready to be read */
+    }
+    /**< Read the received data */ 
+    Data[i] = USART2->DR;
+  }
+
+  return E_OK; /**< Define your success code */ 
 }

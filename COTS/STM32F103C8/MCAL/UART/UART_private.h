@@ -7,38 +7,28 @@
 #ifndef UART_PRIVATE_H_
 #define UART_PRIVATE_H_
 
-
+/**
+ * @brief USART base address.
+ */
 #define USART2_BASE_ADDRESS 0x40004400
 
+/**
+ * @brief Structure representing USART registers.
+ */
 typedef struct {
-    volatile u32  SR;
-    volatile u32  DR;
-    volatile u32  BRR;
-    volatile u32  CR1;
-    volatile u32  CR2;
-    volatile u32  CR3;
-    volatile u32  GTPR;
+    volatile u32 SR;   /**< Status register */
+    volatile u32 DR;   /**< Data register */
+    volatile u32 BRR;  /**< Baud rate register */
+    volatile u32 CR1;  /**< Control register 1 */
+    volatile u32 CR2;  /**< Control register 2 */
+    volatile u32 CR3;  /**< Control register 3 */
+    volatile u32 GTPR; /**< Guard time and prescaler register */
 } USART_RegDef_t;
 
+/**
+ * @brief USART2 pointer.
+ */
 #define USART2   ((USART_RegDef_t *)USART2_BASE_ADDRESS)
-
-
-
-#define WORD_LENGTH_B       12
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * @brief USART control register 1 (USART_CR1) bit definitions.

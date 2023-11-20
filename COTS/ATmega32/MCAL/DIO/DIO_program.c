@@ -5,10 +5,10 @@
 /******* File Name : DIO_program.c              *****************/
 /****************************************************************/
 
-/**< LIB */
+/*****************************< LIB *****************************/
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
-/**< MCAL */
+/*****************************< MCAL *****************************/
 #include "DIO_interface.h"
 #include "DIO_private.h"
 #include "DIO_config.h"
@@ -43,7 +43,6 @@ void DIO_voidInit(void)
                        DIO_PD3_INITIAL_VALUE, DIO_PD2_INITIAL_VALUE, DIO_PD1_INITIAL_VALUE, DIO_PD0_INITIAL_VALUE);
     
 }
-
 
 Std_ReturnType DIO_SetPinDirection(u8 Copy_PortId, u8 Copy_PinId,u8 Copy_PinDirection)
 {
@@ -91,6 +90,7 @@ Std_ReturnType DIO_SetPinDirection(u8 Copy_PortId, u8 Copy_PinId,u8 Copy_PinDire
 	{
 		Local_FunctionStatus = E_NOT_OK;
 	}
+
 	return Local_FunctionStatus;
 	
 }
@@ -144,6 +144,7 @@ Std_ReturnType DIO_SetPinValue(u8 Copy_PortId, u8 Copy_PinId,u8 Copy_PinValue)
 	{
 		Local_FunctionStatus = E_NOT_OK;
 	}
+
 	return Local_FunctionStatus;
 }
 
@@ -204,6 +205,7 @@ Std_ReturnType DIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId,u8 *Copy_ReturnedPi
 	{
 		Local_FunctionStatus  =E_NOT_OK;
 	}
+
 	return Local_FunctionStatus;
 }
 
@@ -254,6 +256,7 @@ Std_ReturnType DIO_SetPortDirection(u8 Copy_PortId, u8 Copy_PortDirection)
 	{
 		Local_FunctionStatus = E_NOT_OK;
 	}
+
 	return Local_FunctionStatus;
 }
 
@@ -268,6 +271,7 @@ Std_ReturnType DIO_SetPortValue(u8 Copy_PortId, u8 Copy_PortValue)
 		case DIO_PORTD: DIO_PORTD_R = Copy_PortValue; break;
 		default: Local_FunctionStatus = E_NOT_OK; break;
 	}
+
 	return Local_FunctionStatus;
 }
 
@@ -290,7 +294,6 @@ Std_ReturnType DIO_GetPortValue(u8 Copy_u8portId, u8 *Copy_ReturnedPortValue)
 	{
 		Local_FunctionStatus = E_NOT_OK;
 	}
-	
 	
 	return Local_FunctionStatus;
 }

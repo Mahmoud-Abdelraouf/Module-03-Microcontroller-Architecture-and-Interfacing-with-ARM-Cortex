@@ -17,7 +17,7 @@
  * - DIO_INITIAL_INPUT : Set the pin as an input.
  */
  
-/**< Port A */
+/**************************< Port A **************************/
 #define DIO_PA0_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PA1_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PA2_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
@@ -27,7 +27,7 @@
 #define DIO_PA6_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PA7_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 
-/**< Port B */
+/**************************< Port B **************************/
 #define DIO_PB0_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PB1_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PB2_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
@@ -37,7 +37,7 @@
 #define DIO_PB6_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PB7_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 
-/**< Port C */
+/**************************< Port C **************************/
 #define DIO_PC0_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PC1_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PC2_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
@@ -47,7 +47,7 @@
 #define DIO_PC6_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PC7_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 
-/**< Port D */
+/**************************< Port D **************************/
 #define DIO_PD0_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PD1_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
 #define DIO_PD2_INITIAL_DIRECTION   DIO_INITIAL_OUTPUT
@@ -69,7 +69,7 @@
  * - DIO_PULL_UP    : Set the pin with an internal pull-up resistor (for input pins).
  */
  
-/**< Port A */
+/**************************< Port A **************************/
 #define DIO_PA0_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PA1_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PA2_INITIAL_VALUE   DIO_OUTPUT_LOW
@@ -79,7 +79,7 @@
 #define DIO_PA6_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PA7_INITIAL_VALUE   DIO_OUTPUT_LOW
 
-/**< Port B */
+/**************************< Port B **************************/
 #define DIO_PB0_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PB1_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PB2_INITIAL_VALUE   DIO_OUTPUT_LOW
@@ -89,7 +89,7 @@
 #define DIO_PB6_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PB7_INITIAL_VALUE   DIO_OUTPUT_LOW
 
-/**< Port C */
+/**************************< Port C **************************/
 #define DIO_PC0_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PC1_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PC2_INITIAL_VALUE   DIO_OUTPUT_LOW
@@ -99,7 +99,7 @@
 #define DIO_PC6_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PC7_INITIAL_VALUE   DIO_OUTPUT_LOW
 
-/**< Port D */
+/**************************< Port D **************************/
 #define DIO_PD0_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PD1_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PD2_INITIAL_VALUE   DIO_OUTPUT_LOW
@@ -108,7 +108,6 @@
 #define DIO_PD5_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PD6_INITIAL_VALUE   DIO_OUTPUT_LOW
 #define DIO_PD7_INITIAL_VALUE   DIO_OUTPUT_LOW  
-
 
 
 #endif /**< __DIO_CONFIG_H_ */

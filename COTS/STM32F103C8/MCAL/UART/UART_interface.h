@@ -117,12 +117,58 @@ typedef struct {
  * @}
  */
 
-Std_ReturnType UART_Init(USART_Config_t *Copy_USARTConfig);
+/**
+ * @addtogroup UART_API's
+ * @{
+ */
 
-Std_ReturnType UART_Transmit(u8* Copy_Data, u16 Copy_DataSize);
+/**
+ * @brief Initializes the UART module with the provided configuration settings.
+ *
+ * This function initializes the UART module based on the provided configuration 
+ * settings, including word length, stop bits, and parity mode. It configures the 
+ * baud rate and other necessary parameters to enable UART communication.
+ *
+ * @param[in] USARTConfig Pointer to a structure containing UART configuration settings.
+ * 
+ * @return
+ *     - E_OK: UART initialization successful.
+ *     - E_NOT_OK: UART initialization failed or invalid configuration.
+ */
+Std_ReturnType UART_Init(USART_Config_t *USARTConfig);
 
-Std_ReturnType UART_Receive(u8* Copy_Data, u16 Copy_DataSize);
+/**
+ * @brief Transmits data via the UART interface.
+ *
+ * This function transmits a specified amount of data through the UART interface. 
+ * It sends the provided data buffer of a specified size over the UART channel.
+ *
+ * @param[in] Data Pointer to the data buffer to be transmitted.
+ * @param[in] DataSize Size of the data buffer to be transmitted.
+ * 
+ * @return
+ *     - E_OK: Data transmission successful.
+ *     - E_NOT_OK: Data transmission failed or invalid parameters.
+ */
+Std_ReturnType UART_Transmit(u8 *Data, u16 DataSize);
 
+/**
+ * @brief Receives data via the UART interface.
+ *
+ * This function receives a specified amount of data through the UART interface. 
+ * It stores the received data in the provided buffer of a specified size.
+ *
+ * @param[out] Data Pointer to the buffer to store the received data.
+ * @param[in] DataSize Size of the buffer to store the received data.
+ * 
+ * @return
+ *     - E_OK: Data reception successful.
+ *     - E_NOT_OK: Data reception failed or invalid parameters.
+ */
+Std_ReturnType UART_Receive(u8 *Data, u16 DataSize);
 
+/**
+ * @}
+ */
 
 #endif /**< UART_INTERFACE_H_ */

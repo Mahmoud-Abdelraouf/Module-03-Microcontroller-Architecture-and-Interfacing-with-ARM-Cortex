@@ -7,9 +7,6 @@
 #ifndef STK_INTERFACE_H_
 #define STK_INTERFACE_H_
 
-
-
-
 typedef void (*STK_CallbackFunc_t)(void);
 
 /**
