@@ -76,6 +76,10 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig)
   USART1->BRR = (Local_DIV_Mantissa << 4) | Local_DIV_Fraction;
   /*********************< End of Configure UART baud rate *********************/
 
+  /**< Enable Transmitter */
+  USART1->CR1 |= USART_CR1_TE;  /**< Set the TE bit to enable UART */ 
+  /**< Enable Receiver */
+  USART1->CR1 |= USART_CR1_RE;  /**< Set the RE bit to enable UART */ 
   /**< Enable UART */
   USART1->CR1 |= USART_CR1_UE;  /**< Set the UE bit to enable UART */ 
 }

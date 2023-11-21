@@ -33,6 +33,7 @@ int main(void)
 	MCAL_GPIO_SetPinMode(GPIO_PORTA, GPIO_PIN10, GPIO_INPUT_FLOATING);
 	/**< Init the LED */
 	MCAL_GPIO_SetPinMode(GPIO_PORTA, GPIO_PIN2, GPIO_OUTPUT_PUSH_PULL_2MHZ);
+	MCAL_GPIO_SetPinMode(GPIO_PORTA, GPIO_PIN1, GPIO_OUTPUT_PUSH_PULL_2MHZ);
 	/**< Init the USART */
 	USART_Config_t Local_Uart1 = {
 		.HwFlowControl = UART_HW_FLOW_CONTROL_NONE,
@@ -43,13 +44,12 @@ int main(void)
 	};
 	UART_Init(&Local_Uart1);
 	/*****************************< Task section *****************************/
-	for(;;)
+	MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN2, GPIO_HIGH);
+	UART_Receive(Local_RecivedData, 1);
+	MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN1, GPIO_HIGH);
+	if(Local_RecivedData[0] == 'a')
 	{
-		MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN2, GPIO_HIGH);
-		UART_Receive(Local_RecivedData, 1);
-		if(Local_RecivedData[0] == 'a')
-		{
-			MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN2, GPIO_LOW);
-		}
+		MCAL_GPIO_SetPinValue(GPIO_PORTA, GPIO_PIN2, GPIO_LOW);
 	}
+	for(;;);
 }

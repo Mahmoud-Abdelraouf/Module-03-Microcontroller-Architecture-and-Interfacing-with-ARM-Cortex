@@ -28,10 +28,15 @@ Project File Date:  11/20/2023
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
 compiling main.c...
+UART_program.c(85): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+1 warning generated.
+compiling UART_program.c...
 linking...
-Program Size: Code=5120 RO-data=252 RW-data=0 ZI-data=1640  
+Program Size: Code=5156 RO-data=252 RW-data=0 ZI-data=1640  
 FromELF: creating hex file...
-".\Objects\USART_Test.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\USART_Test.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -62,7 +67,7 @@ Package Vendor: Keil
       Source file:   Device/Source/system_stm32f10x.c
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Include file:  RTE_Driver/Config/RTE_Device.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

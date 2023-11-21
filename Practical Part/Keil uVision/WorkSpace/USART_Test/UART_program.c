@@ -76,8 +76,12 @@ Std_ReturnType UART_Init(USART_Config_t *USARTConfig)
   USART2->BRR = (Local_u16DIV_Mantissa << 4) | Local_u16DIV_Fraction;
   /*********************< End of Configure UART baud rate *********************/
 
+  /**< Enable Transmitter */
+  USART2->CR1 |= USART_CR1_TE;  /**< Set the TE bit to enable UART */ 
+  /**< Enable Receiver */
+  USART2->CR1 |= USART_CR1_RE;  /**< Set the RE bit to enable UART */ 
   /**< Enable UART */
-  USART2->CR1 |= USART_CR1_UE;  /**< Set the UE bit to enable UART */ 
+  USART2->CR1 |= USART_CR1_UE;  /**< Set the UE bit to enable UART */  
 }
 
 Std_ReturnType UART_Transmit(u8 *Data, u16 DataSize) 
