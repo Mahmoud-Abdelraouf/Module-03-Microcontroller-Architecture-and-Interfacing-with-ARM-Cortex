@@ -61,10 +61,10 @@
  * @brief Definitions for different GPIO input modes.
  * @{
  */
-#define GPIO_INPUT_ANALOG                       0b0000 /**< GPIO Input Analog Mode */
-#define GPIO_INPUT_FLOATING                     0b0100 /**< GPIO Input Floating Mode */
-#define GPIO_INPUT_PULL_DOWN                    0b1000 /**< GPIO Input Pull down Mode */
-#define GPIO_INPUT_PULL_UP                      0b1000 /**< GPIO Input Pull up Mode */
+#define GPIO_INPUT_ANALOG                        0x00  /**< GPIO Input Analog Mode */
+#define GPIO_INPUT_FLOATING                      0x04  /**< GPIO Input Floating Mode */
+#define GPIO_INPUT_PULL_DOWN                     0x08  /**< GPIO Input Pull down Mode */
+#define GPIO_INPUT_PULL_UP                       0x08  /**< GPIO Input Pull up Mode */
 /** @} */
 
 /**
@@ -72,20 +72,20 @@
  * @brief Definitions for different GPIO output modes.
  * @{
  */
-#define GPIO_OUTPUT_PUSH_PULL_10MHZ              0b0001 /**< GPIO Output Push-Pull Mode, 10MHz */
-#define GPIO_OUTPUT_OPEN_DRAIN_10MHZ             0b0101 /**< GPIO Output Open-Drain Mode, 10MHz */
-#define GPIO_OUTPUT_AF_PUSH_PULL_10MHZ           0b1001 /**< GPIO Output Alternate Function Push-Pull Mode, 10MHz */
-#define GPIO_OUTPUT_AF_OPEN_DRAIN_10MHZ          0b1101 /**< GPIO Output Alternate Function Open-Drain Mode, 10MHz */
-
-#define GPIO_OUTPUT_PUSH_PULL_2MHZ               0b0010 /**< GPIO Output Push-Pull Mode, 2MHz */
-#define GPIO_OUTPUT_OPEN_DRAIN_2MHZ              0b0110 /**< GPIO Output Open-Drain Mode, 2MHz */
-#define GPIO_OUTPUT_AF_PUSH_PULL_2MHZ            0b1010 /**< GPIO Output Alternate Function Push-Pull Mode, 2MHz */
-#define GPIO_OUTPUT_AF_OPEN_DRAIN_2MHZ           0b1110 /**< GPIO Output Alternate Function Open-Drain Mode, 2MHz */
-
-#define GPIO_OUTPUT_PUSH_PULL_50MHZ              0b0011 /**< GPIO Output Push-Pull Mode, 50MHz */
-#define GPIO_OUTPUT_OPEN_DRAIN_50MHZ             0b0111 /**< GPIO Output Open-Drain Mode, 50MHz */
-#define GPIO_OUTPUT_AF_PUSH_PULL_50MHZ           0b1011 /**< GPIO Output Alternate Function Push-Pull Mode, 50MHz */
-#define GPIO_OUTPUT_AF_OPEN_DRAIN_50MHZ          0b1111 /**< GPIO Output Alternate Function Open-Drain Mode, 50MHz */
+#define GPIO_OUTPUT_PUSH_PULL_10MHZ              0x01  /**< GPIO Output Push-Pull Mode, 10MHz */
+#define GPIO_OUTPUT_OPEN_DRAIN_10MHZ             0x05  /**< GPIO Output Open-Drain Mode, 10MHz */
+#define GPIO_OUTPUT_AF_PUSH_PULL_10MHZ           0x09  /**< GPIO Output Alternate Function Push-Pull Mode, 10MHz */
+#define GPIO_OUTPUT_AF_OPEN_DRAIN_10MHZ          0x0D  /**< GPIO Output Alternate Function Open-Drain Mode, 10MHz */
+    
+#define GPIO_OUTPUT_PUSH_PULL_2MHZ               0x02  /**< GPIO Output Push-Pull Mode, 2MHz */
+#define GPIO_OUTPUT_OPEN_DRAIN_2MHZ              0x06  /**< GPIO Output Open-Drain Mode, 2MHz */
+#define GPIO_OUTPUT_AF_PUSH_PULL_2MHZ            0x0A  /**< GPIO Output Alternate Function Push-Pull Mode, 2MHz */
+#define GPIO_OUTPUT_AF_OPEN_DRAIN_2MHZ           0x0E  /**< GPIO Output Alternate Function Open-Drain Mode, 2MHz */
+   
+#define GPIO_OUTPUT_PUSH_PULL_50MHZ              0x03  /**< GPIO Output Push-Pull Mode, 50MHz */
+#define GPIO_OUTPUT_OPEN_DRAIN_50MHZ             0x07  /**< GPIO Output Open-Drain Mode, 50MHz */
+#define GPIO_OUTPUT_AF_PUSH_PULL_50MHZ           0x0B  /**< GPIO Output Alternate Function Push-Pull Mode, 50MHz */
+#define GPIO_OUTPUT_AF_OPEN_DRAIN_50MHZ          0x0F  /**< GPIO Output Alternate Function Open-Drain Mode, 50MHz */
 /** @} */
 
 /** @} */
