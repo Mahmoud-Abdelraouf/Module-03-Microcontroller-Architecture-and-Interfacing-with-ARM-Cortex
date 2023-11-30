@@ -2,7 +2,7 @@
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
 /******* Date      : 32 Sep 2023                *****************/
 /******* Version   : 0.2                        *****************/
-/******* File Name : UART_interface.h           *****************/
+/******* File Name : UART_program.c             *****************/
 /****************************************************************/
 
 /*****************************< LIB *****************************/
@@ -88,7 +88,7 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig)
   /**< Enable UART */
   USART1->CR1 |= USART_CR1_UE;  /**< Set the UE bit to enable UART */ 
 
-  return E_OK;
+  return E_OK; /**< Define your success code */
 }
 
 Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize) 
