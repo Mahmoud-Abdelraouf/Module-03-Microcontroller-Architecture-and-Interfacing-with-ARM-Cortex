@@ -15,6 +15,10 @@
 /*****************************< Function Implementations *****************************/
 Std_ReturnType UART_Init(USART_Config_t *USARTConfig)
 {
+	if(USARTConfig == NULL)
+	{
+		return E_INVALID_PARAMETER;
+	}
   /**< Configure UART word length (data bits) */
   if (USARTConfig->WordLength == UART_WORD_LENGTH_8BIT)
   {
@@ -82,6 +86,8 @@ Std_ReturnType UART_Init(USART_Config_t *USARTConfig)
   USART2->CR1 |= USART_CR1_RE;  /**< Set the RE bit to enable UART */ 
   /**< Enable UART */
   USART2->CR1 |= USART_CR1_UE;  /**< Set the UE bit to enable UART */  
+	
+	return E_OK;
 }
 
 Std_ReturnType UART_Transmit(u8 *Data, u16 DataSize) 

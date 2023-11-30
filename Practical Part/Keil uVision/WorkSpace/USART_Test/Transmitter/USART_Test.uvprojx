@@ -460,14 +460,14 @@
               <FilePath>.\UART_private.h</FilePath>
             </File>
             <File>
-              <FileName>UART_program.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\UART_program.c</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UART_program.c</FilePath>
             </File>
             <File>
               <FileName>STD_TYPES.h</FileName>
