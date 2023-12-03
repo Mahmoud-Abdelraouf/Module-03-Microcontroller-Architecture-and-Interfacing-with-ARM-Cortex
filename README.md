@@ -379,6 +379,6 @@ For more information about IEEE, visit [IEEE Official Website](https://www.ieee.
 
 For any inquiries about the workshop, please contact the workshop organizers:
 
-- Organizer Name: [Mahmoud Abdelraouf Mahmoud]
-- Email: [mahmoud126125@gmail.com]
-- Phone: [01150091280]
+- Organizer Name: Mahmoud Abdelraouf Mahmoud
+- Email: mahmoud126125@gmail.com
+- Phone: 01150091280
