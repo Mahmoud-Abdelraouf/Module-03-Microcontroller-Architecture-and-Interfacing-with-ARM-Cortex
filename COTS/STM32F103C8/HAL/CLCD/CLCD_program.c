@@ -12,8 +12,8 @@
 #include "GPIO_interface.h"
 #include "STK_interface.h"
 /*****************************< HAL *****************************/
-#include "CLCD_private.h"
 #include "CLCD_interface.h"
+#include "CLCD_private.h"
 #include "CLCD_config.h"
 /*****************************< Function Implementations *****************************/
 void HAL_LCD_Init(const LCD_Config_t *config) 
@@ -23,38 +23,45 @@ void HAL_LCD_Init(const LCD_Config_t *config)
         return;
     }
 
+    /**< Init the Mode of the en, rs, rw */
+    MCAL_GPIO_SetPinMode(config->enablePin.LCD_PortId, config->enablePin.LCD_PinId, GPIO_OUTPUT_PUSH_PULL_10MHZ);
+    MCAL_GPIO_SetPinMode(config->rsPin.LCD_PortId, config->rsPin.LCD_PinId, GPIO_OUTPUT_PUSH_PULL_10MHZ);
+    MCAL_GPIO_SetPinMode(config->rwPin.LCD_PortId, config->rwPin.LCD_PinId, GPIO_OUTPUT_PUSH_PULL_10MHZ);
+
     if(config->mode == LCD_4BitMode)
     {
+        /**< Init the Mode of Data Pins */
         for(uint8_t i = 0; i < 4; i++)
         {
-            MCAL_GPIO_SetPinMode(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, GPIO_OUTPUT_PUSH_PULL_2MHZ);
+            MCAL_GPIO_SetPinMode(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, GPIO_OUTPUT_PUSH_PULL_10MHZ);
         }
-
+        
         MCAL_STK_SetDelay_ms(1000);
 
-        LCD_SendCommand(config, LCD_8BIT_MODE_COMMAND);
-        LCD_SendCommand(config, LCD_CLEAR_COMMAND);
-        LCD_SendCommand(config, LCD_DISPLAY_ON_COMMAND);
+        HAL_LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_1);
+        HAL_LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_2);
+        HAL_LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_3);
+        HAL_LCD_SendCommand(config, LCD_CLEAR_COMMAND);
+        HAL_LCD_SendCommand(config, LCD_DISPLAY_ON_COMMAND);
     }
     else if(LCD_8BitMode)
     {
         for(uint8_t i = 0; i < 8; i++)
         {
-            MCAL_GPIO_SetPinMode(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, GPIO_OUTPUT_PUSH_PULL_2MHZ);
+            MCAL_GPIO_SetPinMode(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, GPIO_OUTPUT_PUSH_PULL_10MHZ);
         }
 
         MCAL_STK_SetDelay_ms(1000);
 
-        LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_1);
-        LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_2);
-        LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_3);
-        LCD_SendCommand(config, LCD_CLEAR_COMMAND);
-        LCD_SendCommand(config, LCD_DISPLAY_ON_COMMAND);
+        HAL_LCD_SendCommand(config, LCD_8BIT_MODE_COMMAND);
+        HAL_LCD_SendCommand(config, LCD_CLEAR_COMMAND);
+        HAL_LCD_SendCommand(config, LCD_DISPLAY_ON_COMMAND);   
     }
     else
     {
         return;
     }
+
 }
 
 void HAL_LCD_SendCommand(const LCD_Config_t *config, uint8_t command) 
@@ -66,11 +73,11 @@ void HAL_LCD_SendCommand(const LCD_Config_t *config, uint8_t command)
 
     if(config->mode == LCD_4BitMode)
     {
-        LCD_Send4Bits(config, command);
+        HAL_LCD_Send4Bits(config, command);
     }
     else if(config->mode == LCD_8BitMode)
     {
-        LCD_Send8Bits(config, command);
+        HAL_LCD_Send8Bits(config, command);
     }
     else
     {
@@ -81,17 +88,17 @@ void HAL_LCD_SendCommand(const LCD_Config_t *config, uint8_t command)
 void HAL_LCD_SendChar(const LCD_Config_t *config, uint8_t character) 
 {
     /**< Set RS pin to low for data --> RS = 1 */
-    MCAL_GPIO_SetPinValue(config->rsPin.LCD_PortId, config->rsPin.LCD_PinId, GPIO_LOW);
+    MCAL_GPIO_SetPinValue(config->rsPin.LCD_PortId, config->rsPin.LCD_PinId, GPIO_HIGH);
     /**< Set RW pin to low for write  --> RW = 0 */
     MCAL_GPIO_SetPinValue(config->rwPin.LCD_PortId, config->rwPin.LCD_PinId, GPIO_LOW);
 
     if(config->mode == LCD_4BitMode)
     {
-        LCD_Send4Bits(config, character);
+        HAL_LCD_Send4Bits(config, character);
     }
     else if(config->mode == LCD_8BitMode)
     {
-        LCD_Send8Bits(config, character);
+        HAL_LCD_Send8Bits(config, character);
     }
     else
     {
@@ -105,7 +112,7 @@ void HAL_LCD_SendString(const LCD_Config_t *config, const uint8_t *string)
 
     while(string[Local_Counter] != '\0')
     {
-        LCD_SendChar(config, string[Local_Counter]);
+        HAL_LCD_SendChar(config, string[Local_Counter]);
         Local_Counter++;
     }
 }
@@ -116,7 +123,7 @@ void HAL_LCD_SendIntegerPart(const LCD_Config_t *config, s32 number) {
 
     /**< Handle negative numbers */ 
     if (number < 0) {
-        LCD_SendChar(config, '-');
+        HAL_LCD_SendChar(config, '-');
         number *= -1;
     }
 
@@ -131,7 +138,7 @@ void HAL_LCD_SendIntegerPart(const LCD_Config_t *config, s32 number) {
 
     /**< Display each digit */ 
     for (; Local_Counter >= 0; Local_Counter--) {
-        LCD_SendChar(config, Local_Integer[Local_Counter] + '0');
+        HAL_LCD_SendChar(config, Local_Integer[Local_Counter] + '0');
     }
 }
 
@@ -139,10 +146,10 @@ void HAL_LCD_SendNumber(const LCD_Config_t *config, double number) {
     /**< Display integer part */ 
     u32 integerPart = (u32)number;
 
-    LCD_SendIntegerPart(config, (s32)integerPart); // Function to handle integer part
+    HAL_LCD_SendIntegerPart(config, (s32)integerPart); // Function to handle integer part
 
     /**< Display decimal point */ 
-    LCD_SendChar(config, '.');
+    HAL_LCD_SendChar(config, '.');
 
     /**< Display fractional part with 3 decimal points */ 
     double fractionalPart = number - integerPart;
@@ -151,14 +158,14 @@ void HAL_LCD_SendNumber(const LCD_Config_t *config, double number) {
     for (u8 i = 0; i < decimalPlaces; ++i) {
         fractionalPart *= 10;
         u8 digit = (u8)fractionalPart;
-        LCD_SendChar(config, digit + '0');
+        HAL_LCD_SendChar(config, digit + '0');
         fractionalPart -= digit;
     }
 }
 
 void HAL_LCD_Clear(const LCD_Config_t *config) 
 {
-    LCD_SendCommand(config, LCD_8BIT_MODE_COMMAND);
+    HAL_LCD_SendCommand(config, LCD_8BIT_MODE_COMMAND);
 }
 
 void HAL_LCD_GoToXYPos(const LCD_Config_t *config, uint8_t x, uint8_t y) {
@@ -179,7 +186,7 @@ void HAL_LCD_GoToXYPos(const LCD_Config_t *config, uint8_t x, uint8_t y) {
 
         // Calculate the final address to move the cursor
         u8 command = localAddress | (1 << 7); // Or simply: localAddress + 0x80;
-        LCD_voidSendCommand(config, command);
+        HAL_LCD_SendCommand(config, command);
     }
     else
     {
@@ -193,7 +200,7 @@ static void HAL_LCD_Send4Bits(const LCD_Config_t *config, uint8_t value)
     /**< Send the 4-MSB */
     for(uint8_t i = 0; i < 4; i++)
     {
-        MCAL_GPIO_SetPinValue(config->dataPins[i].LCD_PinId, config->dataPins[i].LCD_PinId, value >> (4 + i) & 0x01);
+        MCAL_GPIO_SetPinValue(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, value >> (4 + i) & 0x01);
     }
 
     /**< Set the enable pin to high */
@@ -209,7 +216,7 @@ static void HAL_LCD_Send4Bits(const LCD_Config_t *config, uint8_t value)
     /**< Send the 4-LSB */
     for(uint8_t i = 0; i < 4; i++)
     {
-        MCAL_GPIO_SetPinValue(config->dataPins[i].LCD_PinId, config->dataPins[i].LCD_PinId, value >> (4 + i) & 0x01);
+        MCAL_GPIO_SetPinValue(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, value >> (4 + i) & 0x01);
     }
 
     /**< Set the enable pin to high */
@@ -226,7 +233,7 @@ static void HAL_LCD_Send8Bits(const LCD_Config_t *config, uint8_t value)
      /**< Send the 8-Bit */
     for(uint8_t i = 0; i < 8; i++)
     {
-        MCAL_GPIO_SetPinValue(config->dataPins[i].LCD_PinId, config->dataPins[i].LCD_PinId, value >> i & 0x01);
+        MCAL_GPIO_SetPinValue(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, value >> i & 0x01);
     }
 
     /**< Set the enable pin to high */
