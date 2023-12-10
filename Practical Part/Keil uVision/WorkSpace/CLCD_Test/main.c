@@ -45,6 +45,8 @@ int main(void)
 	HAL_LCD_Init(&lcdConfig);
 	/**< Print string */
 	HAL_LCD_SendString(&lcdConfig, "IEEE ASUSB");
+	HAL_LCD_GoToXYPos(&lcdConfig, 1, 0);
+	HAL_LCD_SendNumber(&lcdConfig, 2.36);
 	
 	for(;;);
 }

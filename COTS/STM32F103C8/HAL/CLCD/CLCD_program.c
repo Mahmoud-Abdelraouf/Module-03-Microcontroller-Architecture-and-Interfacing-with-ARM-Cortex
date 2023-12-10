@@ -165,7 +165,7 @@ void HAL_LCD_SendNumber(const LCD_Config_t *config, double number) {
 
 void HAL_LCD_Clear(const LCD_Config_t *config) 
 {
-    HAL_LCD_SendCommand(config, LCD_8BIT_MODE_COMMAND);
+    HAL_LCD_SendCommand(config, LCD_CLEAR_COMMAND);
 }
 
 void HAL_LCD_GoToXYPos(const LCD_Config_t *config, uint8_t x, uint8_t y) {
@@ -230,7 +230,7 @@ static void HAL_LCD_Send4Bits(const LCD_Config_t *config, uint8_t value)
 /**< Private helper function to send 8 bits */ 
 static void HAL_LCD_Send8Bits(const LCD_Config_t *config, uint8_t value) 
 {
-     /**< Send the 8-Bit */
+    /**< Send the 8-Bit */
     for(uint8_t i = 0; i < 8; i++)
     {
         MCAL_GPIO_SetPinValue(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, value >> i & 0x01);

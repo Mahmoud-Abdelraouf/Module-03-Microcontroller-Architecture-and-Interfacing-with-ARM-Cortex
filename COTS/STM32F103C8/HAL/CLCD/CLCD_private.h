@@ -29,7 +29,21 @@
 #define LCD_4BIT_MODE_COMMAND_3                0x28
 
 
-/**< Private function prototypes */ 
+/*****************************< Private function prototypes *****************************/ 
+
+/**
+ * @brief Displays the integer part of a signed integer on the LCD.
+ *
+ * This function displays the integer part of a signed integer value on the LCD based on
+ * the provided configuration. It separates the digits of the integer part and displays
+ * them sequentially using the LCD_SendChar function.
+ *
+ * @param[in] config Pointer to the LCD configuration structure.
+ * @param[in] number The signed integer value whose integer part is to be displayed on the LCD.
+ * @note This function assumes that the required LCD character functions have been initialized separately.
+ */
+void HAL_LCD_SendIntegerPart(const LCD_Config_t *config, s32 number);
+
 /**
  * @brief Sends 4-bit data to the LCD.
  *
@@ -55,6 +69,8 @@ static void HAL_LCD_Send4Bits(const LCD_Config_t *config, uint8_t value);
  * @note This function assumes that the required GPIO and timing functions have been initialized separately.
  */
 static void HAL_LCD_Send8Bits(const LCD_Config_t *config, uint8_t value);
+
+/*****************************< The end of private function prototypes *****************************/ 
 
 
 #endif /**< LCD_PRIVATE_H */

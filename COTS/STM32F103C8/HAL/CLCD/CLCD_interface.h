@@ -138,18 +138,7 @@ void HAL_LCD_SendString(const LCD_Config_t *config, const uint8_t *string);
  */
 void HAL_LCD_SendNumber(const LCD_Config_t *config, double number);
 
-/**
- * @brief Displays the integer part of a signed integer on the LCD.
- *
- * This function displays the integer part of a signed integer value on the LCD based on
- * the provided configuration. It separates the digits of the integer part and displays
- * them sequentially using the LCD_SendChar function.
- *
- * @param[in] config Pointer to the LCD configuration structure.
- * @param[in] number The signed integer value whose integer part is to be displayed on the LCD.
- * @note This function assumes that the required LCD character functions have been initialized separately.
- */
-void HAL_LCD_SendIntegerPart(const LCD_Config_t *config, s32 number);
+
 
 /**
  * @brief Clears the display of the LCD.
