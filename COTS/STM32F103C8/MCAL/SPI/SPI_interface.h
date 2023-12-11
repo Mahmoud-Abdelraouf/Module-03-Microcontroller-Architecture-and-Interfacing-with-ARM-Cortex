@@ -31,7 +31,7 @@
  */
 typedef enum
 {
-  SPI1,     /**< SPI module 1 */
+  SPI1 = 1,     /**< SPI module 1 */
   SPI2,     /**< SPI module 2 */
   SPI3      /**< SPI module 3 */
 } SPI_Peripheral_t;
@@ -189,7 +189,7 @@ typedef struct
  * SPI_Peripheral_t spi_selected = SPI1;
  *
  * /// Get the base address of SPI1 using the SPI_GetBaseAddress function
- * SPI_RegDef_t *spi1_base_address = SPI_GetBaseAddress(spi_selected);
+ * SPI_t *spi1_base_address = SPI_GetBaseAddress(spi_selected);
  *
  * /// Now you can access SPI1 registers and configure the SPI communication
  * /// For example, you can configure data frame format, clock polarity, etc.
@@ -259,7 +259,7 @@ SPI_t SPI_SelectSpiPeripheral(SPI_Peripheral_t Copy_SPI);
  * /// Now the SPI peripheral is initialized and ready to use for communication.
  * @endcode
  */
-void SPI_voidInit(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig);
+void SPI_Init(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig);
       
 /**
  * @brief Perform a full-duplex SPI data transfer.
@@ -291,7 +291,7 @@ void SPI_voidInit(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig);
  * SPI_voidTransfer(spi_selected, tx_data, rx_data, sizeof(tx_data));
  * @endcode
  */
-void SPI_voidTransfer(SPI_t Copy_SPI, u8 *Copy_TxData, u8 *Copy_RxData, u16 Copy_Size);
+void SPI_Transfer(SPI_t Copy_SPI, u8 *Copy_TxData, u8 *Copy_RxData, u16 Copy_Size);
 
 /**
  * @} SPI_Functions

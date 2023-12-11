@@ -45,7 +45,7 @@ SPI_t SPI_SelectSpiPeripheral(SPI_Peripheral_t Copy_SPI)
   }
 }
 
-void SPI_voidInit(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig)
+void SPI_Init(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig)
 {
   /********************************< Configure the SPI peripheral ********************************/
   if(Copy_SelectedSPI == NULL && Copy_SPIConfig == NULL || Copy_SelectedSPI == NULL)
@@ -59,9 +59,13 @@ void SPI_voidInit(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig)
     {
       CLR_BIT(Copy_SelectedSPI->CR1, SPI_CR1_DFF);
     }
-    else
+    else if (Copy_SPIConfig->DataFrame == SPI_DATA_FRAME_16BIT)
     {
 	    SET_BIT(Copy_SelectedSPI->CR1, SPI_CR1_DFF);
+    }
+    else
+    {
+      return;
     }
 
     /**< Set the frame format */
@@ -69,9 +73,13 @@ void SPI_voidInit(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig)
     {
       SET_BIT(Copy_SelectedSPI->CR1,SPI_CR1_LSBFIRST);
     }
-    else
+    else if(Copy_SPIConfig->FrameFormat == SPI_MSB_FIRST)
     {
       CLR_BIT(Copy_SelectedSPI->CR1,SPI_CR1_LSBFIRST);
+    }
+    else
+    {
+      return;
     }
 
     /**< Set the clock polarity */
@@ -79,9 +87,13 @@ void SPI_voidInit(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig)
     {
       SET_BIT(Copy_SelectedSPI->CR1, SPI_CR1_CPOL);
     }
-    else
+    else if(Copy_SPIConfig->ClockPolarity == SPI_CLOCK_POLARITY_LOW)
     {
 	    CLR_BIT(Copy_SelectedSPI->CR1, SPI_CR1_CPOL);
+    }
+    else
+    {
+      return;
     }
 
     /**< Set the clock phase */
@@ -89,9 +101,13 @@ void SPI_voidInit(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig)
     {
       SET_BIT(Copy_SelectedSPI->CR1, SPI_CR1_CPHA);
     }
-    else
+    else if(Copy_SPIConfig->ClockPhase == SPI_READ_WRITE)
     {
       CLR_BIT(Copy_SelectedSPI->CR1, SPI_CR1_CPHA);
+    }
+    else
+    {
+      return;
     }
 
     /**< Set the clock speed */
@@ -122,7 +138,7 @@ void SPI_voidInit(SPI_t Copy_SelectedSPI, const SPI_config_t *Copy_SPIConfig)
   }
 }
 
-void SPI_voidTransfer(SPI_t Copy_SPI, u8 *Copy_TxData, u8 *Copy_RxData, u16 Copy_Size)
+void SPI_Transfer(SPI_t Copy_SPI, u8 *Copy_TxData, u8 *Copy_RxData, u16 Copy_Size)
 {
 
   /**< Iterator to loop on the data */
