@@ -1,7 +1,7 @@
 /****************************************************************/
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
 /******* Date      : 16 Sep 2023                *****************/
-/******* Version   : 0.1                        *****************/
+/******* Version   : 0.2                        *****************/
 /******* File Name : CLCD_program.c             *****************/
 /****************************************************************/
 
@@ -36,13 +36,12 @@ void HAL_LCD_Init(const LCD_Config_t *config)
             MCAL_GPIO_SetPinMode(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, GPIO_OUTPUT_PUSH_PULL_10MHZ);
         }
         
-        MCAL_STK_SetDelay_ms(1000);
-
-        HAL_LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_1);
-        HAL_LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_2);
-        HAL_LCD_SendCommand(config, LCD_4BIT_MODE_COMMAND_3);
-        HAL_LCD_SendCommand(config, LCD_CLEAR_COMMAND);
-        HAL_LCD_SendCommand(config, LCD_DISPLAY_ON_COMMAND);
+        MCAL_STK_SetDelay_ms(20);
+        HAL_LCD_SendCommand(config, _LCD_8BIT_MODE_2_LINE);
+        MCAL_STK_SetDelay_ms(5);
+        HAL_LCD_SendCommand(config, _LCD_8BIT_MODE_2_LINE);
+        MCAL_STK_SetBusyWait(150);
+        HAL_LCD_SendCommand(config, _LCD_8BIT_MODE_2_LINE);  
     }
     else if(LCD_8BitMode)
     {
@@ -51,17 +50,27 @@ void HAL_LCD_Init(const LCD_Config_t *config)
             MCAL_GPIO_SetPinMode(config->dataPins[i].LCD_PortId, config->dataPins[i].LCD_PinId, GPIO_OUTPUT_PUSH_PULL_10MHZ);
         }
 
-        MCAL_STK_SetDelay_ms(1000);
-
-        HAL_LCD_SendCommand(config, LCD_8BIT_MODE_COMMAND);
-        HAL_LCD_SendCommand(config, LCD_CLEAR_COMMAND);
-        HAL_LCD_SendCommand(config, LCD_DISPLAY_ON_COMMAND);   
+        MCAL_STK_SetDelay_ms(20);
+        HAL_LCD_SendCommand(config, _LCD_8BIT_MODE_2_LINE);
+        MCAL_STK_SetDelay_ms(5);
+        HAL_LCD_SendCommand(config, _LCD_8BIT_MODE_2_LINE);
+        MCAL_STK_SetBusyWait(150);
+        HAL_LCD_SendCommand(config, _LCD_8BIT_MODE_2_LINE);  
     }
     else
     {
         return;
     }
-
+    
+    HAL_LCD_SendCommand(config, _LCD_CLEAR);
+    HAL_LCD_SendCommand(config, _LCD_RETURN_HOME);
+    HAL_LCD_SendCommand(config, _LCD_ENTRY_MODE_INC_SHIFT_OFF);
+    HAL_LCD_SendCommand(config, _LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF);
+		if(config->mode == LCD_4BitMode)
+		{
+			HAL_LCD_SendCommand(config, _LCD_4BIT_MODE_2_LINE);
+		}
+    HAL_LCD_SendCommand(config, 0x80);
 }
 
 void HAL_LCD_SendCommand(const LCD_Config_t *config, uint8_t command) 
@@ -165,7 +174,7 @@ void HAL_LCD_SendNumber(const LCD_Config_t *config, double number) {
 
 void HAL_LCD_Clear(const LCD_Config_t *config) 
 {
-    HAL_LCD_SendCommand(config, LCD_8BIT_MODE_COMMAND);
+    HAL_LCD_SendCommand(config, _LCD_CLEAR);
 }
 
 void HAL_LCD_GoToXYPos(const LCD_Config_t *config, uint8_t x, uint8_t y) {
@@ -178,7 +187,7 @@ void HAL_LCD_GoToXYPos(const LCD_Config_t *config, uint8_t x, uint8_t y) {
                 localAddress = y;
                 break;
             case 1:
-                localAddress = y + DDRAM_ADDRESS_OFFSET;
+                localAddress = y + _LCD_CGRAM_START;
                 break;
             default:
                 break;
@@ -194,7 +203,7 @@ void HAL_LCD_GoToXYPos(const LCD_Config_t *config, uint8_t x, uint8_t y) {
     }
 }
 
-/**< Private helper function to send 4 bits */ 
+/*****************************< Private helper function to send 4 bits *****************************/ 
 static void HAL_LCD_Send4Bits(const LCD_Config_t *config, uint8_t value) 
 {
     /**< Send the 4-MSB */
@@ -227,7 +236,7 @@ static void HAL_LCD_Send4Bits(const LCD_Config_t *config, uint8_t value)
     MCAL_GPIO_SetPinValue(config->enablePin.LCD_PortId, config->enablePin.LCD_PinId, GPIO_LOW);
 }
 
-/**< Private helper function to send 8 bits */ 
+/*****************************< Private helper function to send 8 bits *****************************/ 
 static void HAL_LCD_Send8Bits(const LCD_Config_t *config, uint8_t value) 
 {
      /**< Send the 8-Bit */

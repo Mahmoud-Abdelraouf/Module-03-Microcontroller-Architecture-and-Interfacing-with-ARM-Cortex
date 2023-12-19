@@ -35,10 +35,10 @@ int main(void)
 	}
 	
 	lcdConfig.enablePin.LCD_PortId = LCD_PORTA;
-	lcdConfig.enablePin.LCD_PinId = LCD_PIN8;
+	lcdConfig.enablePin.LCD_PinId = LCD_PIN11;
 	
 	lcdConfig.rsPin.LCD_PortId = LCD_PORTA;
-	lcdConfig.rsPin.LCD_PinId = LCD_PIN11;
+	lcdConfig.rsPin.LCD_PinId = LCD_PIN12;
 	/*****************************< End Config of lcd *****************************/
 	
 	/**< Init the LCD */

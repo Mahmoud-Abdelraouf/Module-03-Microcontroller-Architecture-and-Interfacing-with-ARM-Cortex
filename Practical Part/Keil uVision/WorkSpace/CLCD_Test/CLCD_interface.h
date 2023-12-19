@@ -1,11 +1,35 @@
 /****************************************************************/
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
 /******* Date      : 16 Sep 2023                *****************/
-/******* Version   : 0.1                        *****************/
+/******* Version   : 0.2                        *****************/
 /******* File Name : CLCD_interface             *****************/
 /****************************************************************/
 #ifndef LCD_INTERFACE_H
 #define LCD_INTERFACE_H
+
+/*****************************< Commands for initializing LCD. *****************************/
+#define _LCD_CLEAR                      0X01  // Clears the display.
+#define _LCD_RETURN_HOME                0x02  // Returns cursor to home position.
+#define _LCD_ENTRY_MODE_DEC_SHIFT_OFF   0x04  // Sets entry mode to decrement cursor position without display shift.
+#define _LCD_ENTRY_MODE_DEC_SHIFT_ON    0x05  // Sets entry mode to decrement cursor position with display shift.
+#define _LCD_ENTRY_MODE_INC_SHIFT_OFF   0x06  // Sets entry mode to increment cursor position without display shift.
+
+#define _LCD_ENTRY_MODE_INC_SHIFT_ON    0x07  // Sets entry mode to increment cursor position with display shift.
+#define _LCD_CURSOR_MOVE_SHIFT_LEFT     0x10  // Moves cursor/display left without changing DDRAM address.
+#define _LCD_CURSOR_MOVE_SHIFT_RIGHT    0x14  // Moves cursor/display right without changing DDRAM address.
+#define _LCD_DISPLAY_SHIFT_LEFT         0x18  // Shifts the display to the left.
+#define _LCD_DISPLAY_SHIFT_RIGHT        0x1C  // Shifts the display to the right.
+#define _LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF 0x0C  // Display on, cursor off, and underline off.
+#define _LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_ON  0x0D  // Display on, cursor on, and underline off.
+#define _LCD_DISPLAY_ON_UNDERLINE_ON_CURSOR_OFF  0x0E  // Display on, cursor off, and underline on.
+#define _LCD_DISPLAY_ON_UNDERLINE_ON_CURSOR_ON   0x0F  // Display on, cursor on, and underline on.
+#define _LCD_DISPLAY_OFF_CURSOR_OFF              0x08  // Display off and cursor off.
+#define _LCD_8BIT_MODE_2_LINE           0x38  // Sets 8-bit data mode with 2 display lines.
+#define _LCD_4BIT_MODE_2_LINE           0x28  // Sets 4-bit data mode with 2 display lines.
+
+#define _LCD_CGRAM_START                0x40  // Start address for Character Generator RAM (CGRAM) in the LCD.
+#define _LCD_DDRAM_START                0x80  // Start address for Display Data RAM (DDRAM) in the LCD.
+/*****************************< End of Commands *****************************/
 
 /**
  * @brief Enum defining different port configurations for the LCD.
@@ -14,7 +38,7 @@ typedef enum {
     LCD_PORTA,  /**< Port A */
     LCD_PORTB,  /**< Port B */
     LCD_PORTC   /**< Port C */
-} LCD_PortMap_t;
+} LCD_Port_t;
 
 /**
  * @brief Enum defining different pin configurations for the LCD.
@@ -36,7 +60,7 @@ typedef enum {
     LCD_PIN13,  /**< Pin 13 */
     LCD_PIN14,  /**< Pin 14 */
     LCD_PIN15   /**< Pin 15 */
-} LCD_PinMap_t;
+} LCD_Pin_t;
 
 /**
  * @brief Enum defining LCD operation modes.

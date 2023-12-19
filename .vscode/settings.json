@@ -12,7 +12,9 @@
     "gpio_interface.h": "c",
     "stk_interface.h": "c",
     "std_types.h": "c",
-    "i2c_interface.h": "c"
+    "i2c_interface.h": "c",
+    "spi_interface.h": "c",
+    "spi_registers.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

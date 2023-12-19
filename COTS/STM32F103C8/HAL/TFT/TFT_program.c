@@ -52,19 +52,19 @@ void TFT_Init(const TFT_Config_t *Copy_TftDisplay, SPI_t Copy_SpiPeripheral)
     GPIO_SetPinValue(Copy_TftDisplay->TFT_RESPin.TFT_Port, Copy_TftDisplay->TFT_RESPin.TFT_Pin, GPIO_HIGH);
     
     /**< Wait for a specified delay before proceeding */
-    STK_SetDelay(5);
+    MCAL_STK_SetDelay_ms(5);
     
     /**< Set the Reset (RST) pin to low logic level to assert reset signal */
     GPIO_SetPinValue(Copy_TftDisplay->TFT_RESPin.TFT_Port, Copy_TftDisplay->TFT_RESPin.TFT_Pin, GPIO_LOW);
     
     /**< Wait for a short delay */
-    STK_SetDelay(15);
+    MCAL_STK_SetDelay_ms(15);
     
     /**< Set the Reset (RES) pin to high logic level to release reset signal */
     GPIO_SetPinValue(Copy_TftDisplay->TFT_RESPin.TFT_Port, Copy_TftDisplay->TFT_RESPin.TFT_Pin, GPIO_HIGH);
     
     /**< Wait for a specified delay before proceeding */
-    STK_SetDelay(15);
+    MCAL_STK_SetDelay_ms(15);
     
     TFT_InitController(Copy_TftDisplay, Copy_SpiPeripheral);
 }
@@ -192,13 +192,13 @@ static void TFT_SendCommand(const TFT_Config_t *Copy_TftDisplay, const SPI_t Cop
     u8 Local_u8ReceivedData = 0;
 
     /**<  Set CS (Chip Select) pin low to select the TFT display for communication */
-    GPIO_SetPinValue(Copy_TftDisplay->TFT_CSPin.TFT_Port, Copy_TftDisplay->TFT_CSPin.TFT_Pin,GPIO_LOW); 
+    GPIO_SetPinValue(Copy_TftDisplay->TFT_CSPin.TFT_Port, Copy_TftDisplay->TFT_CSPin.TFT_Pin, GPIO_LOW); 
 
     /**< Set DC (Data/Command Control) pin low to indicate command mode */ 
-    GPIO_SetPinValue(Copy_TftDisplay->TFT_DCPin.TFT_Port, Copy_TftDisplay->TFT_DCPin.TFT_Pin,GPIO_LOW); 
+    GPIO_SetPinValue(Copy_TftDisplay->TFT_DCPin.TFT_Port, Copy_TftDisplay->TFT_DCPin.TFT_Pin, GPIO_LOW); 
 
     /**< Perform SPI data transfer to send the command byte */ 
-    SPI_voidTransfer(Copy_SpiPeripheral, &Copy_Command, &Local_u8ReceivedData, 1); 
+    SPI_Transfer(Copy_SpiPeripheral, &Copy_Command, &Local_u8ReceivedData, 1); 
 
     /**< Set CS pin high to release the TFT display */ 
     GPIO_SetPinValue(Copy_TftDisplay->TFT_CSPin.TFT_Port, Copy_TftDisplay->TFT_CSPin.TFT_Pin, GPIO_HIGH); 
@@ -216,7 +216,7 @@ static void TFT_SendData(const TFT_Config_t *Copy_TftDisplay, const SPI_t Copy_S
     GPIO_SetPinValue(Copy_TftDisplay->TFT_DCPin.TFT_Port, Copy_TftDisplay->TFT_DCPin.TFT_Pin, GPIO_HIGH); 
 
     /**< Perform SPI data transfer to send the command byte */ 
-    SPI_voidTransfer(Copy_SpiPeripheral, &Copy_Data, &Local_u8ReceivedData, 1); 
+    SPI_Transfer(Copy_SpiPeripheral, &Copy_Data, &Local_u8ReceivedData, 1); 
 
     /**< Set CS pin high to release the TFT display */ 
     GPIO_SetPinValue(Copy_TftDisplay->TFT_CSPin.TFT_Port, Copy_TftDisplay->TFT_CSPin.TFT_Pin,GPIO_HIGH); 
@@ -287,11 +287,11 @@ static void TFT_InitController(const TFT_Config_t *Copy_TftDisplay, const SPI_t 
     /**<==============================================================================================================*/
     /**< Send command for software reset */
     TFT_SendCommand(Copy_TftDisplay, Copy_SpiPeripheral, 0x01);
-    STK_SetDelay(150);
+    MCAL_STK_SetDelay_ms(150);
 
     /**< Send command to exit sleep mode */
     TFT_SendCommand(Copy_TftDisplay, Copy_SpiPeripheral, 0x11);
-    STK_SetDelay(500);
+    MCAL_STK_SetDelay_ms(500);
 
     /**< Send command to configure frame rate control - normal mode */
     TFT_SendCommand(Copy_TftDisplay, Copy_SpiPeripheral, 0xB1);
@@ -416,11 +416,11 @@ static void TFT_InitController(const TFT_Config_t *Copy_TftDisplay, const SPI_t 
 
     /**< Turn off inversion */
     TFT_SendCommand(Copy_TftDisplay, Copy_SpiPeripheral, 0x13);
-    STK_SetDelay(10);
+    MCAL_STK_SetDelay_ms(10);
 
     /**< Turn on display */
     TFT_SendCommand(Copy_TftDisplay, Copy_SpiPeripheral, 0x29);
-    STK_SetDelay(100);
+    MCAL_STK_SetDelay_ms(100);
     /**<=========================================================================================================================*/
     /*******************************************< End of ST7735S display configuration *******************************************/
     /**<=========================================================================================================================*/
