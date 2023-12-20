@@ -1,0 +1,79 @@
+project:
+  packs:
+    - pack: Keil::STM32F1xx_DFP
+    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS-NN
+    - pack: ARM::CMSIS-DSP
+  setups:
+    - setup: Options for Target_1
+      processor:
+        trustzone: non-secure
+      debug: "on"
+      misc:
+        - C:
+            - -std=c90
+          C-CPP:
+            - -fno-rtti
+            - -funsigned-char
+            - -fshort-enums
+            - -fshort-wchar
+            - -ffunction-sections
+            - -Wno-packed
+            - -Wno-missing-variable-declarations
+            - -Wno-missing-prototypes
+            - -Wno-missing-noreturn
+            - -Wno-sign-conversion
+            - -Wno-nonportable-include-path
+            - -Wno-reserved-id-macro
+            - -Wno-unused-macros
+            - -Wno-documentation-unknown-command
+            - -Wno-documentation
+            - -Wno-license-management
+            - -Wno-parentheses-equality
+            - -Wno-covered-switch-default
+            - -Wno-unreachable-code-break
+          CPP:
+            - -xc++
+            - -std=c++98
+          ASM:
+            - -masm=auto
+          Link:
+            - --map
+            - --load_addr_map_info
+            - --xref
+            - --callgraph
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --info unused
+            - --info veneers
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+  groups:
+    - group: Source Group 1
+      files:
+        - file: main.c
+        - file: BIT_MATH.h
+        - file: GPIO_config.h
+        - file: GPIO_interface.h
+        - file: GPIO_private.h
+        - file: GPIO_program.c
+        - file: LED.c
+        - file: LED.h
+        - file: RCC_config.h
+        - file: RCC_interface.h
+        - file: RCC_private.h
+        - file: RCC_program.c
+        - file: STD_TYPES.h
+        - file: STK_config.h
+        - file: STK_interface.h
+        - file: STK_private.h
+        - file: STK_program.c
+        - file: AFIO_config.h
+        - file: AFIO_interface.h
+        - file: AFIO_private.h
+        - file: AFIO_program.c
+  components:
+    - component: ARM::CMSIS:CORE
+    - component: Keil::Device:Startup

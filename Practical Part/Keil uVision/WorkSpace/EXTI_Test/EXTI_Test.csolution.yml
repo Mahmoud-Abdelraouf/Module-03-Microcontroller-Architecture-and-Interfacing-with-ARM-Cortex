@@ -1,0 +1,10 @@
+solution:
+  created-by: uv2csolution@1.2.0
+  created-for: CMSIS-Toolbox@2.0.0
+  compiler: AC6
+  target-types:
+    - type: Target_1
+      device: STM32F103C8
+      optimize: none
+  projects:
+    - project: EXTI_Test.cproject.yml

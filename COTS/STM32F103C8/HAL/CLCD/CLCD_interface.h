@@ -1,7 +1,7 @@
 /****************************************************************/
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
 /******* Date      : 16 Sep 2023                *****************/
-/******* Version   : 0.1                        *****************/
+/******* Version   : 0.2                        *****************/
 /******* File Name : CLCD_interface             *****************/
 /****************************************************************/
 #ifndef LCD_INTERFACE_H
@@ -14,7 +14,7 @@ typedef enum {
     LCD_PORTA,  /**< Port A */
     LCD_PORTB,  /**< Port B */
     LCD_PORTC   /**< Port C */
-} LCD_PortConfig_t;
+} LCD_Port_t;
 
 /**
  * @brief Enum defining different pin configurations for the LCD.
@@ -36,7 +36,7 @@ typedef enum {
     LCD_PIN13,  /**< Pin 13 */
     LCD_PIN14,  /**< Pin 14 */
     LCD_PIN15   /**< Pin 15 */
-} LCD_PinConfig_t;
+} LCD_Pin_t;
 
 /**
  * @brief Enum defining LCD operation modes.
@@ -138,7 +138,18 @@ void HAL_LCD_SendString(const LCD_Config_t *config, const uint8_t *string);
  */
 void HAL_LCD_SendNumber(const LCD_Config_t *config, double number);
 
-
+/**
+ * @brief Displays the integer part of a signed integer on the LCD.
+ *
+ * This function displays the integer part of a signed integer value on the LCD based on
+ * the provided configuration. It separates the digits of the integer part and displays
+ * them sequentially using the LCD_SendChar function.
+ *
+ * @param[in] config Pointer to the LCD configuration structure.
+ * @param[in] number The signed integer value whose integer part is to be displayed on the LCD.
+ * @note This function assumes that the required LCD character functions have been initialized separately.
+ */
+void HAL_LCD_SendIntegerPart(const LCD_Config_t *config, s32 number);
 
 /**
  * @brief Clears the display of the LCD.
