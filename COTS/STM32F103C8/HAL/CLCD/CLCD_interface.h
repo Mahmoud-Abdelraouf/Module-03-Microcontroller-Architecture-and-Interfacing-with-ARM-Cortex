@@ -59,7 +59,7 @@ typedef struct {
  * @brief Structure representing LCD configuration.
  */
 typedef struct {
-    uint8_t mode;                 /**< 8-bit or 4-bit mode indicator */
+    uint8_t mode;                /**< 8-bit or 4-bit mode indicator */
     LCD_PinConfig_t dataPins[8]; /**< Maximum pins for 8-bit mode */
     LCD_PinConfig_t rsPin;       /**< RS pin */
     LCD_PinConfig_t rwPin;       /**< R/W pin */

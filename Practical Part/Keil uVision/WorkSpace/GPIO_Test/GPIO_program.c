@@ -28,6 +28,7 @@ Std_ReturnType Mcal_Gpio_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMo
         }
         else if(Copy_PinId < 16)
         {
+						Copy_PinId -= 8;
             GPIOA_CRH &= ~((0b1111) << (Copy_PinId * 4)); 
             GPIOA_CRH |= (Copy_PinMode << (Copy_PinId * 4));
             Local_FunctionStatus = E_OK;
@@ -46,6 +47,7 @@ Std_ReturnType Mcal_Gpio_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMo
         }
         else if(Copy_PinId < 16)
         {
+						Copy_PinId -= 8;
             GPIOB_CRH &= ~((0b1111) << (Copy_PinId * 4)); 
             GPIOB_CRH |= (Copy_PinMode << (Copy_PinId * 4));
             Local_FunctionStatus = E_OK;
@@ -64,6 +66,7 @@ Std_ReturnType Mcal_Gpio_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMo
         }
         else if(Copy_PinId < 16)
         {
+						Copy_PinId -= 8;
             GPIOC_CRH &= ~((0b1111) << (Copy_PinId * 4)); 
             GPIOC_CRH |= (Copy_PinMode << (Copy_PinId * 4));
             Local_FunctionStatus = E_OK;
@@ -180,7 +183,3 @@ Std_ReturnType Mcal_Gpio_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_Pin
 
     return Local_FunctionStatus;
 }
-
-
-
-
