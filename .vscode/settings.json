@@ -16,7 +16,11 @@
     "spi_interface.h": "c",
     "spi_registers.h": "c",
     "fpec_private.h": "c",
-    "afio_private.h": "c"
+    "afio_private.h": "c",
+    "rcc_interface.h": "c",
+    "bit_math.h": "c",
+    "parser.h": "c",
+    "parse.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
