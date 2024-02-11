@@ -54,7 +54,7 @@ void FPEC_FlashWrite(u32 Address, u16 *Data, u8 Length) {
 
 	while (GET_BIT(FPEC->SR, 0) == 1);
 
-	/* Check if FPEC is locked or not */
+	/**< Check if FPEC is locked or not */
 	if ( /**< FPEC_CR->BitAccess.LOCK == 1 */ GET_BIT(FPEC->CR, 7) == 1 ) {
 		FPEC -> KEYR = 0x45670123;
 		FPEC -> KEYR = 0xCDEF89AB;

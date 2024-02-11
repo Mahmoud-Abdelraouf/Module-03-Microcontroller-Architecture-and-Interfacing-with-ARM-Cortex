@@ -1,6 +1,6 @@
 /****************************************************************/
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
-/******* Date      : 10  Feb 2023               *****************/
+/******* Date      : 10 Feb 2024                *****************/
 /******* Version   : 0.1                        *****************/
 /******* File Name : Parser.c                   *****************/
 /****************************************************************/
@@ -39,10 +39,13 @@ u8 hexchar_to_uint8(u8 ch) {
 
 void parse_hex_line(const char *line) {
     uint8_t data[MAX_LINE_SIZE];
+    uint8_t dataSize = 0;
     uint8_t checksum = 0;
     uint8_t checksumToCmp = 0;
     uint8_t byte_count, record_type;
-    uint16_t address;
+    uint32_t address;
+    uint16_t lowerAddressPart;
+    uint16_t upperAddressPart;
     int i = 0;
     ParserState_t state = PARSER_STATE_START;
 
@@ -57,7 +60,7 @@ void parse_hex_line(const char *line) {
             case PARSER_STATE_COLON:
                 byte_count = (hexchar_to_uint8(line[i]) << 4) | hexchar_to_uint8(line[i+1]);
                 i += 2; /**< Increment i by 2 to move to the next pair of characters */
-                address = (hexchar_to_uint8(line[i]) << 12) | (hexchar_to_uint8(line[i+1]) << 8)
+                lowerAddressPart = (hexchar_to_uint8(line[i]) << 12) | (hexchar_to_uint8(line[i+1]) << 8)
                           | (hexchar_to_uint8(line[i+2]) << 4) | hexchar_to_uint8(line[i+3]);
                 i += 4; /**< Increment i by 4 to move to the next address characters */
                 record_type = (hexchar_to_uint8(line[i]) << 4) | hexchar_to_uint8(line[i+1]);
@@ -79,14 +82,26 @@ void parse_hex_line(const char *line) {
                     checksum += (hexchar_to_uint8(line[i]) << 4) | hexchar_to_uint8(line[i+1]);
                     i += 2; /**< Increment i by 2 to move to the next pair of checksum characters */
                 }
+                checksum = (~(checksum & 0xFF) + 1) & 0xFF;
                 state = PARSER_STATE_CHECKSUM2;
                 break;
             case PARSER_STATE_CHECKSUM2:
                 if (checksumToCmp == checksum) {
-                    // Process data here (data[], byte_count, address, record_type)
-                    // You can write this to flash or perform any other operation.
+                    /**< The business logic */
+                    switch (record_type) {
+                        case 0: /**< Data Record */
+                            address = (upperAddressPart << 4) | lowerAddressPart;
+                            FPEC_FlashWrite(address, data, byte_count / 2.0);
+                            break;
+                        case 4: /**< External Address (High Part) */
+                            upperAddressPart = lowerAddressPart;                            
+                            break;
+                        default:
+                            // TODO: Handle the other cases: 01, 02, 03, 05
+                            break;
+                    }
                 } else {
-                    // Checksum error
+                    // TODO: Checksum error
                 }
                 state = PARSER_STATE_START;
                 break;

@@ -20,7 +20,8 @@
     "rcc_interface.h": "c",
     "bit_math.h": "c",
     "parser.h": "c",
-    "parse.h": "c"
+    "parse.h": "c",
+    "fpec_interface.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
