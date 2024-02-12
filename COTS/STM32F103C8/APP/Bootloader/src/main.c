@@ -18,10 +18,10 @@
 /*****************************< APP *****************************/
 #include "Parse.h"
 /*****************************< Business Logic *****************************/
-u8  WriteReqFlag = 1;
+uint8_t WriteReqFlag = 1;
 
 char RecvBuffer[100];
-u8  RecvCounter = 0;
+uint8_t RecvCounter = 0;
 
 typedef void (*Function_t)(void);
 Function_t _fstAppAdd = 0;
@@ -29,9 +29,9 @@ Function_t _fstAppAdd = 0;
 void func(void) {
 #define SCB_VTOR   (*((volatile u32*)0xE000ED08))
 
-	SCB_VTOR = 0x08001000;
+	SCB_VTOR = 0x08004800;
 
-	_fstAppAdd = (*(Function_t *)(0x08001004));
+	_fstAppAdd = (*(Function_t *)(0x08004804));
 	_fstAppAdd();
 }
 
