@@ -49,8 +49,8 @@ typedef enum {
  * DATA_BITS_9: 9 data bits are used.
  */
 typedef enum {
-  UART_WORD_LENGTH_8BIT,  /**< 8 data bits are used */
-  UART_WORD_LENGTH_9BIT   /**< 9 data bits are used */
+  USART_WORD_LENGTH_8BIT,  /**< 8 data bits are used */
+  USART_WORD_LENGTH_9BIT   /**< 9 data bits are used */
 } USART_DataBits_t;
 
 /**
@@ -149,7 +149,7 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig);
  *     - E_OK: Data transmission successful.
  *     - E_NOT_OK: Data transmission failed or invalid parameters.
  */
-Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize);
+Std_ReturnType MCAL_USART_Transmit(char *Data, u16 DataSize);
 
 /**
  * @brief Receives data via the UART interface.
@@ -158,13 +158,12 @@ Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize);
  * It stores the received data in the provided buffer of a specified size.
  *
  * @param[out] Data Pointer to the buffer to store the received data.
- * @param[in] DataSize Size of the buffer to store the received data.
  * 
  * @return
  *     - E_OK: Data reception successful.
  *     - E_NOT_OK: Data reception failed or invalid parameters.
  */
-Std_ReturnType MCAL_USART_Receive(u8 *Data, u16 DataSize);
+Std_ReturnType MCAL_USART_Receive(char *Data);
 
 /**
  * @}

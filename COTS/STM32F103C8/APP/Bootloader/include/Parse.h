@@ -2,7 +2,7 @@
 /******* Author    : Mahmoud Abdelraouf Mahmoud *****************/
 /******* Date      : 10  Feb 2023               *****************/
 /******* Version   : 0.1                        *****************/
-/******* File Name : Parser.h                   *****************/
+/******* File Name : Parse.h                    *****************/
 /****************************************************************/
 #ifndef Parser_H_
 #define Parser_H_
@@ -44,11 +44,11 @@ u8 ascii_to_hex(u8 ascii);
  * This function takes a character representing a hexadecimal digit ('0' to '9', 'A' to 'F', or 'a' to 'f')
  * as input and converts it to its corresponding 8-bit unsigned integer value.
  *
- * @param ch The character to be converted.
+ * @param _char The character to be converted.
  * @return The numerical value of the hexadecimal digit represented by the input character.
  *         Returns 0 if the input character is not a valid hexadecimal digit.
  */
-u8 hexchar_to_uint8(u8 ch);
+u8 hexchar_to_uint8(u8 _char);
 
 /**
  * @brief Parses a line of Intel HEX format and processes the data.

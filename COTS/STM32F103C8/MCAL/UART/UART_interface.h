@@ -49,8 +49,8 @@ typedef enum {
  * DATA_BITS_9: 9 data bits are used.
  */
 typedef enum {
-  UART_WORD_LENGTH_8BIT,  /**< 8 data bits are used */
-  UART_WORD_LENGTH_9BIT   /**< 9 data bits are used */
+  USART_WORD_LENGTH_8BIT,  /**< 8 data bits are used */
+  USART_WORD_LENGTH_9BIT   /**< 9 data bits are used */
 } USART_DataBits_t;
 
 /**

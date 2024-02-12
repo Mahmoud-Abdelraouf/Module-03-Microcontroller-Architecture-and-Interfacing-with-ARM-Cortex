@@ -35,7 +35,6 @@ typedef s8 INVALID_VALUE;      /**< Marker for invalid or uninitialized data */
 #define E_INVALID_PARAMETER  ((INVALID_VALUE)-1)    /**< Invalid parameter marker */
 
 
-
 #endif /* STD_TYPES_H_ */
 
 

@@ -21,12 +21,12 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig)
   }
 
   /**< Configure UART word length (data bits) */
-  if (USARTConfig->WordLength == UART_WORD_LENGTH_8BIT)
+  if (USARTConfig->WordLength == USART_WORD_LENGTH_8BIT)
   {
     /**< Configure 8-bit word length */
     USART1->CR1 &= ~USART_CR1_M;  /**< Clear the M bit for 8-bit word length */ 
   }
-  else if (USARTConfig->WordLength == UART_WORD_LENGTH_9BIT)
+  else if (USARTConfig->WordLength == USART_WORD_LENGTH_9BIT)
   {
     /**< Configure 9-bit word length */
     USART1->CR1 |= USART_CR1_M;  /**< Set the M bit for 8-bit word length */ 
@@ -91,7 +91,7 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig)
   return E_OK; /**< Define your success code */
 }
 
-Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize) 
+Std_ReturnType MCAL_USART_Transmit(char *Data, u16 DataSize)
 {
   if (Data == NULL || DataSize == 0) 
   {
@@ -117,23 +117,21 @@ Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize)
   return E_OK; /**< Define your success code */ 
 }
 
-Std_ReturnType MCAL_USART_Receive(u8 *Data, u16 DataSize)
+Std_ReturnType MCAL_USART_Receive(char *Data)
 {
-  if (Data == NULL || DataSize == 0) 
+  if (Data == NULL)
   {
-    return E_INVALID_PARAMETER; /**< Define your error code for invalid parameters */ 
+    return E_INVALID_PARAMETER; /**< Define your error code for invalid parameters */
   }
 
-  for (u16 i = 0; i < DataSize; ++i) 
+  /**< Check if data is received */
+  if (!(USART1->SR & USART_SR_RXNE))
   {
-    /**< Wait until data is received */ 
-    while (!(USART1->SR & USART_SR_RXNE)) 
-    {
-      /**< Wait until the RXNE flag is set, indicating that data is ready to be read */
-    }
-    /**< Read the received data */ 
-    Data[i] = USART1->DR;
+	/**< No data received */
+    return E_NOT_OK;
   }
+  /**< Read the received data */
+  *Data = USART1->DR;
 
-  return E_OK; /**< Define your success code */ 
+  return E_OK; /**< Define your success code */
 }

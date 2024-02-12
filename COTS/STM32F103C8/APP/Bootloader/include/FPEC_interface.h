@@ -17,7 +17,7 @@
  *
  * @return None.
  */
-void FPEC_EraseAppArea(void);
+void MCAL_FPEC_EraseAppArea(void);
 
 /**
  * @brief Erase a page in the Flash memory.
@@ -31,7 +31,7 @@ void FPEC_EraseAppArea(void);
  * @note This function assumes that the Flash controller (FPEC) peripheral is properly configured and initialized.
  * @return None.
  */	
-void FPEC_FlashPageErase(u8 PageNumber);
+void MCAL_FPEC_FlashPageErase(u8 PageNumber);
 
 /**
  * @brief Write data to Flash memory.
@@ -46,6 +46,6 @@ void FPEC_FlashPageErase(u8 PageNumber);
  * @note This function assumes that the Flash controller (FPEC) peripheral is properly configured and initialized.
  * @return None.
  */
-void FPEC_FlashWrite(u32 Address, u16* Data, u8 Length);
+void MCAL_FPEC_FlashWrite(uint32_t Address, uint16_t *Data, uint8_t Length);
 
 #endif /**< FPEC_INTERFACE_ */

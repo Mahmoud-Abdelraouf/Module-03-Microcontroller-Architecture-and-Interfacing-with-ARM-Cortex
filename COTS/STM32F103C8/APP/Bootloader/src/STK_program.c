@@ -264,7 +264,7 @@ Std_ReturnType MCAL_STK_SetIntervalPeriodic(u32 Copy_Microseconds, STK_CallbackF
         /**< Set the Mode of interval to be periodic */
         STK_ModeOfInterval = STK_PERIOD_INTERVAL;
 
-        /**< Start the SysTick timer and enable the interrupt */
+        /* Start the SysTick timer and enable the interrupt */
         STK->CTRL |= STK_CTRL_ENABLE_MASK;
         STK->CTRL |= STK_CTRL_TICKINT_MASK; 
 

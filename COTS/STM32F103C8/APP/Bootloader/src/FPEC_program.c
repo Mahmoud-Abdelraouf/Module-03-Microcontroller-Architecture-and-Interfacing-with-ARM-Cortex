@@ -13,22 +13,22 @@
 #include "FPEC_private.h"
 #include "FPEC_config.h"
 /*****************************< Function Implementations *****************************/
-void FPEC_EraseAppArea(void) {
+void MCAL_FPEC_EraseAppArea(void) {
 	u8 i;
 	
 	for (i = 4; i < 64; i++) {
-		FPEC_FlashPageErase(i);
+		MCAL_FPEC_FlashPageErase(i);
 	}
 }
 
-void FPEC_FlashPageErase(u8 PageNumber) {
+void MCAL_FPEC_FlashPageErase(u8 PageNumber) {
 	/**< Wait Busy Flag */
 	while (GET_BIT(FPEC->SR, 0) == 1);
 
 	/**< Check if FPEC is locked or not */
 	if ( GET_BIT(FPEC->CR, 7) == 1 ) {
-		FPEC -> KEYR = 0x45670123;
-		FPEC -> KEYR = 0xCDEF89AB;
+		FPEC->KEYR = 0x45670123;
+		FPEC->KEYR = 0xCDEF89AB;
 	}
 	
 	/**< Page Erase Operation */
@@ -48,16 +48,15 @@ void FPEC_FlashPageErase(u8 PageNumber) {
 	CLR_BIT(FPEC->CR, 1);
 }
 
-void FPEC_FlashWrite(u32 Address, u16 *Data, u8 Length) {
+void MCAL_FPEC_FlashWrite(uint32_t Address, uint16_t *Data, uint8_t Length) {
 	u8 i;
-	volatile u16 Temp;
 
 	while (GET_BIT(FPEC->SR, 0) == 1);
 
 	/**< Check if FPEC is locked or not */
 	if ( /**< FPEC_CR->BitAccess.LOCK == 1 */ GET_BIT(FPEC->CR, 7) == 1 ) {
-		FPEC -> KEYR = 0x45670123;
-		FPEC -> KEYR = 0xCDEF89AB;
+		FPEC->KEYR = 0x45670123;
+		FPEC->KEYR = 0xCDEF89AB;
 	}
 	
 	
@@ -66,7 +65,6 @@ void FPEC_FlashWrite(u32 Address, u16 *Data, u8 Length) {
 		SET_BIT(FPEC->CR, 0);
 
 		/**< Half word operation */
-		Temp = Data[i];
 		(*((volatile u16*)Address)) = Data[i];
 		Address += 2;
 
