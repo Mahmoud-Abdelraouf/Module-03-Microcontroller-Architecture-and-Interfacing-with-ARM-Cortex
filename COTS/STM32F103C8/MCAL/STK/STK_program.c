@@ -212,30 +212,37 @@ Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds)
     }
 }
 
-Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Copy_Microseconds, STK_CallbackFunc_t CallbackFunc)
+Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Microseconds, STK_CallbackFunc_t CallbackFunc)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
     
     if(CallbackFunc != NULL)
     {
-        /**< Save the callback function pointer */
-        STK_Callback = CallbackFunc;
+    	/**< Reset the Timer */
+    	MCAL_STK_Reset();
     
         /* Calculate the number of ticks required to wait for the specified number of microseconds */
-        u32 Local_Ticks = (Copy_Microseconds * STK_AHB_CLK) / 1000000;
-    
-        /* Set the reload value for the SysTick timer */
-        STK->LOAD = Local_Ticks;
+    	u32 TicksRequired = (Microseconds * (STK_AHB_CLK / 1000000));
 
-        /**< Set the Mode of interval to be single */
-        STK_ModeOfInterval = STK_SINGLE_INTERVAL;
+        /**< Check if the ticks required is within the valid range */
+        if (TicksRequired <= STK_RELOAD_MAX)
+        {
+        	/**< Save the callback function pointer */
+			STK_Callback = CallbackFunc;
 
-        /**< Start the SysTick timer and enable the interrupt */
-        STK->CTRL |= STK_CTRL_ENABLE_MASK;
-        STK->CTRL |= STK_CTRL_TICKINT_MASK; 
+			/**< Set the Mode of interval to be single */
+			STK_ModeOfInterval = STK_SINGLE_INTERVAL;
 
-        /**< Configured successfully */
-        Local_FunctionStatus = E_OK;
+            /* Set the reload value for the SysTick timer */
+            STK->LOAD = TicksRequired;
+
+            /**< Start the SysTick timer and enable the interrupt */
+            STK->CTRL |= STK_CTRL_ENABLE_MASK;
+            STK->CTRL |= STK_CTRL_TICKINT_MASK;
+
+            /**< Configured successfully */
+            Local_FunctionStatus = E_OK;
+        }
     }
     else
     {
@@ -252,24 +259,31 @@ Std_ReturnType MCAL_STK_SetIntervalPeriodic(u32 Copy_Microseconds, STK_CallbackF
     
     if(CallbackFunc != NULL)
     {
-        /**< Save the callback function pointer */
-        STK_Callback = CallbackFunc;
-    
+        /**< Reset the Timer */
+    	MCAL_STK_Reset();
+        
         /* Calculate the number of ticks required to wait for the specified number of microseconds */
         u32 Local_Ticks = (Copy_Microseconds * STK_AHB_CLK) / 1000000;
     
-        /* Set the reload value for the SysTick timer */
-        STK->LOAD = Local_Ticks-1;
+        /**< Check if TicksRequired is within the valid range */
+        if (Local_Ticks <= STK_RELOAD_MAX)
+        {
+            /**< Save the callback function pointer */
+            STK_Callback = CallbackFunc;
 
-        /**< Set the Mode of interval to be periodic */
-        STK_ModeOfInterval = STK_PERIOD_INTERVAL;
+            /**< Set the Mode of interval to be periodic */
+            STK_ModeOfInterval = STK_PERIOD_INTERVAL;
 
-        /**< Start the SysTick timer and enable the interrupt */
-        STK->CTRL |= STK_CTRL_ENABLE_MASK;
-        STK->CTRL |= STK_CTRL_TICKINT_MASK; 
+            /* Set the reload value for the SysTick timer */
+            STK->LOAD = Local_Ticks-1;
 
-        /**< Configured successfully */
-        Local_FunctionStatus = E_OK;
+            /**< Start the SysTick timer and enable the interrupt */
+            STK->CTRL |= STK_CTRL_ENABLE_MASK;
+            STK->CTRL |= STK_CTRL_TICKINT_MASK; 
+
+            /**< Configured successfully */
+            Local_FunctionStatus = E_OK;
+        }  
     }
     else
     {

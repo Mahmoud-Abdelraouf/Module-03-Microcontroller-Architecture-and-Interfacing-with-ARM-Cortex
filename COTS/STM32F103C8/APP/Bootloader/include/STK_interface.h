@@ -167,7 +167,7 @@ Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds);
  * operation and starts counting down. When the timer reaches zero, the saved callback function
  * is called. Returns E_OK if the configuration was successful; otherwise, returns E_NOT_OK.
  *
- * @param[in] Copy_Microseconds The interval in microseconds after which the timer should expire.
+ * @param[in] Microseconds The interval in microseconds after which the timer should expire.
  * @param[in] CallbackFunc      A pointer to the callback function to be executed when the timer expires.
  *
  * @return
@@ -177,7 +177,7 @@ Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds);
  * @see STK_SINGLE_INTERVAL
  * @see MCAL_STK_SetIntervalSingle
  */
-Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Copy_Microseconds, STK_CallbackFunc_t CallbackFunc);
+Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Microseconds, STK_CallbackFunc_t CallbackFunc);
 
 /**
  * @brief Configures the SysTick timer for a periodic interval and associates a callback function.

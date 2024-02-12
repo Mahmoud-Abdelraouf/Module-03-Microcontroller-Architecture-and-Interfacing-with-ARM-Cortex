@@ -106,11 +106,13 @@ typedef enum {
 
 typedef struct {
   u32 BaudRate;
+  u8 HwFlowControl:2;
   u8 ParityMode: 2;
   u8 StopBits: 2;
   u8 WordLength: 1;
-  u8 : 3; /**< Padding to align to 8 bits */ 
+  u8 : 1; /**< Padding to align to 8 bits */ 
 } USART_Config_t;
+
 
 /**
  * @}
@@ -149,7 +151,7 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig);
  *     - E_OK: Data transmission successful.
  *     - E_NOT_OK: Data transmission failed or invalid parameters.
  */
-Std_ReturnType MCAL_USART_Transmit(char *Data, u16 DataSize);
+Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize);
 
 /**
  * @brief Receives data via the UART interface.
@@ -158,12 +160,13 @@ Std_ReturnType MCAL_USART_Transmit(char *Data, u16 DataSize);
  * It stores the received data in the provided buffer of a specified size.
  *
  * @param[out] Data Pointer to the buffer to store the received data.
+ * @param[in] DataSize Size of the buffer to store the received data.
  * 
  * @return
  *     - E_OK: Data reception successful.
  *     - E_NOT_OK: Data reception failed or invalid parameters.
  */
-Std_ReturnType MCAL_USART_Receive(char *Data);
+Std_ReturnType MCAL_USART_Receive(u8 *Data, u16 DataSize);
 
 /**
  * @}

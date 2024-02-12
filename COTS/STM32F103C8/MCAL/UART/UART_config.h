@@ -20,8 +20,7 @@
  * PARITY_EVEN: Even parity is used.
  * PARITY_ODD: Odd parity is used.
  */
-typedef enum
-{
+typedef enum {
   PARITY_NONE,  /**< No parity bit is used */
   PARITY_EVEN,  /**< Even parity is used */
   PARITY_ODD    /**< Odd parity is used */
@@ -34,8 +33,7 @@ typedef enum
  * STOP_BITS_1: 1 stop bit is used.
  * STOP_BITS_2: 2 stop bits are used.
  */
-typedef enum
-{
+typedef enum {
   STOP_BITS_1,  /**< 1 stop bit is used */
   STOP_BITS_2   /**< 2 stop bits are used */
 } UART_StopBits_t;
@@ -47,8 +45,7 @@ typedef enum
  * DATA_BITS_8: 8 data bits are used.
  * DATA_BITS_9: 9 data bits are used.
  */
-typedef enum
-{
+typedef enum {
   DATA_BITS_8,  /**< 8 data bits are used */
   DATA_BITS_9   /**< 9 data bits are used */
 } UART_DataBits_t;
@@ -62,8 +59,7 @@ typedef enum
  * BAUD_RATE_57600: Baud rate of 57600.
  * BAUD_RATE_38400: Baud rate of 38400.
  */
-typedef enum
-{
+typedef enum {
   BAUD_RATE_9600,     /**< Baud rate of 9600 */
   BAUD_RATE_115200,   /**< Baud rate of 115200 */
   BAUD_RATE_57600,    /**< Baud rate of 57600 */

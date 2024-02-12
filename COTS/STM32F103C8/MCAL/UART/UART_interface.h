@@ -106,11 +106,13 @@ typedef enum {
 
 typedef struct {
   u32 BaudRate;
+  u8 HwFlowControl:2;
   u8 ParityMode: 2;
   u8 StopBits: 2;
   u8 WordLength: 1;
-  u8 : 3; /**< Padding to align to 8 bits */ 
+  u8 : 1; /**< Padding to align to 8 bits */ 
 } USART_Config_t;
+
 
 /**
  * @}

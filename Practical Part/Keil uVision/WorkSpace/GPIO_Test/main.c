@@ -2,7 +2,7 @@
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 /*********************< MCAL *********************/
-/**< MCAL_RCC interfacce file */
+/**< MCAL_RCC interface file */
 #include "RCC_interface.h"
 /**< MCAL_GPIO interface file*/
 #include "GPIO_interface.h"
