@@ -38,15 +38,15 @@ u8 hexchar_to_uint8(u8 ch) {
 }
 
 void parse_hex_line(const char *line) {
-    uint8_t data[MAX_LINE_SIZE];
-    uint8_t dataSize = 0;
-    uint8_t checksum = 0;
-    uint8_t checksumToCmp = 0;
-    uint8_t byte_count, record_type;
-    uint32_t address;
-    uint16_t lowerAddressPart;
-    uint16_t upperAddressPart;
-    int i = 0;
+    uint8_t data[MAX_LINE_SIZE];     /**< Buffer to store data bytes */
+    uint8_t dataSize = 0;            /**< Size of data buffer */
+    uint8_t checksum = 0;            /**< Checksum calculated from the line */
+    uint8_t checksumToCmp = 0;       /**< Checksum to compare */
+    uint8_t byte_count, record_type; /**< Variables to store byte count and record type */
+    uint32_t address;                /**< Address extracted from the line */
+    uint16_t lowerAddressPart;       /**< Lower part of the address */
+    uint16_t upperAddressPart;       /**< Upper part of the address */
+    int i = 0;                       /**< Loop counter */
     ParserState_t state = PARSER_STATE_START;
 
     while (line[i] != '\0') {

@@ -5,7 +5,18 @@
 /******* File Name : main.c                     *****************/
 /****************************************************************/
 
-
+/*****************************< LIB *****************************/
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+/*****************************< MCAL *****************************/
+#include "RCC_interface.h"
+#include "GPIO_interface.h"
+#include "STK_interface.h"
+#include "UART_interface.h"
+#include "FPEC_interface.h"
+/*****************************< APP *****************************/
+#include "Parse.h"
+/*****************************< Function Implementations *****************************/
 void main() {
 
 

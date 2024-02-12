@@ -4,17 +4,26 @@
 /******* Version   : 0.1                        *****************/
 /******* File Name : Parser.h                   *****************/
 /****************************************************************/
-
+#ifndef Parser_H_
+#define Parser_H_
+/**
+ * @brief Maximum size of a line buffer.
+ *
+ * This macro defines the maximum size of a line buffer used for storing data
+ * read from a file or received from a serial port.
+ */
 #define MAX_LINE_SIZE 100
 
+/**
+ * @brief Enumeration representing the states of a parser.
+ */
 typedef enum {
-    PARSER_STATE_START,
-    PARSER_STATE_COLON,
-    PARSER_STATE_DATA,
-    PARSER_STATE_CHECKSUM1,
-    PARSER_STATE_CHECKSUM2
+    PARSER_STATE_START,        /**< Initial state of the parser. */
+    PARSER_STATE_COLON,        /**< State after encountering a colon. */
+    PARSER_STATE_DATA,         /**< State for processing data. */
+    PARSER_STATE_CHECKSUM1,    /**< State for calculating checksum (part 1). */
+    PARSER_STATE_CHECKSUM2     /**< State for calculating checksum (part 2). */
 } ParserState_t;
-
 
 /**
  * @brief Convert ASCII character to its hexadecimal representation.
@@ -29,7 +38,6 @@ typedef enum {
  */
 u8 ascii_to_hex(u8 ascii);
 
-
 /**
  * @brief Convert a hexadecimal character to an 8-bit unsigned integer.
  *
@@ -41,3 +49,15 @@ u8 ascii_to_hex(u8 ascii);
  *         Returns 0 if the input character is not a valid hexadecimal digit.
  */
 u8 hexchar_to_uint8(u8 ch);
+
+/**
+ * @brief Parses a line of Intel HEX format and processes the data.
+ *
+ * This function parses a line of Intel HEX format and processes the data according to the record type.
+ * It calculates the checksum and verifies it before performing the required action based on the record type.
+ *
+ * @param line Pointer to the character array representing the line of Intel HEX format.
+ */
+void parse_hex_line(const char *line);
+
+#endif /**< Parser_H_ */
