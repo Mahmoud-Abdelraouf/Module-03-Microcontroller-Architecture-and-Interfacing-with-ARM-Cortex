@@ -181,6 +181,9 @@ Std_ReturnType MCAL_STK_SetBusyWait(u32 Copy_Microseconds)
 
 Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds)
 {
+	/**< Reset the Timer */
+	MCAL_STK_Reset();
+
     /**< Calculate the number of ticks required to wait for the specified number of milliseconds */
     u32 Local_u32Ticks = (u32)((Copy_Milliseconds * STK_AHB_CLK) / 1000.0);
 

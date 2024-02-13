@@ -19,6 +19,7 @@
  */
 typedef enum {
     PARSER_STATE_START,        /**< Initial state of the parser. */
+    PARSER_STATE_STOP,         /**< Final state of the parser. */
     PARSER_STATE_COLON,        /**< State after encountering a colon. */
     PARSER_STATE_DATA,         /**< State for processing data. */
     PARSER_STATE_CHECKSUM1,    /**< State for calculating checksum (part 1). */

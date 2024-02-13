@@ -23,35 +23,35 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig)
   if (USARTConfig->WordLength == USART_WORD_LENGTH_8BIT)
   {
     /**< Configure 8-bit word length */
-    USART2->CR1 &= ~USART_CR1_M;  /**< Clear the M bit for 8-bit word length */ 
+    USART1->CR1 &= ~USART_CR1_M;  /**< Clear the M bit for 8-bit word length */ 
   }
   else if (USARTConfig->WordLength == USART_WORD_LENGTH_9BIT)
   {
     /**< Configure 9-bit word length */
-    USART2->CR1 |= USART_CR1_M;  /**< Set the M bit for 8-bit word length */ 
+    USART1->CR1 |= USART_CR1_M;  /**< Set the M bit for 8-bit word length */ 
   }
 
   /**< Configure UART stop bits */
-  USART2->CR2 &= ~USART_CR2_STOP;     /**< Clear the STOP bits */ 
-  USART2->CR2 |= ((USARTConfig->StopBits) << 12);  /**< Set the specified stop bits */
+  USART1->CR2 &= ~USART_CR2_STOP;     /**< Clear the STOP bits */ 
+  USART1->CR2 |= ((USARTConfig->StopBits) << 12);  /**< Set the specified stop bits */
 
   /**< Configure UART parity mode */
   if (USARTConfig->ParityMode == USART_PARITY_NONE)
   {
     /**< Configure no parity */
-    USART2->CR1 &= ~(USART_CR1_PCE | USART_CR1_PS); /**< Clear the PCE and PS bits for no parity */
+    USART1->CR1 &= ~(USART_CR1_PCE | USART_CR1_PS); /**< Clear the PCE and PS bits for no parity */
   }
   else if (USARTConfig->ParityMode == USART_PARITY_EVEN)
   {
     /**< Configure even parity */
-    USART2->CR1 |= USART_CR1_PCE;   /**< Set the PCE bit for even parity */ 
-    USART2->CR1 &= ~USART_CR1_PS;   /**< Clear the PS bit for even parity */
+    USART1->CR1 |= USART_CR1_PCE;   /**< Set the PCE bit for even parity */ 
+    USART1->CR1 &= ~USART_CR1_PS;   /**< Clear the PS bit for even parity */
   }
   else if (USARTConfig->ParityMode == USART_PARITY_ODD)
   {
     /**< Configure odd parity */
-    USART2->CR1 |= USART_CR1_PCE;   /**< Set the PCE bit for odd parity */ 
-    USART2->CR1 |= USART_CR1_PS;    /**< Set the PS bit for odd parity */ 
+    USART1->CR1 |= USART_CR1_PCE;   /**< Set the PCE bit for odd parity */ 
+    USART1->CR1 |= USART_CR1_PS;    /**< Set the PS bit for odd parity */ 
   }
 
   /*********************< Configure UART baud rate *********************/
@@ -77,15 +77,15 @@ Std_ReturnType MCAL_USART_Init(USART_Config_t *USARTConfig)
   }
 
   /**< Configure the Baud Rate Register (BRR) with calculated values */
-  USART2->BRR = (Local_u16DIV_Mantissa << 4) | Local_u16DIV_Fraction;
+  USART1->BRR = (Local_u16DIV_Mantissa << 4) | Local_u16DIV_Fraction;
   /*********************< End of Configure UART baud rate *********************/
 
   /**< Enable Transmitter */
-  USART2->CR1 |= USART_CR1_TE;  /**< Set the TE bit to enable UART */ 
+  USART1->CR1 |= USART_CR1_TE;  /**< Set the TE bit to enable UART */ 
   /**< Enable Receiver */
-  USART2->CR1 |= USART_CR1_RE;  /**< Set the RE bit to enable UART */ 
+  USART1->CR1 |= USART_CR1_RE;  /**< Set the RE bit to enable UART */ 
   /**< Enable UART */
-  USART2->CR1 |= USART_CR1_UE;  /**< Set the UE bit to enable UART */  
+  USART1->CR1 |= USART_CR1_UE;  /**< Set the UE bit to enable UART */  
 	
 	return E_OK;
 }
@@ -100,14 +100,14 @@ Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize)
   for (u16 i = 0; i < DataSize; ++i) 
   {
     /**< Wait for the Transmit Data Register to be empty */ 
-    while (!(USART2->SR & USART_SR_TXE)) 
+    while (!(USART1->SR & USART_SR_TXE)) 
     {
       /**< Wait until the TXE flag is set, indicating that the data register is empty and ready to transmit */ 
     }
     /**< Load the data into the Data Register */ 
-    USART2->DR = Data[i];
+    USART1->DR = Data[i];
     /**< Wait for the Transmission Complete */ 
-    while (!(USART2->SR & USART_SR_TC)) 
+    while (!(USART1->SR & USART_SR_TC)) 
     {
       /**<  Wait until the TC flag is set, indicating that the transmission is complete */
     }
@@ -126,12 +126,12 @@ Std_ReturnType MCAL_USART_Receive(u8 *Data, u16 DataSize)
   for (u16 i = 0; i < DataSize; ++i) 
   {
     /**< Wait until data is received */ 
-    while (!(USART2->SR & USART_SR_RXNE)) 
+    while (!(USART1->SR & USART_SR_RXNE)) 
     {
       /**< Wait until the RXNE flag is set, indicating that data is ready to be read */
     }
     /**< Read the received data */ 
-    Data[i] = USART2->DR;
+    Data[i] = USART1->DR;
   }
 
   return E_OK; /**< Define your success code */ 

@@ -16,7 +16,7 @@
 void MCAL_FPEC_EraseAppArea(void) {
 	u8 i;
 	
-	for (i = 4; i < 64; i++) {
+	for (i = 12; i < 128; i++) {
 		MCAL_FPEC_FlashPageErase(i);
 	}
 }

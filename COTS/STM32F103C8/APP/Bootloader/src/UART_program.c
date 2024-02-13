@@ -107,7 +107,7 @@ Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize)
     /**< Load the data into the Data Register */ 
     USART2->DR = Data[i];
     /**< Wait for the Transmission Complete */ 
-    while (!(USART2->SR & USART_SR_TC)) 
+    while (!(USART2->SR & USART_SR_TC))
     {
       /**<  Wait until the TC flag is set, indicating that the transmission is complete */
     }
@@ -116,23 +116,20 @@ Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize)
   return E_OK; /**< Define your success code */ 
 }
 
-Std_ReturnType MCAL_USART_Receive(u8 *Data, u16 DataSize)
+Std_ReturnType MCAL_USART_Receive(char *Data)
 {
-  if (Data == NULL || DataSize == 0) 
+  if (Data == NULL)
   {
     return E_INVALID_PARAMETER; /**< Define your error code for invalid parameters */ 
   }
 
-  for (u16 i = 0; i < DataSize; ++i) 
+  /**< Wait until data is received */
+  if (!(USART2->SR & USART_SR_RXNE))
   {
-    /**< Wait until data is received */ 
-    while (!(USART2->SR & USART_SR_RXNE)) 
-    {
-      /**< Wait until the RXNE flag is set, indicating that data is ready to be read */
-    }
-    /**< Read the received data */ 
-    Data[i] = USART2->DR;
+	  return E_NOT_OK;
   }
+  /**< Read the received data */
+  *Data = USART2->DR;
 
   return E_OK; /**< Define your success code */ 
 }

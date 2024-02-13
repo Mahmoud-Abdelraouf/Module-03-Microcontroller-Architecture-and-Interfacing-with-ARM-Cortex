@@ -45,16 +45,19 @@ void parse_hex_line(const char *line) {
     uint32_t address;                /**< Address extracted from the line */
     uint16_t lowerAddressPart;       /**< Lower part of the address */
     uint16_t upperAddressPart;       /**< Upper part of the address */
+    int temp = 0;                    /**< Temp to save the counter */
     int i = 0;                       /**< Loop counter */
     lineCount++;
     ParserState_t state = PARSER_STATE_START;
-    while (line[i] != '\0') {
+    while (line[i] != '\n') {
         switch (state) {
             case PARSER_STATE_START:
                 if (line[i] == ':') {
-                    state = PARSER_STATE_COLON;
                     i++; /**< Increment i to move to the next character in the line */
+                } else if(line[i] != ':') {
+                    
                 }
+                state = PARSER_STATE_COLON;
                 break;
             case PARSER_STATE_COLON:
                 byteCount = (hexchar_to_uint8(line[i]) << 4) | hexchar_to_uint8(line[i+1]);
@@ -64,6 +67,12 @@ void parse_hex_line(const char *line) {
                 i += 4; /**< Increment i by 4 to move to the next address characters */
                 recordType = (hexchar_to_uint8(line[i]) << 4) | hexchar_to_uint8(line[i+1]);
                 i += 2; /**< Increment i by 2 to move to the next record type characters */
+
+                if(recordType == (uint8_t)04) {
+                    lowerAddressPart = (hexchar_to_uint8(line[i]) << 12) | (hexchar_to_uint8(line[i+1]) << 8)
+                          | (hexchar_to_uint8(line[i+2]) << 4) | hexchar_to_uint8(line[i+3]);
+                }
+                
                 state = PARSER_STATE_DATA;
                 break;
             case PARSER_STATE_DATA:
@@ -76,10 +85,10 @@ void parse_hex_line(const char *line) {
                 state = PARSER_STATE_CHECKSUM1;
                 break;
             case PARSER_STATE_CHECKSUM1:
-                i = 1;
-                for(int j = 0; j < 3; j++) {
-                    checksum += (hexchar_to_uint8(line[i]) << 4) | hexchar_to_uint8(line[i+1]);
-                    i += 2; /**< Increment i by 2 to move to the next pair of checksum characters */
+                temp = 1;
+                for(int j = 0; j < 4; j++) {
+                    checksum += (hexchar_to_uint8(line[temp]) << 4) | hexchar_to_uint8(line[temp+1]);
+                    temp += 2; /**< Increment i by 2 to move to the next pair of checksum characters */
                 }
                 checksum = (~(checksum & 0xFF) + 1) & 0xFF;
                 state = PARSER_STATE_CHECKSUM2;
@@ -103,8 +112,11 @@ void parse_hex_line(const char *line) {
                 	// TODO: create a flags to indicate where  the error at and what is the correct value should be
                     //fprintf(stderr, "Error in line: %ld, The checksum should be: %d\n", lineCount, checksumToCmp);
                 }
-                state = PARSER_STATE_START;
+                state = PARSER_STATE_STOP;
                 break;
+            case PARSER_STATE_STOP:
+            	return;
+            	break;
             default:
                 state = PARSER_STATE_START;
                 break;

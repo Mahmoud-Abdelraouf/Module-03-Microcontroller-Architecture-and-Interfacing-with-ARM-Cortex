@@ -10,7 +10,7 @@
 /**
  * @brief USART base address.
  */
-#define USART2_BASE_ADDRESS 0x40013800
+#define USART1_BASE_ADDRESS 0x40013800
 
 /**
  * @brief Structure representing USART registers.
@@ -28,7 +28,7 @@ typedef struct {
 /**
  * @brief USART2 pointer.
  */
-#define USART2   ((USART_RegDef_t *)USART2_BASE_ADDRESS)
+#define USART1   ((USART_RegDef_t *)USART1_BASE_ADDRESS)
 
 /**
  * @brief USART control register 1 (USART_CR1) bit definitions.

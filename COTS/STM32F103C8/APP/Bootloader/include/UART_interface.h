@@ -160,13 +160,12 @@ Std_ReturnType MCAL_USART_Transmit(u8 *Data, u16 DataSize);
  * It stores the received data in the provided buffer of a specified size.
  *
  * @param[out] Data Pointer to the buffer to store the received data.
- * @param[in] DataSize Size of the buffer to store the received data.
  * 
  * @return
  *     - E_OK: Data reception successful.
  *     - E_NOT_OK: Data reception failed or invalid parameters.
  */
-Std_ReturnType MCAL_USART_Receive(u8 *Data, u16 DataSize);
+Std_ReturnType MCAL_USART_Receive(char *Data);
 
 /**
  * @}
