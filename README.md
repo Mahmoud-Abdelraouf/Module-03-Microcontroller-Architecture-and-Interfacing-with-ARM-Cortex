@@ -54,7 +54,7 @@
 
 ---
 
-# IEEE Embedded Workshop: Microcontroller Architecture and Interfacing with ARM Cortex
+# DevLeague Embedded Workshop: Microcontroller Architecture and Interfacing with ARM Cortex
 
 Welcome to the IEEE Embedded Workshop on Microcontroller Architecture and Interfacing with ARM Cortex. In this workshop, you will explore the fundamental concepts of microcontroller architecture and learn how to interface with ARM Cortex-based microcontrollers. The workshop will cover a variety of topics to provide you with a comprehensive understanding of embedded systems.
 
@@ -369,11 +369,9 @@ This final project aims to create an autonomous obstacle-avoidance and line-trac
 
 ---
 
-## About IEEE
+## About DevLeague
 
-The Institute of Electrical and Electronics Engineers (IEEE) is the world's largest technical professional organization dedicated to advancing technology for the benefit of humanity. IEEE and its members inspire a global community to innovate for a better tomorrow through its highly-cited publications, conferences, technology standards, and professional and educational activities.
 
-For more information about IEEE, visit [IEEE Official Website](https://www.ieee.org/).
 
 ## Contact
 
@@ -381,4 +379,3 @@ For any inquiries about the workshop, please contact the workshop organizers:
 
 - Organizer Name: Mahmoud Abdelraouf Mahmoud
 - Email: mahmoud126125@gmail.com
-- Phone: 01150091280
