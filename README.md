@@ -764,4 +764,3 @@ For any inquiries about the workshop, please contact the workshop organizers:
 
 - Organizer Name: Mahmoud Abdelraouf Mahmoud
 - Email: mahmoud126125@gmail.com
->>>>>>> 7efe0957909b1f7febd35e4df4595177770cad18
