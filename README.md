@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Table of Contents
 
 - [IEEE Embedded Workshop: Microcontroller Architecture and Interfacing with ARM Cortex](#ieee-embedded-workshop-microcontroller-architecture-and-interfacing-with-arm-cortex)
